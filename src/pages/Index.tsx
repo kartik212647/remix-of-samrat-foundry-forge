@@ -53,12 +53,12 @@ export default function Home() {
     <Layout>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center">
-        {/* Background Image with Parallax Effect */}
+        {/* Background Image with Dark Overlay for Contrast */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
-          <div className="absolute inset-0 gradient-overlay-hero"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
         </div>
 
         <div className="container-industrial relative z-10 pt-20">
@@ -71,14 +71,14 @@ export default function Home() {
             </ScrollReveal>
 
             <ScrollReveal delay={100}>
-              <h1 className="heading-xl text-foreground mb-6">
+              <h1 className="heading-xl text-white mb-6">
                 Engineering Reliable Refractory Solutions for{' '}
                 <span className="text-gradient-orange">High-Temperature Industries</span>
               </h1>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <p className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+              <p className="text-xl text-white/80 leading-relaxed mb-8 max-w-2xl">
                 Manufacturing, lining, relining, and maintenance of refractory systems for boilers, 
                 furnaces, and molten metal applications — trusted for over 15 years.
               </p>
@@ -90,7 +90,7 @@ export default function Home() {
                   Get Technical Consultation
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/contact" className="btn-outline">
+                <Link to="/contact" className="btn-outline border-white text-white hover:bg-white hover:text-foreground">
                   Request Site Visit
                 </Link>
               </div>
@@ -98,9 +98,9 @@ export default function Home() {
 
             {/* Trust Badges */}
             <ScrollReveal delay={400}>
-              <div className="flex flex-wrap items-center gap-6 mt-12 pt-8 border-t border-border/30">
+              <div className="flex flex-wrap items-center gap-6 mt-12 pt-8 border-t border-white/20">
                 {trustIndicators.slice(0, 3).map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-muted-foreground text-sm font-mono">
+                  <div key={item} className="flex items-center gap-2 text-white/80 text-sm font-mono">
                     <Shield size={14} className="text-primary" />
                     {item}
                   </div>
