@@ -19,6 +19,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,11 +33,14 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  // On home page before scroll: white text. After scroll or on other pages: dark text
+  const showDarkText = isScrolled || !isHomePage;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-background/95 backdrop-blur-md border-b border-border'
+          ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-sm'
           : 'bg-transparent'
       }`}
     >
@@ -56,7 +60,9 @@ export default function Header() {
                 className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   location.pathname === item.href
                     ? 'text-primary'
-                    : 'text-muted-foreground hover:text-foreground'
+                    : showDarkText 
+                      ? 'text-muted-foreground hover:text-foreground'
+                      : 'text-white/80 hover:text-white'
                 }`}
               >
                 {item.name}
@@ -75,7 +81,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-foreground"
+            className={`lg:hidden p-2 ${showDarkText ? 'text-foreground' : 'text-white'}`}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -84,7 +90,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border animate-fade-in">
+          <div className="lg:hidden py-4 border-t border-border animate-fade-in bg-background">
             <nav className="flex flex-col gap-1">
               {navigation.map((item) => (
                 <Link
