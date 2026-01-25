@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center">
+      <section className="relative min-h-[85vh] flex items-center">
         {/* Background Image with Dark Overlay for Contrast */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -61,36 +61,36 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
         </div>
 
-        <div className="container-industrial relative z-10 pt-20">
-          <div className="max-w-4xl">
+        <div className="container-industrial relative z-10 pt-16">
+          <div className="max-w-3xl">
             <ScrollReveal>
-              <span className="inline-flex items-center gap-2 text-primary font-mono text-sm tracking-wider uppercase mb-6">
-                <span className="w-2 h-2 bg-primary rounded-full"></span>
+              <span className="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-wider uppercase mb-4">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
                 Refractory Engineering Excellence
               </span>
             </ScrollReveal>
 
             <ScrollReveal delay={100}>
-              <h1 className="heading-xl text-white mb-6">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-5 leading-tight">
                 Engineering Reliable Refractory Solutions for{' '}
                 <span className="text-gradient-orange">High-Temperature Industries</span>
               </h1>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <p className="text-xl text-white/80 leading-relaxed mb-8 max-w-2xl">
+              <p className="text-base md:text-lg text-white/80 leading-relaxed mb-6 max-w-xl">
                 Manufacturing, lining, relining, and maintenance of refractory systems for boilers, 
                 furnaces, and molten metal applications — trusted for over 15 years.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="btn-primary gap-2 group">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/contact" className="btn-primary gap-2 group text-sm">
                   Get Technical Consultation
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/contact" className="btn-outline border-white text-white hover:bg-white hover:text-foreground">
+                <Link to="/contact" className="btn-outline border-white text-white hover:bg-white hover:text-foreground text-sm">
                   Request Site Visit
                 </Link>
               </div>
@@ -98,10 +98,10 @@ export default function Home() {
 
             {/* Trust Badges */}
             <ScrollReveal delay={400}>
-              <div className="flex flex-wrap items-center gap-6 mt-12 pt-8 border-t border-white/20">
+              <div className="flex flex-wrap items-center gap-5 mt-10 pt-6 border-t border-white/20">
                 {trustIndicators.slice(0, 3).map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-white/80 text-sm font-mono">
-                    <Shield size={14} className="text-primary" />
+                  <div key={item} className="flex items-center gap-2 text-white/70 text-xs font-mono">
+                    <Shield size={12} className="text-primary" />
                     {item}
                   </div>
                 ))}
@@ -111,51 +111,51 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
-          <div className="w-px h-16 bg-gradient-to-b from-primary to-transparent animate-pulse"></div>
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:block">
+          <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent animate-pulse"></div>
         </div>
       </section>
 
       {/* Who We Are Section */}
-      <section className="section-padding bg-background">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container-industrial">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
               <SectionHeader
                 label="Who We Are"
                 title="Engineering-Driven Refractory Solutions"
               />
               <ScrollReveal delay={100}>
-                <p className="text-body mb-6">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">
                   Samrat Refractories Works is an engineering-driven refractory manufacturer and 
                   service provider delivering critical refractory solutions for industrial heating systems.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={200}>
-                <p className="text-body mb-8">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
                   With over 15 years of execution experience, we specialize in designing, supplying, 
                   and installing refractory systems that withstand extreme temperatures, corrosive 
                   environments, and continuous industrial operations.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={300}>
-                <Link to="/about" className="inline-flex items-center gap-2 text-primary font-medium group">
+                <Link to="/about" className="inline-flex items-center gap-2 text-primary text-sm font-medium group">
                   Learn More About Us
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </ScrollReveal>
             </div>
 
             {/* Stats */}
             <ScrollReveal delay={200}>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 gap-3">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="card-industrial p-6 text-center hover-lift hover-glow transition-all duration-300">
-                    <stat.icon size={24} className="text-primary mx-auto mb-4" />
-                    <div className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
+                  <div key={stat.label} className="card-industrial p-4 md:p-5 text-center hover-lift hover-glow transition-all duration-300">
+                    <stat.icon size={20} className="text-primary mx-auto mb-3" />
+                    <div className="font-display text-2xl md:text-3xl font-bold text-foreground mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-muted-foreground text-sm">{stat.label}</div>
+                    <div className="text-muted-foreground text-xs">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -165,7 +165,7 @@ export default function Home() {
       </section>
 
       {/* Core Capabilities */}
-      <section className="section-padding bg-secondary">
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial">
           <SectionHeader
             label="Core Capabilities"
@@ -174,15 +174,15 @@ export default function Home() {
             centered
           />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {capabilities.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-8 h-full hover-lift hover-glow transition-all duration-300 group">
-                  <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <item.icon size={24} className="text-primary" />
+                <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300 group">
+                  <div className="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <item.icon size={20} className="text-primary" />
                   </div>
-                  <h3 className="heading-sm text-foreground mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <h3 className="text-base font-heading font-semibold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-xs leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -193,20 +193,20 @@ export default function Home() {
       </section>
 
       {/* Industries We Serve */}
-      <section className="section-padding bg-background">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container-industrial">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
               <SectionHeader
                 label="Industries"
                 title="Serving Critical High-Temperature Applications"
               />
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-3">
                 {industries.map((industry, index) => (
                   <ScrollReveal key={industry} delay={index * 100}>
-                    <div className="flex items-center gap-3 p-4 border border-border rounded-sm hover:border-primary/30 transition-colors group">
-                      <span className="w-2 h-2 bg-primary rounded-full"></span>
-                      <span className="text-foreground font-medium group-hover:text-primary transition-colors">
+                    <div className="flex items-center gap-2.5 p-3 border border-border rounded-sm hover:border-primary/30 transition-colors group">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                      <span className="text-foreground text-sm font-medium group-hover:text-primary transition-colors">
                         {industry}
                       </span>
                     </div>
@@ -214,9 +214,9 @@ export default function Home() {
                 ))}
               </div>
               <ScrollReveal delay={400}>
-                <Link to="/industries" className="inline-flex items-center gap-2 text-primary font-medium mt-8 group">
+                <Link to="/industries" className="inline-flex items-center gap-2 text-primary text-sm font-medium mt-6 group">
                   View All Industries
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </ScrollReveal>
             </div>
@@ -224,16 +224,16 @@ export default function Home() {
             {/* Visual Element */}
             <ScrollReveal delay={200}>
               <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-secondary to-background rounded-sm border border-border p-8 flex items-center justify-center">
+                <div className="aspect-square bg-gradient-to-br from-secondary to-background rounded-sm border border-border p-6 flex items-center justify-center">
                   <div className="text-center">
-                    <Flame size={80} className="text-primary mx-auto mb-6 opacity-80" />
-                    <p className="font-mono text-sm text-muted-foreground">
+                    <Flame size={56} className="text-primary mx-auto mb-4 opacity-80" />
+                    <p className="font-mono text-xs text-muted-foreground">
                       Operating in mission-critical, high-temperature industrial environments
                     </p>
                   </div>
                 </div>
-                <div className="absolute -top-4 -right-4 w-24 h-24 border border-primary/20 rounded-sm"></div>
-                <div className="absolute -bottom-4 -left-4 w-24 h-24 border border-primary/20 rounded-sm"></div>
+                <div className="absolute -top-3 -right-3 w-16 h-16 border border-primary/20 rounded-sm"></div>
+                <div className="absolute -bottom-3 -left-3 w-16 h-16 border border-primary/20 rounded-sm"></div>
               </div>
             </ScrollReveal>
           </div>
@@ -241,7 +241,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding bg-secondary">
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial">
           <SectionHeader
             label="Why Samrat"
@@ -249,7 +249,7 @@ export default function Home() {
             centered
           />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {[
               { title: 'Technical Expertise', desc: 'Deep understanding of thermal systems across industries' },
               { title: 'Proven Reliability', desc: 'Consistent execution in mission-critical applications' },
@@ -259,13 +259,13 @@ export default function Home() {
               { title: 'Long-term Focus', desc: 'Solutions designed for durability and performance' },
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="flex items-start gap-4 p-6 border border-border rounded-sm hover:border-primary/30 transition-colors">
-                  <span className="w-8 h-8 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <span className="font-mono text-primary text-sm">{String(index + 1).padStart(2, '0')}</span>
+                <div className="flex items-start gap-3 p-4 border border-border rounded-sm hover:border-primary/30 transition-colors">
+                  <span className="w-7 h-7 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span className="font-mono text-primary text-xs">{String(index + 1).padStart(2, '0')}</span>
                   </span>
                   <div>
-                    <h4 className="font-heading font-semibold text-foreground mb-1">{item.title}</h4>
-                    <p className="text-muted-foreground text-sm">{item.desc}</p>
+                    <h4 className="font-heading font-semibold text-foreground text-sm mb-0.5">{item.title}</h4>
+                    <p className="text-muted-foreground text-xs">{item.desc}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -275,37 +275,37 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-background relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-background relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary blur-3xl"></div>
         </div>
         <div className="container-industrial relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-2xl mx-auto text-center">
             <ScrollReveal>
-              <span className="inline-flex items-center gap-2 text-primary font-mono text-sm tracking-wider uppercase mb-6">
-                <span className="w-8 h-px bg-primary"></span>
+              <span className="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-wider uppercase mb-4">
+                <span className="w-6 h-px bg-primary"></span>
                 Start Your Project
-                <span className="w-8 h-px bg-primary"></span>
+                <span className="w-6 h-px bg-primary"></span>
               </span>
             </ScrollReveal>
             <ScrollReveal delay={100}>
-              <h2 className="heading-lg text-foreground mb-6">
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
                 Ready to Discuss Your Refractory Requirements?
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-              <p className="text-body mb-8">
+              <p className="text-sm md:text-base text-muted-foreground mb-6">
                 Connect with our technical team to discuss your project needs. From initial consultation 
                 to project execution, we're here to deliver reliable refractory solutions.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={300}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact" className="btn-primary gap-2 group">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link to="/contact" className="btn-primary gap-2 group text-sm">
                   Get Technical Consultation
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/services" className="btn-outline">
+                <Link to="/services" className="btn-outline text-sm">
                   Explore Our Services
                 </Link>
               </div>
