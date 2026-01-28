@@ -60,7 +60,7 @@ export default {
         // Custom industrial colors
         charcoal: "hsl(var(--charcoal))",
         industrial: "hsl(var(--industrial-grey))",
-        molten: "hsl(var(--molten-orange))",
+        samrat: "hsl(var(--samrat-red))",
         steel: "hsl(var(--steel-grey))",
         warm: "hsl(var(--warm-white))",
       },
