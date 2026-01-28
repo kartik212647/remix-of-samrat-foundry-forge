@@ -5,13 +5,10 @@ import logo from '@/assets/logo.png';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Industries', href: '/industries' },
+  { name: 'About Us', href: '/about' },
   { name: 'Products', href: '/products' },
   { name: 'Services', href: '/services' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Quality', href: '/quality' },
-  { name: 'Why Samrat', href: '/why-samrat' },
+  { name: 'Quality & Process', href: '/quality-process' },
   { name: 'Contact', href: '/contact' },
 ];
 
