@@ -4,10 +4,9 @@ import logo from '@/assets/logo.png';
 
 const quickLinks = [
   { name: 'About Us', href: '/about' },
-  { name: 'Industries', href: '/industries' },
   { name: 'Products', href: '/products' },
   { name: 'Services', href: '/services' },
-  { name: 'Projects', href: '/projects' },
+  { name: 'Quality & Process', href: '/quality-process' },
   { name: 'Contact', href: '/contact' },
 ];
 
