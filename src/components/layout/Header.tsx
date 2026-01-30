@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 const navigation = [
@@ -13,34 +13,16 @@ const navigation = [
 ];
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // On home page before scroll: white text. After scroll or on other pages: dark text
-  const showDarkText = isScrolled || !isHomePage;
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-sm'
-          : 'bg-transparent'
-      }`}
-    >
+    <header className="relative z-50 bg-background border-b border-border">
+    
       <div className="container-industrial">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -57,9 +39,7 @@ export default function Header() {
                 className={`px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
                   location.pathname === item.href
                     ? 'text-primary'
-                    : showDarkText 
-                      ? 'text-muted-foreground hover:text-foreground'
-                      : 'text-white/80 hover:text-white'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {item.name}
@@ -78,7 +58,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 ${showDarkText ? 'text-foreground' : 'text-white'}`}
+            className="lg:hidden p-2 text-foreground"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
