@@ -52,7 +52,7 @@ export default function Header() {
             to="/contact"
             className="hidden lg:inline-flex btn-primary text-sm"
           >
-            Get Consultation
+            Contact
           </Link>
 
           {/* Mobile Menu Button */}
@@ -86,7 +86,7 @@ export default function Header() {
                 to="/contact"
                 className="mx-4 mt-4 btn-primary text-center"
               >
-                Get Consultation
+                Contact
               </Link>
             </nav>
           </div>
