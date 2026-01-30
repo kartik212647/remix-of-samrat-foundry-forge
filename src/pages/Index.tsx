@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center">
+      <section className="relative min-h-[80vh] flex items-center">
         {/* Background Image with Dark Overlay for Contrast */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -61,7 +61,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
         </div>
 
-        <div className="container-industrial relative z-10 pt-16">
+        <div className="container-industrial relative z-10 py-12 md:py-16">
           <div className="max-w-3xl">
             <ScrollReveal>
               <span className="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-wider uppercase mb-4">
