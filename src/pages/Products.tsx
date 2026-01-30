@@ -13,6 +13,7 @@ interface Product {
   density?: string;
   benefit: string;
   application?: string;
+  image: string;
 }
 
 interface ProductCategory {
@@ -32,6 +33,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1800°C',
         density: '2.4–2.8 g/cm³',
         benefit: 'Superior load bearing & thermal resistance',
+        image: '/placeholder.svg',
       },
       {
         name: 'Fire Clay Bricks',
@@ -39,6 +41,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1500°C',
         density: '2.0–2.2 g/cm³',
         benefit: 'Excellent durability for general applications',
+        image: '/placeholder.svg',
       },
       {
         name: 'Insulating Fire Bricks',
@@ -46,6 +49,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1600°C',
         density: '0.8–1.2 g/cm³',
         benefit: 'Lightweight with low thermal conductivity',
+        image: '/placeholder.svg',
       },
       {
         name: 'Special Shaped Bricks',
@@ -53,6 +57,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1800°C',
         density: '2.2–2.6 g/cm³',
         benefit: 'Custom geometries for complex installations',
+        image: '/placeholder.svg',
       },
     ],
   },
@@ -66,6 +71,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1700°C',
         benefit: 'Versatile for high-temp linings',
         application: 'Complex shapes & seamless linings',
+        image: '/placeholder.svg',
       },
       {
         name: 'Low Cement Castables',
@@ -73,6 +79,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1650°C',
         benefit: 'High strength & abrasion resistance',
         application: 'Heavy-duty industrial furnaces',
+        image: '/placeholder.svg',
       },
       {
         name: 'High Purity Castables',
@@ -80,6 +87,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1750°C',
         benefit: 'Superior chemical resistance',
         application: 'Corrosive environment applications',
+        image: '/placeholder.svg',
       },
       {
         name: 'Insulating Castables',
@@ -87,6 +95,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1400°C',
         benefit: 'Energy-efficient thermal barrier',
         application: 'Backup lining & heat conservation',
+        image: '/placeholder.svg',
       },
       {
         name: 'Self-Flow Castables',
@@ -94,6 +103,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1600°C',
         benefit: 'Easy installation, no vibration needed',
         application: 'Intricate mold filling',
+        image: '/placeholder.svg',
       },
     ],
   },
@@ -106,30 +116,35 @@ const productCategories: ProductCategory[] = [
         badge: 'Lightweight',
         temperature: 'Up to 1400°C',
         benefit: 'Excellent thermal insulation & flexibility',
+        image: '/placeholder.svg',
       },
       {
         name: 'Ceramic Fiber Modules',
         badge: 'Lightweight',
         temperature: 'Up to 1400°C',
         benefit: 'Quick installation with pre-engineered units',
+        image: '/placeholder.svg',
       },
       {
         name: 'Insulating Bricks',
         badge: 'Lightweight',
         temperature: 'Up to 1600°C',
         benefit: 'Structural insulation with low heat storage',
+        image: '/placeholder.svg',
       },
       {
         name: 'Rockwool Mattresses',
         badge: 'Lightweight',
         temperature: 'Up to 750°C',
         benefit: 'Cost-effective thermal & acoustic insulation',
+        image: '/placeholder.svg',
       },
       {
         name: 'Calcium Silicate Boards',
         badge: 'Lightweight',
         temperature: 'Up to 1000°C',
         benefit: 'Fire-resistant with excellent machinability',
+        image: '/placeholder.svg',
       },
     ],
   },
@@ -142,36 +157,42 @@ const productCategories: ProductCategory[] = [
         badge: 'Certified',
         benefit: 'High-bond strength jointing material',
         application: 'Brick laying & repairs',
+        image: '/placeholder.svg',
       },
       {
         name: 'Fire Cement',
         badge: 'Certified',
         benefit: 'Quick-setting heat-resistant adhesive',
         application: 'Sealing & patching',
+        image: '/placeholder.svg',
       },
       {
         name: 'Acid Proof Tiles',
         badge: 'Certified',
         benefit: 'Chemical & corrosion resistance',
         application: 'Chemical plant flooring',
+        image: '/placeholder.svg',
       },
       {
         name: 'Boiler Fire Doors',
         badge: 'Quality Tested',
         benefit: 'Secure access with thermal protection',
         application: 'Boiler maintenance access',
+        image: '/placeholder.svg',
       },
       {
         name: 'Boiler Nozzles',
         badge: 'Quality Tested',
         benefit: 'Precision-engineered for optimal flow',
         application: 'Combustion systems',
+        image: '/placeholder.svg',
       },
       {
         name: 'Anchors & Hardware',
         badge: 'Quality Tested',
         benefit: 'Reliable refractory support systems',
         application: 'Lining installation & anchoring',
+        image: '/placeholder.svg',
       },
     ],
   },
@@ -180,62 +201,72 @@ const productCategories: ProductCategory[] = [
 function ProductCard({ product, index }: { product: Product; index: number }) {
   return (
     <ScrollReveal delay={index * 50}>
-      <Card className="h-full bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
-        <CardHeader className="pb-3">
-          <div className="flex items-start justify-between gap-2">
-            <h4 className="font-heading font-semibold text-foreground text-base leading-tight">
-              {product.name}
-            </h4>
-            <Badge variant="secondary" className="text-[10px] font-mono shrink-0">
-              {product.badge}
-            </Badge>
-          </div>
+      <Card className="h-full bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 group overflow-hidden">
+        {/* Product Image */}
+        <div className="relative h-32 sm:h-40 bg-secondary overflow-hidden">
+          <img 
+            src={product.image} 
+            alt={product.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <Badge 
+            variant="secondary" 
+            className="absolute top-2 right-2 text-[10px] font-mono bg-background/90 backdrop-blur-sm"
+          >
+            {product.badge}
+          </Badge>
+        </div>
+        
+        <CardHeader className="pb-2 pt-3">
+          <h4 className="font-heading font-semibold text-foreground text-sm sm:text-base leading-tight line-clamp-2">
+            {product.name}
+          </h4>
         </CardHeader>
-        <CardContent className="pb-4 space-y-3">
+        <CardContent className="pb-3 space-y-2">
           {/* Specs */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5">
             {product.temperature && (
-              <div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">
-                <Thermometer size={12} className="text-primary" />
-                <span className="font-mono">{product.temperature}</span>
+              <div className="flex items-center gap-1 text-[10px] sm:text-xs text-muted-foreground bg-secondary px-1.5 py-0.5 rounded">
+                <Thermometer size={10} className="text-primary flex-shrink-0" />
+                <span className="font-mono truncate">{product.temperature}</span>
               </div>
             )}
             {product.density && (
-              <div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">
-                <Scale size={12} className="text-primary" />
-                <span className="font-mono">{product.density}</span>
+              <div className="flex items-center gap-1 text-[10px] sm:text-xs text-muted-foreground bg-secondary px-1.5 py-0.5 rounded">
+                <Scale size={10} className="text-primary flex-shrink-0" />
+                <span className="font-mono truncate">{product.density}</span>
               </div>
             )}
           </div>
           
           {/* Benefit */}
-          <div className="flex items-start gap-2">
-            <Zap size={14} className="text-primary mt-0.5 shrink-0" />
-            <p className="text-sm text-muted-foreground leading-relaxed">
+          <div className="flex items-start gap-1.5">
+            <Zap size={12} className="text-primary mt-0.5 shrink-0" />
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2">
               {product.benefit}
             </p>
           </div>
           
           {/* Application */}
           {product.application && (
-            <div className="flex items-start gap-2">
-              <Lightbulb size={14} className="text-muted-foreground mt-0.5 shrink-0" />
-              <p className="text-xs text-muted-foreground/80">
+            <div className="flex items-start gap-1.5">
+              <Lightbulb size={12} className="text-muted-foreground mt-0.5 shrink-0" />
+              <p className="text-[10px] sm:text-xs text-muted-foreground/80 line-clamp-1">
                 {product.application}
               </p>
             </div>
           )}
         </CardContent>
-        <CardFooter className="pt-0">
+        <CardFooter className="pt-0 pb-3">
           <Button 
             variant="outline" 
             size="sm" 
-            className="w-full text-xs group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+            className="w-full text-[10px] sm:text-xs group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
             asChild
           >
             <Link to="/contact">
               View Details
-              <ArrowRight size={14} className="ml-1.5" />
+              <ArrowRight size={12} className="ml-1" />
             </Link>
           </Button>
         </CardFooter>

@@ -58,8 +58,14 @@ export default function Footer() {
             <h4 className="font-heading font-semibold text-foreground mb-6">Services</h4>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service} className="text-muted-foreground text-sm">
-                  {service}
+                <li key={service}>
+                  <Link
+                    to="/services"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
+                  >
+                    <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                    <span className="break-words">{service}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
