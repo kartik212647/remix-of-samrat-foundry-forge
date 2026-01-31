@@ -87,7 +87,7 @@ export default function Home() {
             <ScrollReveal delay={300}>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/contact" className="btn-primary gap-2 group text-sm">
-                  Get Technical Consultation
+                  Contact Us
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link to="/contact" className="btn-outline border-white text-white hover:bg-white hover:text-foreground text-sm">
@@ -302,7 +302,7 @@ export default function Home() {
             <ScrollReveal delay={300}>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link to="/contact" className="btn-primary gap-2 group text-sm">
-                  Get Technical Consultation
+                  Contact Us
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link to="/services" className="btn-outline text-sm">
