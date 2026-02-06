@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Target, Eye, Users, Cog, Flame, Factory, ThermometerSun } from 'lucide-react';
+import { ArrowRight, Target, Eye, Users, Cog, Flame, Factory, ThermometerSun, Award, Shield, CheckCircle } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
@@ -8,25 +8,29 @@ const industries = [
   {
     icon: Flame,
     title: 'Boilers & Power Systems',
-    description: 'Industrial boilers, package boilers, and waste heat recovery systems.',
+    description: 'Industrial boilers, package boilers, and waste heat recovery systems operating at extreme temperatures.',
+    details: 'Refractories are used in combustion chambers, burner throats, and heat recovery zones. Operating conditions include temperatures up to 1600°C, thermal shock, and ash corrosion.',
     applications: ['Industrial boilers', 'Package boilers', 'Waste heat recovery', 'Steam generators'],
   },
   {
     icon: Factory,
     title: 'Steel & Foundry',
-    description: 'Molten metal applications from ladles to tundish systems.',
+    description: 'Molten metal applications from ladles to tundish systems requiring high-performance linings.',
+    details: 'Critical applications in steelmaking where refractories face molten metal contact at 1500-1700°C, slag attack, and mechanical erosion from metal flow.',
     applications: ['Molten metal flow', 'Ladles & tundish', 'Casting areas', 'Induction furnaces'],
   },
   {
     icon: Cog,
     title: 'Rolling Mills & Furnaces',
-    description: 'Reheating furnaces, annealing furnaces, and heat treatment units.',
+    description: 'Reheating furnaces, annealing furnaces, and heat treatment units for metal processing.',
+    details: 'Refractories withstand continuous thermal cycling, scale buildup, and load-bearing conditions at temperatures ranging from 800°C to 1350°C.',
     applications: ['Reheating furnaces', 'Annealing furnaces', 'Heat treatment', 'Continuous casting'],
   },
   {
     icon: ThermometerSun,
     title: 'Air Heaters & Thermal',
-    description: 'Hot air generators and industrial heating chambers.',
+    description: 'Hot air generators and industrial heating chambers for process heating applications.',
+    details: 'Used in thermal oxidizers, heat exchangers, and process heating systems where temperature uniformity and energy efficiency are critical.',
     applications: ['Hot air generators', 'Heating chambers', 'Thermal oxidizers', 'Heat exchangers'],
   },
 ];
@@ -66,12 +70,13 @@ export default function About() {
             <div>
               <SectionHeader
                 label="Our Story"
-                title="15+ Years of Refractory Expertise"
+                title="25+ Years of Refractory Expertise"
               />
               <ScrollReveal delay={100}>
                 <p className="text-sm md:text-base text-muted-foreground mb-4 leading-relaxed">
-                  Our operations combine technical expertise, modern installation practices, and 
-                  quality-controlled materials to support industries where failure is not an option.
+                  With over 25 years of experience in refractory manufacturing and supply, our operations 
+                  combine technical expertise, modern installation practices, and quality-controlled materials 
+                  to support industries where failure is not an option.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={200}>
@@ -105,6 +110,61 @@ export default function About() {
                 </ScrollReveal>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About the Owner */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container-industrial">
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <div className="card-industrial p-8 md:p-10 text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                  <Award size={32} className="text-primary" />
+                </div>
+                <span className="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-wider uppercase mb-4">
+                  Leadership
+                </span>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">About the Owner</h2>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                  A visionary leader with over 25 years of hands-on experience in the refractory and 
+                  industrial materials sector. Driven by quality, integrity, and long-term value creation, 
+                  the leadership focuses on building reliable solutions that meet evolving industrial demands.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* TATA Association */}
+      <section className="py-16 md:py-20 bg-secondary">
+        <div className="container-industrial">
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <div className="card-industrial p-8 md:p-10 border-2 border-primary/20">
+                <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                  <div className="flex-shrink-0">
+                    <div className="w-24 h-24 rounded-sm bg-primary/10 flex items-center justify-center border border-primary/30">
+                      <Shield size={40} className="text-primary" />
+                    </div>
+                  </div>
+                  <div className="text-center md:text-left">
+                    <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+                      <CheckCircle size={18} className="text-primary" />
+                      <span className="font-mono text-xs text-primary uppercase tracking-wider">Authorized Dealer</span>
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Authorized & Trusted Dealer – TATA</h2>
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                      Samrat Refractories is a trusted and authorized dealer of TATA products, reinforcing 
+                      our commitment to quality, compliance, and reliability. This association reflects our 
+                      adherence to stringent standards and our capability to deliver proven industrial solutions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -153,23 +213,28 @@ export default function About() {
             centered
           />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 gap-4">
             {industries.map((industry, index) => (
               <ScrollReveal key={industry.title} delay={index * 100}>
-                <div className="card-industrial p-5 h-full hover-lift hover-glow transition-all duration-300">
-                  <div className="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
-                    <industry.icon size={20} className="text-primary" />
+                <div className="card-industrial p-5 md:p-6 h-full hover-lift hover-glow transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <industry.icon size={24} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-heading font-semibold text-foreground text-base mb-2">{industry.title}</h3>
+                      <p className="text-xs text-muted-foreground mb-2">{industry.description}</p>
+                      <p className="text-xs text-muted-foreground/80 italic mb-4">{industry.details}</p>
+                      <ul className="grid grid-cols-2 gap-1">
+                        {industry.applications.map((app) => (
+                          <li key={app} className="flex items-center gap-2 text-muted-foreground text-xs">
+                            <span className="w-1 h-1 bg-primary rounded-full"></span>
+                            {app}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <h3 className="font-heading font-semibold text-foreground text-sm mb-2">{industry.title}</h3>
-                  <p className="text-xs text-muted-foreground mb-4">{industry.description}</p>
-                  <ul className="space-y-1">
-                    {industry.applications.map((app) => (
-                      <li key={app} className="flex items-center gap-2 text-muted-foreground text-xs">
-                        <span className="w-1 h-1 bg-primary rounded-full"></span>
-                        {app}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </ScrollReveal>
             ))}

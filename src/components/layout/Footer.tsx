@@ -25,9 +25,9 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <img src={logo} alt="Samrat Refractories Works" className="h-12 w-auto mb-6" />
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+          <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               Engineering reliable refractory solutions for high-temperature industries. 
-              15+ years of proven execution excellence.
+              25+ years of proven execution excellence.
             </p>
             <div className="flex items-center gap-2 text-primary font-mono text-sm">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
