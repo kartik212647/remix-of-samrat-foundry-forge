@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, Wrench, Factory, Flame, Clock, Award, Users } from 'lucide-react';
+import { ArrowRight, Shield, Wrench, Factory, Flame, Clock, Award, Users, Cog, CheckCircle } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
@@ -26,6 +26,11 @@ const capabilities = [
     title: 'Insulation Systems',
     description: 'Hot and cold insulation solutions for energy loss reduction and safety compliance.',
   },
+  {
+    icon: Cog,
+    title: 'Manufacturing on Demand',
+    description: 'Custom refractory solutions built for specific industrial requirements and operational challenges.',
+  },
 ];
 
 const industries = [
@@ -36,9 +41,9 @@ const industries = [
 ];
 
 const stats = [
-  { value: '15+', label: 'Years Experience', icon: Clock },
+  { value: '25+', label: 'Years Experience', icon: Clock },
   { value: '100+', label: 'Projects Executed', icon: Award },
-  { value: '50+', label: 'Industrial Clients', icon: Users },
+  { value: '200+', label: 'Industrial Clients', icon: Users },
 ];
 
 const trustIndicators = [
@@ -80,7 +85,7 @@ export default function Home() {
             <ScrollReveal delay={200}>
               <p className="text-base md:text-lg text-white/80 leading-relaxed mb-6 max-w-xl">
                 Manufacturing, lining, relining, and maintenance of refractory systems for boilers, 
-                furnaces, and molten metal applications — trusted for over 15 years.
+                furnaces, and molten metal applications — trusted for over 25 years.
               </p>
             </ScrollReveal>
 
@@ -133,7 +138,7 @@ export default function Home() {
               </ScrollReveal>
               <ScrollReveal delay={200}>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
-                  With over 15 years of execution experience, we specialize in designing, supplying, 
+                  With over 25 years of execution experience, we specialize in designing, supplying, 
                   and installing refractory systems that withstand extreme temperatures, corrosive 
                   environments, and continuous industrial operations.
                 </p>
@@ -174,7 +179,7 @@ export default function Home() {
             centered
           />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
             {capabilities.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
                 <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300 group">
@@ -214,7 +219,7 @@ export default function Home() {
                 ))}
               </div>
               <ScrollReveal delay={400}>
-                <Link to="/industries" className="inline-flex items-center gap-2 text-primary text-sm font-medium mt-6 group">
+                <Link to="/about" className="inline-flex items-center gap-2 text-primary text-sm font-medium mt-6 group">
                   View All Industries
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -256,7 +261,7 @@ export default function Home() {
               { title: 'Integrated Model', desc: 'Manufacturing + service under single accountability' },
               { title: 'Quality Materials', desc: 'Certified raw materials and controlled processes' },
               { title: 'Skilled Workforce', desc: 'Experienced refractory technicians and supervisors' },
-              { title: 'Long-term Focus', desc: 'Solutions designed for durability and performance' },
+              { title: 'Long-term Focus', desc: 'We prioritize durable partnerships, consistent quality, and sustainable industrial performance' },
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
                 <div className="flex items-start gap-3 p-4 border border-border rounded-sm hover:border-primary/30 transition-colors">
@@ -274,8 +279,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Technical Expertise & Quality */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container-industrial">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Technical Expertise */}
+            <ScrollReveal>
+              <div className="card-industrial p-6 md:p-8 h-full">
+                <SectionHeader
+                  label="Technical Expertise"
+                  title="Engineering Excellence"
+                />
+                <ul className="space-y-3 mt-4">
+                  {[
+                    'Advanced thermal analysis and material selection',
+                    'Custom refractory design for unique applications',
+                    'Installation supervision by experienced engineers',
+                    'Post-installation support and maintenance planning',
+                    'Compliance with Industry Norms & Integrity-driven Engineering Practices',
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3 text-sm text-muted-foreground">
+                      <CheckCircle size={16} className="text-primary mt-0.5 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </ScrollReveal>
+
+            {/* Quality Assurance */}
+            <ScrollReveal delay={100}>
+              <div className="card-industrial p-6 md:p-8 h-full">
+                <SectionHeader
+                  label="Quality Assurance"
+                  title="Uncompromising Standards"
+                />
+                <ul className="space-y-3 mt-4">
+                  {[
+                    'Certified raw materials from trusted suppliers',
+                    'In-process quality checks at every stage',
+                    'Final inspection before dispatch',
+                    'Documentation and traceability for all products',
+                    'Supply on Fuel Basis – Quality consistency maintained across fuel-specific industrial applications',
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3 text-sm text-muted-foreground">
+                      <CheckCircle size={16} className="text-primary mt-0.5 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-background relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary blur-3xl"></div>
         </div>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Flame, Wrench, RefreshCw, Shield } from 'lucide-react';
+import { ArrowRight, Flame, Wrench, RefreshCw, Shield, Cog } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
@@ -53,6 +53,19 @@ const services = [
     ],
     brands: [],
   },
+  {
+    icon: Cog,
+    title: 'Manufacturing on Demand',
+    description: 'Customized manufacturing solutions for special refractory products and tiles, developed as per specific operational requirements, industry norms, and on-site challenges. We provide tailored refractory solutions designed to perform under unique temperature, load, and application conditions.',
+    features: [
+      'Custom tile manufacturing',
+      'Special refractory material development',
+      'Application-specific solutions',
+      'Engineering support during requirement analysis',
+      'Solutions aligned with real-time industrial needs',
+    ],
+    brands: [],
+  },
 ];
 
 export default function Services() {
@@ -76,7 +89,7 @@ export default function Services() {
             <ScrollReveal delay={200}>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 From new installations to repairs and modernization — expert refractory services 
-                backed by 15+ years of execution experience.
+                backed by 25+ years of execution experience.
               </p>
             </ScrollReveal>
           </div>
@@ -161,8 +174,8 @@ export default function Services() {
                 Request Service Quote
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/projects" className="btn-outline">
-                View Our Capabilities
+              <Link to="/products" className="btn-outline">
+                View Our Products
               </Link>
             </div>
           </ScrollReveal>
