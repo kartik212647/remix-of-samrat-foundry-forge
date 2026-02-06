@@ -3,7 +3,7 @@ import { ArrowRight, Shield, Wrench, Factory, Flame, Clock, Award, Users, Cog, C
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
-import heroImage from '@/assets/hero-industrial.jpg';
+import heroImage from '@/assets/hero-industrial-light.jpg';
 
 const capabilities = [
   {
@@ -58,12 +58,12 @@ export default function Home() {
     <Layout>
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center">
-        {/* Background Image with Dark Overlay for Contrast */}
+        {/* Background Image with Subtle Overlay for Light Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/70 to-foreground/40"></div>
         </div>
 
         <div className="container-industrial relative z-10 py-12 md:py-16">
