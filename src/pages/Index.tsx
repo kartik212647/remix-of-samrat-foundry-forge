@@ -4,6 +4,7 @@ import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
 import heroImage from '@/assets/hero-industrial-light.jpg';
+import industriesImage from '@/assets/industries-refractory.jpg';
 
 const capabilities = [
   {
@@ -230,8 +231,8 @@ export default function Home() {
               <div className="relative">
                 <div className="aspect-square rounded-sm border border-border overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=600&fit=crop" 
-                    alt="Industrial boiler and furnace systems"
+                    src={industriesImage} 
+                    alt="Refractory brick lining inside high-temperature furnace"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent"></div>
