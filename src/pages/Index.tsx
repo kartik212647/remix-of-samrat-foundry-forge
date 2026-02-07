@@ -34,10 +34,10 @@ const capabilities = [
 ];
 
 const industries = [
-  'Boilers & Power Systems',
-  'Steel & Foundry',
-  'Rolling Mills & Furnaces',
-  'Air Heaters & Thermal Equipment',
+  { name: 'Boilers & Power Systems', image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop' },
+  { name: 'Steel & Foundry', image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=300&fit=crop' },
+  { name: 'Rolling Mills & Furnaces', image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&h=300&fit=crop' },
+  { name: 'Air Heaters & Thermal Equipment', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop' },
 ];
 
 const stats = [
@@ -49,7 +49,6 @@ const stats = [
 const trustIndicators = [
   'GST Registered',
   'HSN Compliant',
-  'Banking with Union Bank of India',
   'Certified Raw Materials',
 ];
 
@@ -208,12 +207,21 @@ export default function Home() {
               />
               <div className="grid sm:grid-cols-2 gap-3">
                 {industries.map((industry, index) => (
-                  <ScrollReveal key={industry} delay={index * 100}>
-                    <div className="flex items-center gap-2.5 p-3 border border-border rounded-sm hover:border-primary/30 transition-colors group">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                      <span className="text-foreground text-sm font-medium group-hover:text-primary transition-colors">
-                        {industry}
-                      </span>
+                  <ScrollReveal key={industry.name} delay={index * 100}>
+                    <div className="overflow-hidden border border-border rounded-sm hover:border-primary/30 transition-colors group">
+                      <div className="h-24 overflow-hidden">
+                        <img 
+                          src={industry.image} 
+                          alt={industry.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="flex items-center gap-2.5 p-3">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                        <span className="text-foreground text-sm font-medium group-hover:text-primary transition-colors">
+                          {industry.name}
+                        </span>
+                      </div>
                     </div>
                   </ScrollReveal>
                 ))}

@@ -44,7 +44,6 @@ const qualityPillars = [
 const compliance = [
   { title: 'GST Registration', description: 'Fully compliant with Goods and Services Tax requirements.', status: 'Active' },
   { title: 'HSN Classification', description: 'All products properly classified under Harmonized System.', status: 'Compliant' },
-  { title: 'Banking Credibility', description: 'Established banking relationship with Union Bank of India.', status: 'Verified' },
   { title: 'Certified Materials', description: 'Use of quality-certified raw materials from reputable suppliers.', status: 'Certified' },
 ];
 
@@ -250,9 +249,9 @@ export default function QualityProcess() {
             <ScrollReveal delay={200}>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { value: '100+', label: 'Projects Completed' },
-                  { value: '50+', label: 'Industrial Clients' },
-                  { value: '15+', label: 'Years Experience' },
+                  { value: '200+', label: 'Projects Completed' },
+                  { value: '100+', label: 'Industrial Clients' },
+                  { value: '25+', label: 'Years Experience' },
                   { value: '90%+', label: 'Repeat Business' },
                 ].map((stat) => (
                   <div key={stat.label} className="card-industrial p-4 text-center">
