@@ -34,10 +34,10 @@ const capabilities = [
 ];
 
 const industries = [
-  { name: 'Boilers & Power Systems', image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop' },
-  { name: 'Steel & Foundry', image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=300&fit=crop' },
-  { name: 'Rolling Mills & Furnaces', image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&h=300&fit=crop' },
-  { name: 'Air Heaters & Thermal Equipment', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop' },
+  'Boilers & Power Systems',
+  'Steel & Foundry',
+  'Rolling Mills & Furnaces',
+  'Air Heaters & Thermal Equipment',
 ];
 
 const stats = [
@@ -207,21 +207,12 @@ export default function Home() {
               />
               <div className="grid sm:grid-cols-2 gap-3">
                 {industries.map((industry, index) => (
-                  <ScrollReveal key={industry.name} delay={index * 100}>
-                    <div className="overflow-hidden border border-border rounded-sm hover:border-primary/30 transition-colors group">
-                      <div className="h-24 overflow-hidden">
-                        <img 
-                          src={industry.image} 
-                          alt={industry.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="flex items-center gap-2.5 p-3">
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                        <span className="text-foreground text-sm font-medium group-hover:text-primary transition-colors">
-                          {industry.name}
-                        </span>
-                      </div>
+                  <ScrollReveal key={industry} delay={index * 100}>
+                    <div className="flex items-center gap-2.5 p-3 border border-border rounded-sm hover:border-primary/30 transition-colors group">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                      <span className="text-foreground text-sm font-medium group-hover:text-primary transition-colors">
+                        {industry}
+                      </span>
                     </div>
                   </ScrollReveal>
                 ))}
@@ -234,13 +225,18 @@ export default function Home() {
               </ScrollReveal>
             </div>
 
-            {/* Visual Element */}
+            {/* Visual Element - Industrial Image */}
             <ScrollReveal delay={200}>
               <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-secondary to-background rounded-sm border border-border p-6 flex items-center justify-center">
-                  <div className="text-center">
-                    <Flame size={56} className="text-primary mx-auto mb-4 opacity-80" />
-                    <p className="font-mono text-xs text-muted-foreground">
+                <div className="aspect-square rounded-sm border border-border overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=600&fit=crop" 
+                    alt="Industrial boiler and furnace systems"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="font-mono text-xs text-white/90">
                       Operating in mission-critical, high-temperature industrial environments
                     </p>
                   </div>
