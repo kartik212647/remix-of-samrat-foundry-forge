@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, Wrench, Factory, Flame, Clock, Award, Users, Cog, CheckCircle } from 'lucide-react';
+import { ArrowRight, Shield, Wrench, Factory, Flame, Clock, Award, Users, Cog, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect, useState, useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
 import heroImage from '@/assets/hero-industrial-light.jpg';
 import industriesImage from '@/assets/industries-refractory.jpg';
+import fireBricksImg from '@/assets/products/fire-bricks.jpg';
+import castablesImg from '@/assets/products/castables.jpg';
+import insulationImg from '@/assets/products/insulation.jpg';
+import specialtyImg from '@/assets/products/specialty.jpg';
 
 const capabilities = [
   {
@@ -34,6 +41,15 @@ const capabilities = [
   },
 ];
 
+const showcaseProducts = [
+  { name: 'High Alumina Bricks', image: fireBricksImg, category: 'Bricks' },
+  { name: 'Refractory Castables', image: castablesImg, category: 'Castables' },
+  { name: 'Ceramic Fiber Insulation', image: insulationImg, category: 'Insulation' },
+  { name: 'Specialty Products', image: specialtyImg, category: 'Auxiliary' },
+  { name: 'Fire Clay Bricks', image: fireBricksImg, category: 'Bricks' },
+  { name: 'Insulating Castables', image: castablesImg, category: 'Castables' },
+];
+
 const industries = [
   'Boilers & Power Systems',
   'Steel & Foundry',
@@ -53,12 +69,75 @@ const trustIndicators = [
   'Certified Raw Materials',
 ];
 
+function ProductShowcaseCarousel() {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'start', slidesToScroll: 1 },
+    [Autoplay({ delay: 3500, stopOnInteraction: false })]
+  );
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+    return () => { emblaApi.off('select', onSelect); };
+  }, [emblaApi, onSelect]);
+
+  return (
+    <div className="relative group">
+      <div ref={emblaRef} className="overflow-hidden rounded-sm">
+        <div className="flex">
+          {showcaseProducts.map((product, i) => (
+            <div key={i} className="flex-[0_0_50%] sm:flex-[0_0_33.33%] lg:flex-[0_0_25%] min-w-0 pl-4">
+              <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-border group/card hover:border-primary/30 transition-all duration-300">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <span className="font-mono text-[10px] text-primary uppercase tracking-wider">{product.category}</span>
+                  <h4 className="text-white text-sm font-semibold leading-tight">{product.name}</h4>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Arrows */}
+      <button
+        onClick={() => emblaApi?.scrollPrev()}
+        disabled={!canScrollPrev}
+        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-background border border-border shadow-md flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors disabled:opacity-30 z-10 opacity-0 group-hover:opacity-100"
+      >
+        <ChevronLeft size={18} />
+      </button>
+      <button
+        onClick={() => emblaApi?.scrollNext()}
+        disabled={!canScrollNext}
+        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-9 h-9 rounded-full bg-background border border-border shadow-md flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors disabled:opacity-30 z-10 opacity-0 group-hover:opacity-100"
+      >
+        <ChevronRight size={18} />
+      </button>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center">
-        {/* Background Image with Subtle Overlay for Light Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${heroImage})` }}
@@ -101,10 +180,9 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            {/* Trust Badges */}
             <ScrollReveal delay={400}>
               <div className="flex flex-wrap items-center gap-5 mt-10 pt-6 border-t border-white/20">
-                {trustIndicators.slice(0, 3).map((item) => (
+                {trustIndicators.map((item) => (
                   <div key={item} className="flex items-center gap-2 text-white/70 text-xs font-mono">
                     <Shield size={12} className="text-primary" />
                     {item}
@@ -115,7 +193,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:block">
           <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent animate-pulse"></div>
         </div>
@@ -151,7 +228,6 @@ export default function Home() {
               </ScrollReveal>
             </div>
 
-            {/* Stats */}
             <ScrollReveal delay={200}>
               <div className="grid grid-cols-3 gap-3">
                 {stats.map((stat) => (
@@ -197,8 +273,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Industries We Serve */}
+      {/* Product Showcase Carousel */}
       <section className="py-16 md:py-20 bg-background">
+        <div className="container-industrial">
+          <SectionHeader
+            label="Our Products"
+            title="Premium Refractory Products"
+            description="Explore our range of high-performance refractory materials engineered for demanding industrial environments."
+            centered
+          />
+          <ScrollReveal>
+            <ProductShowcaseCarousel />
+          </ScrollReveal>
+          <ScrollReveal delay={200}>
+            <div className="text-center mt-8">
+              <Link to="/products" className="btn-primary gap-2 group text-sm">
+                View All Products
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Industries We Serve */}
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
@@ -226,7 +325,6 @@ export default function Home() {
               </ScrollReveal>
             </div>
 
-            {/* Visual Element - Industrial Image */}
             <ScrollReveal delay={200}>
               <div className="relative">
                 <div className="aspect-square rounded-sm border border-border overflow-hidden">
@@ -251,7 +349,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 md:py-20 bg-secondary">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container-industrial">
           <SectionHeader
             label="Why Samrat"
@@ -285,10 +383,9 @@ export default function Home() {
       </section>
 
       {/* Technical Expertise & Quality */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial">
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Technical Expertise */}
             <ScrollReveal>
               <div className="card-industrial p-6 md:p-8 h-full">
                 <SectionHeader
@@ -312,7 +409,6 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            {/* Quality Assurance */}
             <ScrollReveal delay={100}>
               <div className="card-industrial p-6 md:p-8 h-full">
                 <SectionHeader
@@ -340,7 +436,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-secondary relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-background relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary blur-3xl"></div>
         </div>
