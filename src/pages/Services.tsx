@@ -16,6 +16,7 @@ const services = [
       'Emergency shutdown support',
     ],
     brands: ['Thermax', 'Babcock & Wilcox', 'Texmaco', 'Lipi', 'Indicon', 'Veesons', 'Thermopach'],
+    subcategories: ['Hut Shape', 'Thermopack Boiler', 'RDF Boiler'],
   },
   {
     icon: Wrench,
@@ -28,6 +29,7 @@ const services = [
       'Hot repairs where applicable',
     ],
     brands: [],
+    subcategories: [],
   },
   {
     icon: RefreshCw,
@@ -38,8 +40,10 @@ const services = [
       'Emergency repairs',
       'Thermal efficiency upgrades',
       'System modernization',
+      'Boiler modification (for capacity increase)',
     ],
     brands: [],
+    subcategories: [],
   },
   {
     icon: Shield,
@@ -50,8 +54,15 @@ const services = [
       'Cold insulation applications',
       'Energy loss reduction',
       'Safety & compliance improvement',
+      'Tanks & Pipes',
+      'Boilers & Ovens',
+      'APH (Air Pre Heater)',
+      'Economizer',
+      'Headers',
+      'Whole Boilers',
     ],
     brands: [],
+    subcategories: [],
   },
   {
     icon: Cog,
@@ -65,6 +76,7 @@ const services = [
       'Solutions aligned with real-time industrial needs',
     ],
     brands: [],
+    subcategories: [],
   },
 ];
 
@@ -72,22 +84,22 @@ export default function Services() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-background">
+      <section className="pt-28 pb-12 md:pt-36 md:pb-16 bg-background">
         <div className="container-industrial">
           <div className="max-w-4xl">
             <ScrollReveal>
-              <span className="inline-flex items-center gap-2 text-primary font-mono text-sm tracking-wider uppercase mb-6">
+              <span className="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-wider uppercase mb-4">
                 <span className="w-8 h-px bg-primary"></span>
                 Our Services
               </span>
             </ScrollReveal>
             <ScrollReveal delay={100}>
-              <h1 className="heading-xl text-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 Complete Refractory Execution Services
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                 From new installations to repairs and modernization — expert refractory services 
                 backed by 25+ years of execution experience.
               </p>
@@ -97,29 +109,45 @@ export default function Services() {
       </section>
 
       {/* Services Detail */}
-      <section className="section-padding bg-secondary">
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="container-industrial">
-          <div className="space-y-16">
+          <div className="space-y-10">
             {services.map((service, index) => (
               <ScrollReveal key={service.title} delay={100}>
-                <div className="card-industrial p-8 md:p-12 hover-glow transition-all duration-300">
-                  <div className="grid lg:grid-cols-3 gap-8">
+                <div className="card-industrial p-6 md:p-10 hover-glow transition-all duration-300">
+                  <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
                     <div className="lg:col-span-2">
-                      <div className="flex items-start gap-4 mb-6">
-                        <div className="w-14 h-14 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <service.icon size={28} className="text-primary" />
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <service.icon size={24} className="text-primary" />
                         </div>
                         <div>
-                          <span className="font-mono text-primary text-sm">
+                          <span className="font-mono text-primary text-xs">
                             {String(index + 1).padStart(2, '0')}
                           </span>
-                          <h3 className="heading-md text-foreground">{service.title}</h3>
+                          <h3 className="text-xl md:text-2xl font-semibold text-foreground">{service.title}</h3>
                         </div>
                       </div>
-                      <p className="text-body mb-6">{service.description}</p>
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">{service.description}</p>
                       
+                      {/* Subcategories */}
+                      {service.subcategories && service.subcategories.length > 0 && (
+                        <div className="mb-4 p-4 bg-secondary/80 rounded-sm border border-border">
+                          <h4 className="font-mono text-xs text-primary uppercase tracking-wider mb-3">
+                            Category of Lining & Relining
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {service.subcategories.map((sub) => (
+                              <span key={sub} className="px-3 py-1.5 bg-background border border-border rounded-sm text-sm text-foreground font-medium">
+                                {sub}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                       {service.brands.length > 0 && (
-                        <div className="pt-6 border-t border-border">
+                        <div className="pt-4 border-t border-border">
                           <h4 className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-3">
                             Experience with Major Brands
                           </h4>
@@ -134,12 +162,12 @@ export default function Services() {
                       )}
                     </div>
                     <div>
-                      <h4 className="font-mono text-sm text-primary uppercase tracking-wider mb-4">
+                      <h4 className="font-mono text-xs text-primary uppercase tracking-wider mb-4">
                         Service Scope
                       </h4>
-                      <ul className="space-y-3">
+                      <ul className="space-y-2.5">
                         {service.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-3 text-muted-foreground text-sm">
+                          <li key={feature} className="flex items-start gap-2.5 text-muted-foreground text-sm">
                             <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
                             {feature}
                           </li>
@@ -155,26 +183,26 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="container-industrial text-center">
           <ScrollReveal>
-            <h2 className="heading-lg text-foreground mb-6">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-foreground mb-4">
               Ready to Start Your Project?
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <p className="text-body max-w-2xl mx-auto mb-8">
+            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto mb-6">
               Our technical team is ready to discuss your refractory service requirements. 
               From initial assessment to project completion, we're your execution partner.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={200}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn-primary gap-2 group">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link to="/contact" className="btn-primary gap-2 group text-sm">
                 Request Service Quote
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/products" className="btn-outline">
+              <Link to="/products" className="btn-outline text-sm">
                 View Our Products
               </Link>
             </div>

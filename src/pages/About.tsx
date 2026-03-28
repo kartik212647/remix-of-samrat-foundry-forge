@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Target, Eye, Users, Cog, Flame, Factory, ThermometerSun, Award, Shield, CheckCircle } from 'lucide-react';
+import { ArrowRight, Target, Eye, Users, Cog, Flame, Factory, ThermometerSun, Award, Shield, CheckCircle, Package, Truck, Clock, HeartHandshake, BadgeCheck } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
+import ownerImage from '@/assets/owner-portrait.jpg';
 
 const industries = [
   {
@@ -33,6 +34,16 @@ const industries = [
     details: 'Used in thermal oxidizers, heat exchangers, and process heating systems where temperature uniformity and energy efficiency are critical.',
     applications: ['Hot air generators', 'Heating chambers', 'Thermal oxidizers', 'Heat exchangers'],
   },
+];
+
+const tataBullets = [
+  { icon: BadgeCheck, text: 'Official association with TATA refractory products' },
+  { icon: Shield, text: 'Assured product authenticity & quality guarantee' },
+  { icon: Truck, text: 'Reliable supply chain with timely delivery' },
+  { icon: Clock, text: 'Consistent availability & quick turnaround' },
+  { icon: HeartHandshake, text: 'Strong industry trust built over decades' },
+  { icon: Package, text: 'Access to premium refractory materials' },
+  { icon: Users, text: 'Dedicated customer support & technical guidance' },
 ];
 
 export default function About() {
@@ -114,54 +125,106 @@ export default function About() {
         </div>
       </section>
 
-      {/* About the Owner */}
+      {/* About the Owner - Enhanced */}
       <section className="py-16 md:py-20 bg-background">
         <div className="container-industrial">
-          <div className="max-w-4xl mx-auto">
-            <ScrollReveal>
-              <div className="card-industrial p-8 md:p-10 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <Award size={32} className="text-primary" />
+          <SectionHeader
+            label="Leadership"
+            title="About the Founder"
+            centered
+          />
+          <ScrollReveal>
+            <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
+              {/* Owner Image */}
+              <div className="lg:col-span-2">
+                <div className="relative">
+                  <div className="aspect-[3/4] rounded-sm overflow-hidden border border-border">
+                    <img
+                      src={ownerImage}
+                      alt="Mr. Sanjay Singh - Founder, Samrat Refractories Works"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="absolute -bottom-3 -right-3 w-20 h-20 border border-primary/20 rounded-sm -z-10"></div>
                 </div>
-                <span className="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-wider uppercase mb-4">
-                  Leadership
-                </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">About the Owner</h2>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  A visionary leader with over 25 years of hands-on experience in the refractory and 
-                  industrial materials sector. Driven by quality, integrity, and long-term value creation, 
-                  the leadership focuses on building reliable solutions that meet evolving industrial demands.
-                </p>
+                <div className="mt-4 text-center lg:text-left">
+                  <h3 className="font-heading font-bold text-foreground text-lg">Mr. Sanjay Singh</h3>
+                  <p className="text-primary font-mono text-xs">Founder & Proprietor</p>
+                </div>
               </div>
-            </ScrollReveal>
-          </div>
+
+              {/* Owner Content */}
+              <div className="lg:col-span-3 space-y-4">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  With over <strong className="text-foreground">25 years of hands-on experience</strong> in the refractory 
+                  and industrial materials sector, Mr. Sanjay Singh founded Samrat Refractories Works with a 
+                  clear vision — to deliver reliable, high-performance refractory solutions that industries can trust.
+                </p>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  His deep understanding of thermal systems, materials science, and on-site execution 
+                  has been the driving force behind the company's growth and reputation. From personally 
+                  overseeing critical installations to building long-term client relationships, his 
+                  leadership reflects a commitment to quality that goes beyond business.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-3 pt-2">
+                  {[
+                    { label: 'Vision', text: 'To become India\'s most trusted refractory execution partner' },
+                    { label: 'Mission', text: 'Enhance equipment life and thermal efficiency for every client' },
+                    { label: 'Values', text: 'Integrity, precision, and long-term value creation' },
+                    { label: 'Commitment', text: 'Zero compromise on quality, safety, and delivery timelines' },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-start gap-2">
+                      <CheckCircle size={14} className="text-primary mt-1 flex-shrink-0" />
+                      <div>
+                        <span className="text-foreground font-semibold text-xs">{item.label}:</span>
+                        <span className="text-muted-foreground text-xs ml-1">{item.text}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* TATA Association */}
+      {/* TATA Association - Enhanced */}
       <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <ScrollReveal>
               <div className="card-industrial p-8 md:p-10 border-2 border-primary/20">
-                <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                <div className="flex flex-col md:flex-row items-start gap-6 md:gap-10 mb-8">
                   <div className="flex-shrink-0">
                     <div className="w-24 h-24 rounded-sm bg-primary/10 flex items-center justify-center border border-primary/30">
                       <Shield size={40} className="text-primary" />
                     </div>
                   </div>
-                  <div className="text-center md:text-left">
-                    <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
                       <CheckCircle size={18} className="text-primary" />
                       <span className="font-mono text-xs text-primary uppercase tracking-wider">Authorized Dealer</span>
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Authorized & Trusted Dealer – TATA</h2>
                     <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                      Samrat Refractories is a trusted and authorized dealer of TATA products, reinforcing 
-                      our commitment to quality, compliance, and reliability. This association reflects our 
-                      adherence to stringent standards and our capability to deliver proven industrial solutions.
+                      As an authorized dealer of TATA refractory products, Samrat Refractories brings the credibility, 
+                      quality assurance, and supply reliability that industrial clients demand. This partnership reflects 
+                      our adherence to the highest standards of product integrity and customer service in the refractory industry.
                     </p>
                   </div>
+                </div>
+
+                {/* Icon-based bullet points */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {tataBullets.map((bullet, index) => (
+                    <div key={index} className="flex items-start gap-3 p-3 bg-secondary/80 rounded-sm">
+                      <div className="w-8 h-8 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <bullet.icon size={16} className="text-primary" />
+                      </div>
+                      <span className="text-sm text-muted-foreground leading-snug">{bullet.text}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </ScrollReveal>

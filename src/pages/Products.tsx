@@ -5,6 +5,10 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import fireBricksImg from '@/assets/products/fire-bricks.jpg';
+import castablesImg from '@/assets/products/castables.jpg';
+import insulationImg from '@/assets/products/insulation.jpg';
+import specialtyImg from '@/assets/products/specialty.jpg';
 
 interface Product {
   name: string;
@@ -33,31 +37,45 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1800°C',
         density: '2.4–2.8 g/cm³',
         benefit: 'Superior load bearing & thermal resistance',
-        image: '/placeholder.svg',
+        image: fireBricksImg,
       },
       {
         name: 'Fire Clay Bricks',
         badge: 'Bricks',
-        temperature: 'Up to 1500°C',
+        temperature: 'Up to 1000°C',
         density: '2.0–2.2 g/cm³',
         benefit: 'Excellent durability for general applications',
-        image: '/placeholder.svg',
+        image: fireBricksImg,
       },
       {
         name: 'Insulating Fire Bricks',
         badge: 'Bricks',
-        temperature: 'Up to 1600°C',
+        temperature: '600°C – 800°C',
         density: '0.8–1.2 g/cm³',
         benefit: 'Lightweight with low thermal conductivity',
-        image: '/placeholder.svg',
+        image: fireBricksImg,
       },
       {
         name: 'Special Shaped Bricks',
         badge: 'Bricks',
-        temperature: 'Up to 1800°C',
+        temperature: '600°C – 800°C',
         density: '2.2–2.6 g/cm³',
         benefit: 'Custom geometries for complex installations',
-        image: '/placeholder.svg',
+        image: fireBricksImg,
+      },
+      {
+        name: 'Slabs – Straight',
+        badge: 'Slabs',
+        temperature: 'Up to 1400°C',
+        benefit: 'Flat refractory slabs for uniform lining surfaces',
+        image: fireBricksImg,
+      },
+      {
+        name: 'Slabs – Arch',
+        badge: 'Slabs',
+        temperature: 'Up to 1400°C',
+        benefit: 'Curved slabs for arch and dome constructions',
+        image: fireBricksImg,
       },
     ],
   },
@@ -71,7 +89,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1700°C',
         benefit: 'Versatile for high-temp linings',
         application: 'Complex shapes & seamless linings',
-        image: '/placeholder.svg',
+        image: castablesImg,
       },
       {
         name: 'Low Cement Castables',
@@ -79,7 +97,7 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1650°C',
         benefit: 'High strength & abrasion resistance',
         application: 'Heavy-duty industrial furnaces',
-        image: '/placeholder.svg',
+        image: castablesImg,
       },
       {
         name: 'High Purity Castables',
@@ -87,23 +105,23 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1750°C',
         benefit: 'Superior chemical resistance',
         application: 'Corrosive environment applications',
-        image: '/placeholder.svg',
+        image: castablesImg,
       },
       {
         name: 'Insulating Castables',
         badge: 'Insulating',
-        temperature: 'Up to 1400°C',
+        temperature: '600°C – 800°C',
         benefit: 'Energy-efficient thermal barrier',
         application: 'Backup lining & heat conservation',
-        image: '/placeholder.svg',
+        image: castablesImg,
       },
       {
-        name: 'Self-Flow Castables',
+        name: 'High-Flow Castables',
         badge: 'Dense',
-        temperature: 'Up to 1600°C',
+        temperature: '1500°C – 1600°C',
         benefit: 'Easy installation, no vibration needed',
         application: 'Intricate mold filling',
-        image: '/placeholder.svg',
+        image: castablesImg,
       },
     ],
   },
@@ -116,35 +134,42 @@ const productCategories: ProductCategory[] = [
         badge: 'Lightweight',
         temperature: 'Up to 1400°C',
         benefit: 'Excellent thermal insulation & flexibility',
-        image: '/placeholder.svg',
+        image: insulationImg,
       },
       {
         name: 'Ceramic Fiber Modules',
         badge: 'Lightweight',
         temperature: 'Up to 1400°C',
         benefit: 'Quick installation with pre-engineered units',
-        image: '/placeholder.svg',
+        image: insulationImg,
       },
       {
         name: 'Insulating Bricks',
         badge: 'Lightweight',
-        temperature: 'Up to 1600°C',
+        temperature: '800°C – 1000°C',
         benefit: 'Structural insulation with low heat storage',
-        image: '/placeholder.svg',
+        image: insulationImg,
       },
       {
         name: 'Rockwool Mattresses',
         badge: 'Lightweight',
         temperature: 'Up to 750°C',
         benefit: 'Cost-effective thermal & acoustic insulation',
-        image: '/placeholder.svg',
+        image: insulationImg,
       },
       {
         name: 'Calcium Silicate Boards',
         badge: 'Lightweight',
         temperature: 'Up to 1000°C',
         benefit: 'Fire-resistant with excellent machinability',
-        image: '/placeholder.svg',
+        image: insulationImg,
+      },
+      {
+        name: 'Aluminium Sheet',
+        badge: 'Insulation',
+        benefit: 'Reflective cladding for thermal protection',
+        application: 'External insulation cladding',
+        image: insulationImg,
       },
     ],
   },
@@ -157,42 +182,78 @@ const productCategories: ProductCategory[] = [
         badge: 'Certified',
         benefit: 'High-bond strength jointing material',
         application: 'Brick laying & repairs',
-        image: '/placeholder.svg',
+        image: specialtyImg,
       },
       {
         name: 'Fire Cement',
         badge: 'Certified',
         benefit: 'Quick-setting heat-resistant adhesive',
         application: 'Sealing & patching',
-        image: '/placeholder.svg',
+        image: specialtyImg,
+      },
+      {
+        name: 'Fire Clay',
+        badge: 'Certified',
+        temperature: 'Up to 1000°C',
+        benefit: 'Versatile bonding & patching material',
+        application: 'General refractory applications',
+        image: specialtyImg,
       },
       {
         name: 'Acid Proof Tiles',
         badge: 'Certified',
         benefit: 'Chemical & corrosion resistance',
         application: 'Chemical plant flooring',
-        image: '/placeholder.svg',
+        image: specialtyImg,
       },
       {
         name: 'Boiler Fire Doors',
         badge: 'Quality Tested',
         benefit: 'Secure access with thermal protection',
         application: 'Boiler maintenance access',
-        image: '/placeholder.svg',
+        image: specialtyImg,
       },
       {
         name: 'Boiler Nozzles',
         badge: 'Quality Tested',
         benefit: 'Precision-engineered for optimal flow',
         application: 'Combustion systems',
-        image: '/placeholder.svg',
+        image: specialtyImg,
       },
       {
         name: 'Anchors & Hardware',
         badge: 'Quality Tested',
         benefit: 'Reliable refractory support systems',
         application: 'Lining installation & anchoring',
-        image: '/placeholder.svg',
+        image: specialtyImg,
+      },
+      {
+        name: 'GP 2',
+        badge: 'Specialty',
+        benefit: 'General purpose refractory compound',
+        application: 'Multi-use industrial applications',
+        image: specialtyImg,
+      },
+      {
+        name: 'Bed Material',
+        badge: 'Specialty',
+        benefit: 'Optimized for fluidized bed operations',
+        application: 'FBC boiler systems',
+        image: specialtyImg,
+      },
+      {
+        name: 'Accosset 50',
+        badge: 'Specialty',
+        benefit: 'High-performance setting compound',
+        application: 'Refractory bonding & setting',
+        image: specialtyImg,
+      },
+      {
+        name: 'Sodium Silicate',
+        badge: 'Specialty',
+        benefit: 'Versatile binding agent for refractories',
+        application: 'Refractory bonding & sealing',
+        image: specialtyImg,
       },
     ],
   },
@@ -200,14 +261,14 @@ const productCategories: ProductCategory[] = [
 
 function ProductCard({ product, index }: { product: Product; index: number }) {
   return (
-    <ScrollReveal delay={index * 50}>
+    <ScrollReveal delay={Math.min(index * 50, 300)}>
       <Card className="h-full bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 group overflow-hidden">
-        {/* Product Image */}
-        <div className="relative h-32 sm:h-40 bg-secondary overflow-hidden">
+        <div className="relative h-36 sm:h-40 bg-secondary overflow-hidden">
           <img 
             src={product.image} 
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
           />
           <Badge 
             variant="secondary" 
@@ -217,51 +278,48 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           </Badge>
         </div>
         
-        <CardHeader className="pb-2 pt-3">
-          <h4 className="font-heading font-semibold text-foreground text-sm sm:text-base leading-tight line-clamp-2">
+        <CardHeader className="pb-2 pt-3 px-4">
+          <h4 className="font-heading font-semibold text-foreground text-sm leading-tight line-clamp-2">
             {product.name}
           </h4>
         </CardHeader>
-        <CardContent className="pb-3 space-y-2">
-          {/* Specs */}
+        <CardContent className="pb-3 px-4 space-y-2">
           <div className="flex flex-wrap gap-1.5">
             {product.temperature && (
-              <div className="flex items-center gap-1 text-[10px] sm:text-xs text-muted-foreground bg-secondary px-1.5 py-0.5 rounded">
+              <div className="flex items-center gap-1 text-[10px] text-muted-foreground bg-secondary px-1.5 py-0.5 rounded">
                 <Thermometer size={10} className="text-primary flex-shrink-0" />
-                <span className="font-mono truncate">{product.temperature}</span>
+                <span className="font-mono">{product.temperature}</span>
               </div>
             )}
             {product.density && (
-              <div className="flex items-center gap-1 text-[10px] sm:text-xs text-muted-foreground bg-secondary px-1.5 py-0.5 rounded">
+              <div className="flex items-center gap-1 text-[10px] text-muted-foreground bg-secondary px-1.5 py-0.5 rounded">
                 <Scale size={10} className="text-primary flex-shrink-0" />
-                <span className="font-mono truncate">{product.density}</span>
+                <span className="font-mono">{product.density}</span>
               </div>
             )}
           </div>
           
-          {/* Benefit */}
           <div className="flex items-start gap-1.5">
             <Zap size={12} className="text-primary mt-0.5 shrink-0" />
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2">
+            <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
               {product.benefit}
             </p>
           </div>
           
-          {/* Application */}
           {product.application && (
             <div className="flex items-start gap-1.5">
               <Lightbulb size={12} className="text-muted-foreground mt-0.5 shrink-0" />
-              <p className="text-[10px] sm:text-xs text-muted-foreground/80 line-clamp-1">
+              <p className="text-[10px] text-muted-foreground/80 line-clamp-1">
                 {product.application}
               </p>
             </div>
           )}
         </CardContent>
-        <CardFooter className="pt-0 pb-3">
+        <CardFooter className="pt-0 pb-3 px-4">
           <Button 
             variant="outline" 
             size="sm" 
-            className="w-full text-[10px] sm:text-xs group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+            className="w-full text-[10px] group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
             asChild
           >
             <Link to="/contact">
@@ -279,7 +337,7 @@ function CategorySection({ category, categoryIndex }: { category: ProductCategor
   const Icon = category.icon;
   
   return (
-    <section className="mb-12 last:mb-0">
+    <section className="mb-14 last:mb-0">
       <ScrollReveal delay={categoryIndex * 100}>
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 rounded bg-primary/10 flex items-center justify-center">
@@ -292,7 +350,7 @@ function CategorySection({ category, categoryIndex }: { category: ProductCategor
         </div>
       </ScrollReveal>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {category.products.map((product, index) => (
           <ProductCard key={product.name} product={product} index={index} />
         ))}
