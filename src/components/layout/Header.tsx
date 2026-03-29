@@ -9,7 +9,6 @@ const navigation = [
   { name: 'Products', href: '/products' },
   { name: 'Services', href: '/services' },
   { name: 'Quality & Process', href: '/quality-process' },
-  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Header() {
@@ -22,7 +21,6 @@ export default function Header() {
 
   return (
     <header className="relative z-50 bg-background border-b border-border">
-    
       <div className="container-industrial">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -47,12 +45,12 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button - Desktop */}
+          {/* Single CTA Button - Desktop */}
           <Link
             to="/contact"
-            className="hidden lg:inline-flex btn-primary text-sm"
+            className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 bg-primary text-primary-foreground font-medium text-sm rounded-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-lg"
           >
-            Contact
+            Contact Us
           </Link>
 
           {/* Mobile Menu Button */}
@@ -84,9 +82,9 @@ export default function Header() {
               ))}
               <Link
                 to="/contact"
-                className="mx-4 mt-4 btn-primary text-center"
+                className="mx-4 mt-4 inline-flex items-center justify-center px-5 py-3 bg-primary text-primary-foreground font-medium text-sm rounded-sm text-center"
               >
-                Contact
+                Contact Us
               </Link>
             </nav>
           </div>

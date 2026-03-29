@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Users, Target, Wrench, Award, Shield, CheckCircle, FileCheck, Building2, Clock } from 'lucide-react';
+import { ArrowRight, Users, Target, Wrench, Award, Shield, CheckCircle, FileCheck, Building2, Clock, Beaker, Ruler, FlaskConical, BadgeCheck } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
@@ -47,8 +47,22 @@ const compliance = [
   { title: 'Certified Materials', description: 'Use of quality-certified raw materials from reputable suppliers.', status: 'Certified' },
 ];
 
+const certifications = [
+  { icon: BadgeCheck, title: 'ISO Certification', description: 'Adherence to international quality management standards in manufacturing and installation.' },
+  { icon: Shield, title: 'HSN Compliance', description: 'All products classified and compliant with Harmonized System of Nomenclature standards.' },
+  { icon: Award, title: 'Industrial Quality Standards', description: 'Products meet stringent industrial quality benchmarks for thermal and mechanical performance.' },
+  { icon: FlaskConical, title: 'Testing & Inspection Certified', description: 'Comprehensive testing protocols including thermal, mechanical, and chemical analysis.' },
+];
+
+const testingParameters = [
+  { icon: Beaker, label: 'Thermal Resistance' },
+  { icon: Wrench, label: 'Mechanical Strength' },
+  { icon: FlaskConical, label: 'Chemical Stability' },
+  { icon: Ruler, label: 'Dimensional Accuracy' },
+];
+
 const reasons = [
-  { icon: Clock, title: '15+ Years Experience', description: 'Over a decade of hands-on experience in refractory manufacturing and installation.' },
+  { icon: Clock, title: '25+ Years Experience', description: 'Over two decades of hands-on experience in refractory manufacturing and installation.' },
   { icon: Award, title: 'Technical Expertise', description: 'Deep understanding of thermal systems, material properties, and installation techniques.' },
   { icon: Shield, title: 'Proven Reliability', description: 'Track record of successful project execution in mission-critical applications.' },
   { icon: Wrench, title: 'Integrated Model', description: 'Combined manufacturing and service capability under single accountability.' },
@@ -87,16 +101,12 @@ export default function QualityProcess() {
       {/* Execution Capabilities */}
       <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial">
-          <SectionHeader
-            label="What Sets Us Apart"
-            title="Our Execution Capabilities"
-          />
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <SectionHeader label="What Sets Us Apart" title="Our Execution Capabilities" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {capabilities.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-5 h-full hover-lift hover-glow transition-all duration-300">
-                  <div className="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
+                <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300">
+                  <div className="w-11 h-11 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
                     <item.icon size={20} className="text-primary" />
                   </div>
                   <h3 className="font-heading font-semibold text-foreground text-sm mb-2">{item.title}</h3>
@@ -117,12 +127,11 @@ export default function QualityProcess() {
             description="Every project follows a structured approach to ensure consistent quality and reliable outcomes."
             centered
           />
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {executionPrinciples.map((item, index) => (
               <ScrollReveal key={item.number} delay={index * 100}>
-                <div className="relative p-5 border border-border rounded-sm hover:border-primary/30 transition-colors">
-                  <span className="font-mono text-4xl font-bold text-primary/10 absolute top-3 right-3">
+                <div className="relative p-6 border border-border rounded-sm hover:border-primary/30 transition-colors">
+                  <span className="font-mono text-5xl font-bold text-primary/8 absolute top-3 right-3">
                     {item.number}
                   </span>
                   <span className="font-mono text-primary text-xs">{item.number}</span>
@@ -138,17 +147,12 @@ export default function QualityProcess() {
       {/* Quality Pillars */}
       <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial">
-          <SectionHeader
-            label="Quality Framework"
-            title="Our Approach to Quality"
-            centered
-          />
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <SectionHeader label="Quality Framework" title="Our Approach to Quality" centered />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {qualityPillars.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-5 h-full text-center hover-lift hover-glow transition-all duration-300">
-                  <div className="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <div className="card-industrial p-6 h-full text-center hover-lift hover-glow transition-all duration-300">
+                  <div className="w-11 h-11 rounded-sm bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <item.icon size={20} className="text-primary" />
                   </div>
                   <h3 className="text-sm font-semibold text-foreground mb-2">{item.title}</h3>
@@ -160,19 +164,67 @@ export default function QualityProcess() {
         </div>
       </section>
 
-      {/* Compliance */}
+      {/* Certifications & Compliance - NEW */}
       <section className="py-16 md:py-20 bg-background">
+        <div className="container-industrial">
+          <SectionHeader
+            label="Certifications"
+            title="Certifications & Compliance"
+            description="We follow stringent quality control processes and comply with all major industrial standards."
+            centered
+          />
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+            {certifications.map((item, index) => (
+              <ScrollReveal key={item.title} delay={index * 100}>
+                <div className="card-industrial p-6 h-full text-center hover-lift hover-glow transition-all duration-300">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <item.icon size={24} className="text-primary" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={200}>
+            <div className="max-w-3xl mx-auto">
+              <div className="border border-border rounded-sm p-6 md:p-8 bg-secondary/50">
+                <h4 className="font-heading font-semibold text-foreground text-sm mb-4 text-center">
+                  Our Products Are Tested For:
+                </h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {testingParameters.map((param) => (
+                    <div key={param.label} className="flex flex-col items-center gap-2 text-center">
+                      <div className="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center">
+                        <param.icon size={18} className="text-primary" />
+                      </div>
+                      <span className="text-xs font-medium text-foreground">{param.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-muted-foreground text-center mt-4">
+                  All materials adhere to HSN classification and industry-grade compliance.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Compliance */}
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial">
           <SectionHeader
             label="Compliance"
             title="Regulatory & Business Compliance"
             description="We maintain full compliance with applicable regulations and industry standards."
           />
-
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {compliance.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="flex items-start gap-3 p-4 border border-border rounded-sm hover:border-primary/30 transition-colors">
+                <div className="flex items-start gap-3 p-5 border border-border rounded-sm bg-card hover:border-primary/30 transition-colors">
                   <div className="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Shield size={18} className="text-primary" />
                   </div>
@@ -193,19 +245,14 @@ export default function QualityProcess() {
       </section>
 
       {/* Why Samrat */}
-      <section className="py-16 md:py-20 bg-secondary">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container-industrial">
-          <SectionHeader
-            label="Why Samrat"
-            title="Your Trusted Refractory Partner"
-            centered
-          />
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <SectionHeader label="Why Samrat" title="Your Trusted Refractory Partner" centered />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {reasons.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-5 h-full hover-lift hover-glow transition-all duration-300">
-                  <div className="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
+                <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300">
+                  <div className="w-11 h-11 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
                     <item.icon size={20} className="text-primary" />
                   </div>
                   <h3 className="text-sm font-semibold text-foreground mb-2">{item.title}</h3>
@@ -218,14 +265,11 @@ export default function QualityProcess() {
       </section>
 
       {/* Track Record */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <SectionHeader
-                label="Track Record"
-                title="Proven Performance Across Industries"
-              />
+              <SectionHeader label="Track Record" title="Proven Performance Across Industries" />
               <ScrollReveal delay={100}>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                   Our project portfolio spans boiler lining for power plants, furnace installations 
@@ -240,22 +284,22 @@ export default function QualityProcess() {
               </ScrollReveal>
               <ScrollReveal delay={300}>
                 <Link to="/contact" className="btn-primary gap-2 group text-sm">
-                  Discuss Your Project
+                  Contact Us
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </ScrollReveal>
             </div>
 
             <ScrollReveal delay={200}>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-4">
                 {[
                   { value: '200+', label: 'Projects Completed' },
                   { value: '100+', label: 'Industrial Clients' },
                   { value: '25+', label: 'Years Experience' },
                   { value: '90%+', label: 'Repeat Business' },
                 ].map((stat) => (
-                  <div key={stat.label} className="card-industrial p-4 text-center">
-                    <div className="font-display text-2xl font-bold text-primary mb-1">
+                  <div key={stat.label} className="card-industrial p-5 text-center">
+                    <div className="font-display text-3xl font-bold text-primary mb-1">
                       {stat.value}
                     </div>
                     <div className="text-muted-foreground text-xs">{stat.label}</div>
@@ -268,7 +312,7 @@ export default function QualityProcess() {
       </section>
 
       {/* Quality Statement */}
-      <section className="py-12 bg-secondary border-y border-border">
+      <section className="py-14 bg-background border-y border-border">
         <div className="container-industrial">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center">
@@ -286,7 +330,7 @@ export default function QualityProcess() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial text-center">
           <ScrollReveal>
             <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-foreground mb-4">
@@ -302,7 +346,7 @@ export default function QualityProcess() {
           <ScrollReveal delay={200}>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/contact" className="btn-primary gap-2 group text-sm">
-                Start a Conversation
+                Contact Us
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link to="/services" className="btn-outline text-sm">
