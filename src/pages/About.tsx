@@ -142,7 +142,7 @@ export default function About() {
                     <img
                       src={ownerImage}
                       alt="Mr. Sanjay Singh - Founder, Samrat Refractories Works"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover scale-125"
                       loading="lazy"
                     />
                   </div>
