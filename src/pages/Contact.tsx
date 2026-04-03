@@ -8,18 +8,18 @@ import { useToast } from '@/hooks/use-toast';
 const contactInfo = [
   {
     icon: MapPin,
-    title: 'Location',
-    details: ['India'],
+    title: 'Address',
+    details: ['Samrat Refractories Works', 'Roorkee, Uttarakhand, India'],
   },
   {
     icon: Phone,
     title: 'Phone',
-    details: ['Contact for details'],
+    details: ['+91 98973 29686'],
   },
   {
     icon: Mail,
     title: 'Email',
-    details: ['info@samratrefractories.com'],
+    details: ['sanjaysingh@samratrefractories.com'],
   },
   {
     icon: Clock,
