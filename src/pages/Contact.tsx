@@ -8,18 +8,18 @@ import { useToast } from '@/hooks/use-toast';
 const contactInfo = [
   {
     icon: MapPin,
-    title: 'Location',
-    details: ['India'],
+    title: 'Address',
+    details: ['Samrat Refractories Works', 'Roorkee, Uttarakhand, India'],
   },
   {
     icon: Phone,
     title: 'Phone',
-    details: ['Contact for details'],
+    details: ['+91 98973 29686'],
   },
   {
     icon: Mail,
     title: 'Email',
-    details: ['info@samratrefractories.com'],
+    details: ['sanjaysingh@samratrefractories.com'],
   },
   {
     icon: Clock,
@@ -126,26 +126,19 @@ export default function Contact() {
                 ))}
               </div>
 
-              {/* Trust Indicators */}
+              {/* Google Maps */}
               <ScrollReveal delay={400}>
-                <div className="mt-12 p-6 border border-border rounded-sm">
-                  <h4 className="font-mono text-sm text-primary uppercase tracking-wider mb-4">
-                    Business Credentials
-                  </h4>
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2 text-muted-foreground text-sm">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                      GST Registered
-                    </li>
-                    <li className="flex items-center gap-2 text-muted-foreground text-sm">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                      Banking with Union Bank of India
-                    </li>
-                    <li className="flex items-center gap-2 text-muted-foreground text-sm">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                      15+ Years in Business
-                    </li>
-                  </ul>
+                <div className="mt-12 rounded-sm overflow-hidden border border-border">
+                  <iframe
+                    title="Samrat Refractories Works Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.789!2d77.710724!3d29.057468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSamrat+Refractories+Works!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                    width="100%"
+                    height="250"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
               </ScrollReveal>
             </div>
@@ -294,11 +287,11 @@ export default function Contact() {
               </p>
             </div>
             <a 
-              href="tel:+91XXXXXXXXXX" 
+              href="tel:+919897329686" 
               className="btn-outline gap-2 group"
             >
               <Phone size={18} />
-              Request a Call Back
+              Call +91 98973 29686
             </a>
           </div>
         </div>
