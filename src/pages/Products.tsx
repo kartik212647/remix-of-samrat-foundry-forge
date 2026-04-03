@@ -705,7 +705,7 @@ export default function Products() {
       </section>
 
       {/* Filters */}
-      <section className="sticky top-16 z-30 bg-background/95 backdrop-blur-sm border-y border-border">
+      <section className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-y border-border">
         <div className="container-industrial py-3">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
