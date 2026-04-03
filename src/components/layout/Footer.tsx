@@ -78,19 +78,19 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-primary mt-0.5 flex-shrink-0" />
                 <span className="text-muted-foreground text-sm">
-                  India
+                  Samrat Refractories Works, Roorkee, Uttarakhand, India
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-primary flex-shrink-0" />
-                <a href="tel:+91XXXXXXXXXX" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Contact for details
+                <a href="tel:+919897329686" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  +91 98973 29686
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-primary flex-shrink-0" />
-                <a href="mailto:info@samratrefractories.com" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  info@samratrefractories.com
+                <a href="mailto:sanjaysingh@samratrefractories.com" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  sanjaysingh@samratrefractories.com
                 </a>
               </li>
             </ul>
