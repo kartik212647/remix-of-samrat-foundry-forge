@@ -140,7 +140,7 @@ export default function Footer() {
       </footer>
 
       {/* Floating WhatsApp & Call Buttons */}
-      <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
         <a
           href="https://wa.me/919897329686?text=Hello%2C%20I%20am%20interested%20in%20your%20refractory%20products.%20Please%20share%20details."
           target="_blank"
