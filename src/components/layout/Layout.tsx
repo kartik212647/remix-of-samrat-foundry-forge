@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import FloatingContactButtons from '@/components/FloatingContactButtons';
 import useScrollToTop from '@/hooks/useScrollToTop';
 
 interface LayoutProps {
@@ -15,6 +16,7 @@ export default function Layout({ children }: LayoutProps) {
       <Header />
       <main>{children}</main>
       <Footer />
+      <FloatingContactButtons />
     </div>
   );
 }
