@@ -873,15 +873,6 @@ export default function Products() {
         </div>
       </section>
 
-      {/* Sticky Request Quote Button */}
-      <div className="fixed bottom-6 right-6 z-50 md:bottom-8 md:right-8">
-        <Link to="/contact">
-          <Button size="lg" className="shadow-lg shadow-primary/25 gap-2 text-sm font-semibold rounded-full px-6">
-            <MessageSquare size={16} />
-            Request Quote
-          </Button>
-        </Link>
-      </div>
     </Layout>
   );
 }
