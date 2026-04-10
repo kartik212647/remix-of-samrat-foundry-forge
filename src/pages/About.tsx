@@ -190,15 +190,25 @@ export default function About() {
         </div>
       </section>
 
-      {/* TATA Association - Enhanced */}
+      {/* TATA Association - Premium Redesign */}
       <section className="py-16 md:py-20 bg-secondary">
         <div className="container-industrial">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
-              <div className="card-industrial p-8 md:p-10 border-2 border-primary/20">
+              <div className="relative p-8 md:p-10 rounded-sm border border-border/50 overflow-hidden"
+                style={{
+                  background: 'linear-gradient(145deg, hsl(0 0% 98%) 0%, hsl(0 0% 95%) 50%, hsl(0 0% 93%) 100%)',
+                  boxShadow: '0 4px 30px -8px hsl(0 0% 0% / 0.08), inset 0 1px 0 hsl(0 0% 100% / 0.6)',
+                }}
+              >
+                {/* Subtle metallic shine line */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+                
                 <div className="flex flex-col md:flex-row items-start gap-6 md:gap-10 mb-8">
                   <div className="flex-shrink-0">
-                    <div className="w-24 h-24 rounded-sm bg-primary/10 flex items-center justify-center border border-primary/30">
+                    <div className="w-24 h-24 rounded-sm flex items-center justify-center border border-border/50"
+                      style={{ background: 'linear-gradient(145deg, hsl(0 0% 97%), hsl(0 0% 92%))' }}
+                    >
                       <Shield size={40} className="text-primary" />
                     </div>
                   </div>
@@ -217,9 +227,11 @@ export default function About() {
                 </div>
 
                 {/* Icon-based bullet points */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                   {tataBullets.map((bullet, index) => (
-                    <div key={index} className="flex items-start gap-3 p-3 bg-secondary/80 rounded-sm">
+                    <div key={index} className="flex items-start gap-3 p-3 rounded-sm border border-border/30"
+                      style={{ background: 'linear-gradient(145deg, hsl(0 0% 100% / 0.6), hsl(0 0% 96% / 0.4))', backdropFilter: 'blur(4px)' }}
+                    >
                       <div className="w-8 h-8 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
                         <bullet.icon size={16} className="text-primary" />
                       </div>
@@ -227,6 +239,18 @@ export default function About() {
                     </div>
                   ))}
                 </div>
+
+                {/* Dealer Certificate Placeholder */}
+                <div className="border border-dashed border-border/60 rounded-sm p-6 text-center"
+                  style={{ background: 'linear-gradient(145deg, hsl(0 0% 99%), hsl(0 0% 96%))' }}
+                >
+                  <FileImage size={32} className="text-muted-foreground/40 mx-auto mb-2" />
+                  <p className="text-sm font-medium text-muted-foreground">Dealer Certificate</p>
+                  <p className="text-xs text-muted-foreground/60 mt-1">Official TATA authorization certificate</p>
+                </div>
+
+                {/* Bottom metallic line */}
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
               </div>
             </ScrollReveal>
           </div>
@@ -266,6 +290,14 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Product Gallery Slider */}
+      <GallerySlider
+        label="Product Gallery"
+        title="Our Products & Installations"
+        description="A closer look at our refractory products, on-site installations, and insulation work across industrial facilities."
+        className="bg-secondary"
+      />
 
       {/* Industries We Serve */}
       <section className="py-16 md:py-20 bg-secondary">
