@@ -470,25 +470,11 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
   return (
     <ScrollReveal delay={Math.min(index * 60, 300)}>
-      <div className="group h-full bg-card border border-border rounded-sm overflow-hidden hover:border-[hsl(0_0%_75%)]/80 transition-all duration-500 hover:shadow-[0_8px_30px_-8px_hsl(0_72%_45%/0.15),0_4px_20px_-4px_hsl(0_0%_55%/0.12)] relative"
-        style={{ 
-          background: 'linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 50%, hsl(0 0% 96%) 100%)',
-          boxShadow: '0 2px 16px -2px hsl(0 0% 55% / 0.12), 0 4px 24px -4px hsl(0 0% 45% / 0.08)'
-        }}
+      <div className="group h-full bg-card border border-border rounded-sm overflow-hidden hover:border-primary/40 transition-all duration-500 hover:shadow-[0_8px_30px_-8px_hsl(var(--primary)/0.15)] relative"
+        style={{ backgroundImage: 'linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%)' }}
       >
-        {/* Metallic silver top highlight */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[hsl(0_0%_75%)] to-transparent opacity-60 z-10" />
-        
-        {/* Metallic shine sweep effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none z-5" />
-        
-        {/* Subtle metallic border glow on hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
-          style={{
-            background: 'linear-gradient(145deg, hsl(0 0% 100% / 0.5) 0%, hsl(0 0% 85% / 0.2) 50%, hsl(0 0% 100% / 0.5) 100%)',
-            borderRadius: 'inherit'
-          }}
-        />
+        {/* Subtle metallic top highlight */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent z-10" />
         {/* Image */}
         <div className="relative aspect-square bg-secondary overflow-hidden">
           <img 
