@@ -22,6 +22,7 @@ import refractorySlabsImg from '@/assets/products/refractory-slabs.jpg';
 import refractoryCementImg from '@/assets/products/refractory-cement.jpg';
 import millBoardImg from '@/assets/products/mill-board.jpg';
 import refractoryMortarImg from '@/assets/products/refractory-mortar.jpg';
+import aluminiumSheetImg from '@/assets/products/aluminium-sheet.jpg';
 import looseGlassWoolImg from '@/assets/products/loose-glass-wool.jpg';
 
 interface Product {
