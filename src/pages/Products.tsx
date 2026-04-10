@@ -297,6 +297,17 @@ const productCategories: ProductCategory[] = [
         specs: { 'Type': 'Aluminium Cladding', 'Variants': 'Sheet, Anodised Roll', 'Key Property': 'Reflective & corrosion resistant', 'Application': 'External cladding' },
         variants: ['Aluminium Sheet', 'Anodised Aluminium Roll'],
       },
+      {
+        name: 'Loose Glass Wool',
+        badge: 'Insulation',
+        benefit: 'Lightweight, flexible insulation for irregular spaces and cavities',
+        description: 'Loose Glass Wool is a lightweight, flexible insulation material made from fine glass fibers. It provides excellent thermal and acoustic insulation, ideal for filling irregular spaces and cavities.',
+        features: ['High thermal efficiency', 'Fire resistant', 'Sound absorption', 'Easy to install', 'Cost-effective'],
+        applications: ['Thermal insulation in walls', 'Roof insulation', 'Duct insulation', 'Industrial equipment'],
+        image: looseGlassWoolImg,
+        specs: { 'Type': 'Loose Glass Wool', 'Key Property': 'Thermal & acoustic insulation', 'Fire Rating': 'Fire Resistant', 'Installation': 'Fill & blow-in' },
+        whyChoose: ['Fills irregular spaces conventional materials cannot', 'Excellent thermal and acoustic performance', 'Cost-effective insulation solution', 'Easy and quick installation'],
+      },
     ],
   },
   {
@@ -459,7 +470,11 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
   return (
     <ScrollReveal delay={Math.min(index * 60, 300)}>
-      <div className="group h-full bg-card border border-border rounded-sm overflow-hidden hover:border-primary/40 transition-all duration-500 hover:shadow-[0_8px_30px_-8px_hsl(var(--primary)/0.15)]">
+      <div className="group h-full bg-card border border-border rounded-sm overflow-hidden hover:border-primary/40 transition-all duration-500 hover:shadow-[0_8px_30px_-8px_hsl(var(--primary)/0.15)] relative"
+        style={{ backgroundImage: 'linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%)' }}
+      >
+        {/* Subtle metallic top highlight */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent z-10" />
         {/* Image */}
         <div className="relative aspect-square bg-secondary overflow-hidden">
           <img 
