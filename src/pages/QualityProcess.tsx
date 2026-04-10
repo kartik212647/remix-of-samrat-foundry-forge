@@ -74,8 +74,10 @@ export default function QualityProcess() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-28 pb-12 md:pt-36 md:pb-16 bg-background">
-        <div className="container-industrial">
+      <section className="pt-28 pb-12 md:pt-36 md:pb-16 bg-background relative overflow-hidden">
+        {/* Subtle industrial texture */}
+        <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'repeating-linear-gradient(45deg, hsl(0 0% 50%) 0px, hsl(0 0% 50%) 1px, transparent 1px, transparent 10px)' }} />
+        <div className="container-industrial relative">
           <div className="max-w-4xl">
             <ScrollReveal>
               <span className="inline-flex items-center gap-2 text-primary font-mono text-xs tracking-wider uppercase mb-4">
@@ -105,8 +107,11 @@ export default function QualityProcess() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {capabilities.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300">
-                  <div className="w-11 h-11 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
+                <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+                  <div className="w-11 h-11 rounded-sm flex items-center justify-center mb-4"
+                    style={{ background: 'linear-gradient(145deg, hsl(0 0% 96%), hsl(0 0% 91%))' }}
+                  >
                     <item.icon size={20} className="text-primary" />
                   </div>
                   <h3 className="font-heading font-semibold text-foreground text-sm mb-2">{item.title}</h3>
@@ -127,10 +132,16 @@ export default function QualityProcess() {
             description="Every project follows a structured approach to ensure consistent quality and reliable outcomes."
             centered
           />
+          {/* Metallic section divider */}
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-10" />
+          
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {executionPrinciples.map((item, index) => (
               <ScrollReveal key={item.number} delay={index * 100}>
-                <div className="relative p-6 border border-border rounded-sm hover:border-primary/30 transition-colors">
+                <div className="relative p-6 border border-border rounded-sm hover:border-primary/30 transition-colors overflow-hidden"
+                  style={{ background: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%)' }}
+                >
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
                   <span className="font-mono text-5xl font-bold text-primary/8 absolute top-3 right-3">
                     {item.number}
                   </span>
@@ -151,8 +162,11 @@ export default function QualityProcess() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {qualityPillars.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-6 h-full text-center hover-lift hover-glow transition-all duration-300">
-                  <div className="w-11 h-11 rounded-sm bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <div className="card-industrial p-6 h-full text-center hover-lift hover-glow transition-all duration-300 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+                  <div className="w-11 h-11 rounded-sm flex items-center justify-center mx-auto mb-4"
+                    style={{ background: 'linear-gradient(145deg, hsl(0 0% 96%), hsl(0 0% 91%))' }}
+                  >
                     <item.icon size={20} className="text-primary" />
                   </div>
                   <h3 className="text-sm font-semibold text-foreground mb-2">{item.title}</h3>
