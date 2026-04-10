@@ -6,6 +6,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
+import GallerySlider from '@/components/GallerySlider';
 import heroImage from '@/assets/hero-industrial-light.jpg';
 import industriesImage from '@/assets/industries-refractory.jpg';
 import fireBricksImg from '@/assets/products/fire-bricks.jpg';
@@ -51,7 +52,7 @@ const showcaseProducts = [
 ];
 
 const industries = [
-  'Boilers & Power Systems',
+  'Power Plants',
   'Steel & Foundry',
   'Rolling Mills & Furnaces',
   'Air Heaters & Thermal Equipment',
@@ -347,6 +348,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Gallery Slider */}
+      <GallerySlider className="bg-background" />
 
       {/* Why Choose Us */}
       <section className="py-16 md:py-20 bg-background">

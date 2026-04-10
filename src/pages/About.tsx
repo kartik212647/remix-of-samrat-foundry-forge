@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Target, Eye, Users, Cog, Flame, Factory, ThermometerSun, Award, Shield, CheckCircle, Package, Truck, Clock, HeartHandshake, BadgeCheck } from 'lucide-react';
+import { ArrowRight, Target, Eye, Users, Cog, Flame, Factory, ThermometerSun, Award, Shield, CheckCircle, Package, Truck, Clock, HeartHandshake, BadgeCheck, FileImage } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
+import GallerySlider from '@/components/GallerySlider';
 import ownerImage from '@/assets/owner-portrait.jpg';
 
 const industries = [
   {
     icon: Flame,
-    title: 'Boilers & Power Systems',
+    title: 'Power Plants',
     description: 'Industrial boilers, package boilers, and waste heat recovery systems operating at extreme temperatures.',
     details: 'Refractories are used in combustion chambers, burner throats, and heat recovery zones. Operating conditions include temperatures up to 1600°C, thermal shock, and ash corrosion.',
     applications: ['Industrial boilers', 'Package boilers', 'Waste heat recovery', 'Steam generators'],
@@ -169,7 +170,7 @@ export default function About() {
                 </p>
                 <div className="grid sm:grid-cols-2 gap-3 pt-2">
                   {[
-                    { label: 'Vision', text: 'To become India\'s most trusted refractory execution partner' },
+                    { label: 'Vision', text: 'To become India\'s most trusted & reliable organization in refractory segment.' },
                     { label: 'Mission', text: 'Enhance equipment life and thermal efficiency for every client' },
                     { label: 'Values', text: 'Integrity, precision, and long-term value creation' },
                     { label: 'Commitment', text: 'Zero compromise on quality, safety, and delivery timelines' },
