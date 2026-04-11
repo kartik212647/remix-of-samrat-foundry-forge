@@ -63,24 +63,44 @@ export default function GallerySlider({
           <div className="relative group">
             <div ref={emblaRef} className="overflow-hidden rounded-lg">
               <div className="flex">
-                {galleryImages.map((img, i) => (
-                  <div key={i} className="flex-[0_0_80%] sm:flex-[0_0_45%] lg:flex-[0_0_33.33%] min-w-0 pl-4">
-                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-[0_4px_20px_-4px_hsl(0_0%_0%/0.12)] group/card">
-                      <img
-                        src={img.src}
-                        alt={img.alt}
-                        className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500 ease-out"
-                        loading="lazy"
-                        width={1024}
-                        height={768}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4">
-                        <p className="text-white text-sm font-medium">{img.caption}</p>
+                {galleryImages.map((img, i) => {
+                  const isMetallic = i % 2 === 1;
+                  return (
+                    <div key={i} className="flex-[0_0_80%] sm:flex-[0_0_45%] lg:flex-[0_0_33.33%] min-w-0 pl-4">
+                      <div className={`relative aspect-[4/3] rounded-xl overflow-hidden group/card transition-all duration-500 ${
+                        isMetallic
+                          ? 'shadow-[0_4px_24px_-4px_hsl(0_0%_40%/0.25)] ring-1 ring-white/20'
+                          : 'shadow-[0_4px_20px_-4px_hsl(0_72%_45%/0.18)] ring-1 ring-primary/10'
+                      }`}>
+                        {/* Metallic/Red accent bar */}
+                        <div className={`absolute top-0 left-0 right-0 h-1 z-10 ${
+                          isMetallic
+                            ? 'bg-gradient-to-r from-[hsl(0_0%_65%)] via-[hsl(0_0%_85%)] to-[hsl(0_0%_65%)]'
+                            : 'bg-gradient-to-r from-primary/80 via-primary to-primary/80'
+                        }`} />
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500 ease-out"
+                          loading="lazy"
+                          width={1024}
+                          height={768}
+                        />
+                        {/* Overlay */}
+                        <div className={`absolute inset-0 ${
+                          isMetallic
+                            ? 'bg-gradient-to-t from-[hsl(0_0%_12%/0.75)] via-[hsl(0_0%_30%/0.1)] to-[hsl(0_0%_80%/0.05)]'
+                            : 'bg-gradient-to-t from-[hsl(0_72%_25%/0.65)] via-[hsl(0_72%_45%/0.08)] to-transparent'
+                        }`} />
+                        {/* Caption */}
+                        <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center gap-2">
+                          <span className={`w-1.5 h-1.5 rounded-full ${isMetallic ? 'bg-[hsl(0_0%_80%)]' : 'bg-primary'}`} />
+                          <p className="text-white text-sm font-medium tracking-wide">{img.caption}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
             <button
