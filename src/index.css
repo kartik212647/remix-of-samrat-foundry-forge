@@ -46,11 +46,6 @@
     --steel-grey: 0 0% 55%;
     --warm-white: 30 20% 98%;
 
-    /* Deep Electric Blue Accent */
-    --blue-accent: 217 91% 53%;
-    --blue-accent-foreground: 0 0% 100%;
-    --blue-muted: 217 91% 53%;
-
     /* Gradients */
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 100% / 0.1) 0%, hsl(0 0% 100% / 0.95) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
@@ -59,7 +54,6 @@
     /* Shadows */
     --shadow-card: 0 4px 24px -4px hsl(0 0% 0% / 0.08);
     --shadow-glow: 0 0 40px -10px hsl(0 72% 45% / 0.2);
-    --shadow-blue: 0 4px 20px -4px hsl(217 91% 53% / 0.15);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 9%;
@@ -196,28 +190,6 @@
 
   .btn-outline:hover {
     @apply bg-primary text-primary-foreground;
-  }
-
-  .btn-blue {
-    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-sm transition-all duration-300;
-    background: hsl(var(--blue-accent));
-    color: hsl(var(--blue-accent-foreground));
-  }
-
-  .btn-blue:hover {
-    background: hsl(217 91% 58%);
-    box-shadow: var(--shadow-blue);
-  }
-
-  .btn-blue-outline {
-    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-sm transition-all duration-300;
-    border: 1px solid hsl(var(--blue-accent));
-    color: hsl(var(--blue-accent));
-  }
-
-  .btn-blue-outline:hover {
-    background: hsl(var(--blue-accent));
-    color: hsl(var(--blue-accent-foreground));
   }
 
   /* Link Styles */

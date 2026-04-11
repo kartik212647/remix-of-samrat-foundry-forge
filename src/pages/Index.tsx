@@ -259,11 +259,9 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
             {capabilities.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-6 h-full hover-lift transition-all duration-300 group hover:shadow-[0_8px_30px_-8px_hsl(217_91%_53%/0.12)] hover:border-blue-accent/30"
-                  style={{ backgroundImage: 'linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(217 91% 53% / 0.03) 100%)' }}
-                >
-                  <div className="w-10 h-10 rounded-sm bg-blue-accent/10 flex items-center justify-center mb-4 group-hover:bg-blue-accent/15 transition-colors">
-                    <item.icon size={20} className="text-blue-accent" />
+                <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300 group">
+                  <div className="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <item.icon size={20} className="text-primary" />
                   </div>
                   <h3 className="text-base font-heading font-semibold text-foreground mb-2">{item.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">
@@ -373,9 +371,9 @@ export default function Home() {
               { title: 'Long-term Focus', desc: 'We prioritize durable partnerships, consistent quality, and sustainable industrial performance' },
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="flex items-start gap-3 p-4 border border-border rounded-sm hover:border-blue-accent/30 hover:shadow-[0_4px_16px_-4px_hsl(217_91%_53%/0.1)] transition-all duration-300">
-                  <span className="w-7 h-7 rounded-sm bg-blue-accent/10 flex items-center justify-center flex-shrink-0">
-                    <span className="font-mono text-blue-accent text-xs">{String(index + 1).padStart(2, '0')}</span>
+                <div className="flex items-start gap-3 p-4 border border-border rounded-sm hover:border-primary/30 transition-colors">
+                  <span className="w-7 h-7 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span className="font-mono text-primary text-xs">{String(index + 1).padStart(2, '0')}</span>
                   </span>
                   <div>
                     <h4 className="font-heading font-semibold text-foreground text-sm mb-0.5">{item.title}</h4>
@@ -472,7 +470,7 @@ export default function Home() {
                   Contact Us
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/services" className="btn-blue-outline text-sm">
+                <Link to="/services" className="btn-outline text-sm">
                   Explore Our Services
                 </Link>
               </div>

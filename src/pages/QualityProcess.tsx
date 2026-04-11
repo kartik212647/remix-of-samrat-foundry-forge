@@ -107,12 +107,12 @@ export default function QualityProcess() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {capabilities.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-6 h-full hover-lift transition-all duration-300 relative overflow-hidden group hover:shadow-[0_8px_30px_-8px_hsl(217_91%_53%/0.1)] hover:border-blue-accent/20">
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
                   <div className="w-11 h-11 rounded-sm flex items-center justify-center mb-4"
-                    style={{ background: 'linear-gradient(145deg, hsl(217 91% 53% / 0.08), hsl(217 91% 53% / 0.15))' }}
+                    style={{ background: 'linear-gradient(145deg, hsl(0 0% 96%), hsl(0 0% 91%))' }}
                   >
-                    <item.icon size={20} className="text-blue-accent" />
+                    <item.icon size={20} className="text-primary" />
                   </div>
                   <h3 className="font-heading font-semibold text-foreground text-sm mb-2">{item.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
@@ -133,7 +133,7 @@ export default function QualityProcess() {
             centered
           />
           {/* Metallic section divider */}
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-accent/20 to-transparent mb-10" />
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-10" />
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {executionPrinciples.map((item, index) => (
@@ -162,12 +162,12 @@ export default function QualityProcess() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {qualityPillars.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-6 h-full text-center hover-lift transition-all duration-300 relative overflow-hidden group hover:shadow-[0_8px_30px_-8px_hsl(217_91%_53%/0.1)] hover:border-blue-accent/20">
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                <div className="card-industrial p-6 h-full text-center hover-lift hover-glow transition-all duration-300 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
                   <div className="w-11 h-11 rounded-sm flex items-center justify-center mx-auto mb-4"
-                    style={{ background: 'linear-gradient(145deg, hsl(217 91% 53% / 0.08), hsl(217 91% 53% / 0.15))' }}
+                    style={{ background: 'linear-gradient(145deg, hsl(0 0% 96%), hsl(0 0% 91%))' }}
                   >
-                    <item.icon size={20} className="text-blue-accent" />
+                    <item.icon size={20} className="text-primary" />
                   </div>
                   <h3 className="text-sm font-semibold text-foreground mb-2">{item.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
@@ -192,8 +192,8 @@ export default function QualityProcess() {
             {certifications.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
                 <div className="card-industrial p-6 h-full text-center hover-lift hover-glow transition-all duration-300">
-                  <div className="w-14 h-14 rounded-full bg-blue-accent/10 flex items-center justify-center mx-auto mb-4">
-                    <item.icon size={24} className="text-blue-accent" />
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <item.icon size={24} className="text-primary" />
                   </div>
                   <h3 className="text-sm font-semibold text-foreground mb-2">{item.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
@@ -211,8 +211,8 @@ export default function QualityProcess() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {testingParameters.map((param) => (
                     <div key={param.label} className="flex flex-col items-center gap-2 text-center">
-                      <div className="w-10 h-10 rounded-sm bg-blue-accent/10 flex items-center justify-center">
-                        <param.icon size={18} className="text-blue-accent" />
+                      <div className="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center">
+                        <param.icon size={18} className="text-primary" />
                       </div>
                       <span className="text-xs font-medium text-foreground">{param.label}</span>
                     </div>
@@ -266,8 +266,8 @@ export default function QualityProcess() {
             {reasons.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
                 <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300">
-                  <div className="w-11 h-11 rounded-sm bg-blue-accent/10 flex items-center justify-center mb-4">
-                    <item.icon size={20} className="text-blue-accent" />
+                  <div className="w-11 h-11 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
+                    <item.icon size={20} className="text-primary" />
                   </div>
                   <h3 className="text-sm font-semibold text-foreground mb-2">{item.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
@@ -363,7 +363,7 @@ export default function QualityProcess() {
                 Contact Us
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/services" className="btn-blue-outline text-sm">
+              <Link to="/services" className="btn-outline text-sm">
                 Explore Our Services
               </Link>
             </div>

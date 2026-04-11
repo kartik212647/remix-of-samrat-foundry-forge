@@ -114,12 +114,12 @@ export default function Services() {
           <div className="space-y-10">
             {services.map((service, index) => (
               <ScrollReveal key={service.title} delay={100}>
-                <div className="card-industrial p-6 md:p-10 transition-all duration-300 hover:shadow-[0_8px_30px_-8px_hsl(217_91%_53%/0.1)] hover:border-blue-accent/20">
+                <div className="card-industrial p-6 md:p-10 hover-glow transition-all duration-300">
                   <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
                     <div className="lg:col-span-2">
                       <div className="flex items-start gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-sm bg-blue-accent/10 flex items-center justify-center flex-shrink-0">
-                          <service.icon size={24} className="text-blue-accent" />
+                        <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <service.icon size={24} className="text-primary" />
                         </div>
                         <div>
                           <span className="font-mono text-primary text-xs">
@@ -202,7 +202,7 @@ export default function Services() {
                 Request Service Quote
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/products" className="btn-blue-outline text-sm">
+              <Link to="/products" className="btn-outline text-sm">
                 View Our Products
               </Link>
             </div>
