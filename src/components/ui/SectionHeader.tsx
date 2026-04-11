@@ -19,7 +19,10 @@ export default function SectionHeader({ label, title, description, centered = fa
         </ScrollReveal>
       )}
       <ScrollReveal delay={100}>
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-display font-bold text-foreground mb-3">{title}</h2>
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-display font-bold text-foreground mb-3">
+          {title}
+          <span className="block w-12 h-0.5 mt-2 rounded-full" style={{ background: 'linear-gradient(90deg, hsl(217 91% 53%), transparent)' }} />
+        </h2>
       </ScrollReveal>
       {description && (
         <ScrollReveal delay={200}>

@@ -63,6 +63,10 @@ export default {
         samrat: "hsl(var(--samrat-red))",
         steel: "hsl(var(--steel-grey))",
         warm: "hsl(var(--warm-white))",
+        "blue-accent": {
+          DEFAULT: "hsl(var(--blue-accent))",
+          foreground: "hsl(var(--blue-accent-foreground))",
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

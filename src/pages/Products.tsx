@@ -470,11 +470,11 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
   return (
     <ScrollReveal delay={Math.min(index * 60, 300)}>
-      <div className="group h-full bg-card border border-border rounded-sm overflow-hidden hover:border-primary/40 transition-all duration-500 hover:shadow-[0_8px_30px_-8px_hsl(var(--primary)/0.15)] relative"
-        style={{ backgroundImage: 'linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%)' }}
+      <div className="group h-full bg-card border border-border rounded-sm overflow-hidden hover:border-blue-accent/30 transition-all duration-500 hover:shadow-[0_8px_30px_-8px_hsl(217_91%_53%/0.12)] relative hover:-translate-y-1"
+        style={{ backgroundImage: 'linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(217 91% 53% / 0.02) 100%)' }}
       >
-        {/* Subtle metallic top highlight */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent z-10" />
+        {/* Blue accent top highlight */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-accent/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         {/* Image */}
         <div className="relative aspect-square bg-secondary overflow-hidden">
           <img 
@@ -513,8 +513,8 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           {/* Tech specs badges */}
           <div className="flex flex-wrap gap-1.5">
             {product.density && (
-              <div className="flex items-center gap-1 text-[10px] text-muted-foreground bg-secondary px-2 py-0.5 rounded-sm">
-                <Scale size={10} className="text-primary flex-shrink-0" />
+              <div className="flex items-center gap-1 text-[10px] text-muted-foreground bg-blue-accent/5 border border-blue-accent/10 px-2 py-0.5 rounded-sm">
+                <Scale size={10} className="text-blue-accent flex-shrink-0" />
                 <span className="font-mono">{product.density}</span>
               </div>
             )}
@@ -527,7 +527,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
           {/* Key Benefit */}
           <div className="flex items-start gap-2">
-            <Zap size={14} className="text-primary mt-0.5 shrink-0" />
+            <Zap size={14} className="text-blue-accent mt-0.5 shrink-0" />
             <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
               {product.benefit}
             </p>
@@ -569,7 +569,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
                 <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">Applications</p>
                 <div className="flex flex-wrap gap-1">
                   {product.applications.map((a, i) => (
-                    <span key={i} className="text-[10px] bg-primary/5 text-primary border border-primary/10 px-2 py-0.5 rounded-sm font-mono">
+                    <span key={i} className="text-[10px] bg-blue-accent/5 text-blue-accent border border-blue-accent/10 px-2 py-0.5 rounded-sm font-mono">
                       {a}
                     </span>
                   ))}
@@ -642,8 +642,8 @@ function CategorySection({ category, categoryIndex }: { category: ProductCategor
     <section id={category.id} className="mb-20 last:mb-0 scroll-mt-32">
       <ScrollReveal delay={categoryIndex * 100}>
         <div className="flex items-center gap-4 mb-10">
-          <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center">
-            <Icon size={22} className="text-primary" />
+          <div className="w-12 h-12 rounded-sm bg-blue-accent/10 flex items-center justify-center">
+            <Icon size={22} className="text-blue-accent" />
           </div>
           <div>
             <h3 className="font-heading font-bold text-foreground text-xl md:text-2xl">
@@ -881,7 +881,7 @@ export default function Products() {
                 Contact Us
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/services" className="btn-outline text-sm">
+              <Link to="/services" className="btn-blue-outline text-sm">
                 View Installation Services
               </Link>
             </div>
