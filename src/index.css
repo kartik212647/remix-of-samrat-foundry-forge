@@ -198,6 +198,28 @@
     @apply bg-primary text-primary-foreground;
   }
 
+  .btn-blue {
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-sm transition-all duration-300;
+    background: hsl(var(--blue-accent));
+    color: hsl(var(--blue-accent-foreground));
+  }
+
+  .btn-blue:hover {
+    background: hsl(217 91% 58%);
+    box-shadow: var(--shadow-blue);
+  }
+
+  .btn-blue-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-sm transition-all duration-300;
+    border: 1px solid hsl(var(--blue-accent));
+    color: hsl(var(--blue-accent));
+  }
+
+  .btn-blue-outline:hover {
+    background: hsl(var(--blue-accent));
+    color: hsl(var(--blue-accent-foreground));
+  }
+
   /* Link Styles */
   .link-underline {
     @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
