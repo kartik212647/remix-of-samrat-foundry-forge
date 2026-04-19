@@ -171,11 +171,11 @@ export default function Services() {
                         </div>
                       )}
                     </div>
-                    <div>
+                    <div className="flex flex-col">
                       <h4 className="font-mono text-xs text-primary uppercase tracking-wider mb-4">
                         Service Scope
                       </h4>
-                      <ul className="space-y-2.5">
+                      <ul className="space-y-2.5 mb-5">
                         {service.features.map((feature) => (
                           <li key={feature} className="flex items-start gap-2.5 text-muted-foreground text-sm">
                             <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
@@ -183,6 +183,29 @@ export default function Services() {
                           </li>
                         ))}
                       </ul>
+                      <div
+                        className="mt-auto rounded-sm p-4 text-primary-foreground shadow-md"
+                        style={{
+                          background:
+                            'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(0 72% 38%) 100%)',
+                          boxShadow:
+                            '0 4px 14px rgba(180, 30, 30, 0.25), inset 0 1px 0 rgba(255,255,255,0.15)',
+                        }}
+                      >
+                        <h5 className="font-mono text-[11px] uppercase tracking-wider text-white/80 mb-1">
+                          Need This Service?
+                        </h5>
+                        <p className="text-sm text-white font-medium leading-snug mb-3">
+                          Talk to our technical team for a tailored execution plan.
+                        </p>
+                        <Link
+                          to="/contact"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-white border-b border-white/60 hover:border-white transition-colors"
+                        >
+                          Contact Us
+                          <ArrowRight size={12} />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
