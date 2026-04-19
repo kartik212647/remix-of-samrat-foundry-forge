@@ -38,6 +38,7 @@ interface Product {
   specs?: Record<string, string>;
   variants?: string[];
   whyChoose?: string[];
+  group?: string;
 }
 
 interface ProductCategory {
@@ -240,43 +241,39 @@ const productCategories: ProductCategory[] = [
         image: castableImg,
         specs: { 'Max Temperature': '1200°C', 'Bulk Density': '1.0–1.2 g/cm³', 'Type': 'Insulite Castable', 'Key Property': 'Insulation + strength' },
       },
-    ],
-  },
-  {
-    icon: Flame,
-    id: 'fire-cement',
-    title: 'Fire Cement & Accosset',
-    products: [
       {
         name: 'TRL SET-N',
-        badge: 'Bonding',
+        badge: 'Fire Cement',
+        group: 'Fire Cement & Accosset',
         temperature: 'Up to 1400°C',
         benefit: 'Standard air-setting refractory cement for brick jointing',
-        description: 'Air-setting refractory cement formulated for jointing fire bricks and high alumina bricks in furnaces, boilers, and kilns. Provides strong, heat-resistant bonds.',
-        features: ['Air-setting formulation', 'High bond strength', 'Temperature stable to 1400°C', 'Easy mixing & application'],
-        applications: ['Brick jointing in furnaces', 'Boiler refractory work', 'Kiln construction', 'Repair & patching'],
+        description: 'Air-setting refractory cement formulated for jointing fire bricks and high alumina bricks in furnaces, boilers, and kilns. Delivers high bonding strength and excellent adhesion in high-temperature environments — ideal for furnace lining, joints, and repairs.',
+        features: ['High bonding strength for refractory applications', 'Excellent adhesion at high temperatures', 'Air-setting formulation', 'Easy mixing & application'],
+        applications: ['Furnace lining joints', 'Boiler refractory work', 'Kiln construction', 'Repair & patching'],
         image: refractoryCementImg,
         specs: { 'Max Temperature': '1400°C', 'Type': 'Air-setting Cement', 'Grade': 'TRL SET-N', 'Application': 'Brick jointing' },
       },
       {
         name: 'TRL SET-F',
-        badge: 'High Temp',
+        badge: 'Fire Cement',
+        group: 'Fire Cement & Accosset',
         temperature: 'Up to 1600°C',
         benefit: 'Heat-setting cement for high alumina brick jointing',
-        description: 'Heat-setting refractory cement designed for jointing high alumina bricks in severe service zones. Develops strong ceramic bonds at elevated temperatures.',
-        features: ['Heat-setting bond', 'High alumina compatible', 'Withstands 1600°C', 'Excellent joint integrity'],
+        description: 'Heat-setting refractory cement designed for jointing high alumina bricks in severe service zones. Develops strong ceramic bonds with excellent adhesion in high-temperature environments — used in furnace lining, joints, and critical repairs.',
+        features: ['High bonding strength for refractory applications', 'Excellent adhesion in high-temperature environments', 'Heat-setting ceramic bond', 'Withstands up to 1600°C'],
         applications: ['High alumina brick jointing', 'EAF & ladle work', 'Reheating furnace lining', 'Glass tank construction'],
         image: refractoryCementImg,
         specs: { 'Max Temperature': '1600°C', 'Type': 'Heat-setting Cement', 'Grade': 'TRL SET-F', 'Application': 'HA brick jointing' },
       },
       {
         name: 'ACCOSSET 50',
-        badge: 'Premium',
+        badge: 'Fire Cement',
+        group: 'Fire Cement & Accosset',
         temperature: 'Up to 1500°C',
         benefit: 'High-performance phosphate-bonded setting compound',
-        description: 'Premium phosphate-bonded setting compound for critical refractory bonding requiring controlled setting and high green & fired strength. Used in steel and ferro-alloy industries.',
-        features: ['High green & fired bond strength', 'Controlled setting time', 'Temperature stable', 'Premium phosphate-bonded grade'],
-        applications: ['Critical refractory bonding', 'Patching & repairs', 'High-temp joints', 'Precision lining work'],
+        description: 'Premium phosphate-bonded setting compound delivering high bonding strength for refractory applications. Provides excellent adhesion in high-temperature environments and is widely used in furnace lining, joints, and repairs across steel and ferro-alloy industries.',
+        features: ['High green & fired bond strength', 'Excellent adhesion at high temperatures', 'Controlled setting time', 'Premium phosphate-bonded grade'],
+        applications: ['Furnace lining & joints', 'Critical refractory bonding', 'High-temp patching & repairs', 'Precision lining work'],
         image: specialtyMatImg,
         specs: { 'Max Temperature': '1500°C', 'Type': 'Phosphate-bonded Compound', 'Grade': 'ACCOSSET 50', 'Application': 'Critical bonding' },
       },
@@ -713,11 +710,32 @@ function CategorySection({ category, categoryIndex }: { category: ProductCategor
         </div>
       </ScrollReveal>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {category.products.map((product, index) => (
-          <ProductCard key={product.name} product={product} index={index} />
-        ))}
-      </div>
+      {(() => {
+        const items: JSX.Element[] = [];
+        let currentGroup: string | undefined = undefined;
+        category.products.forEach((product, index) => {
+          if (product.group && product.group !== currentGroup) {
+            currentGroup = product.group;
+            items.push(
+              <div key={`group-${product.group}`} className="sm:col-span-2 lg:col-span-3 mt-4 first:mt-0">
+                <div className="flex items-center gap-3">
+                  <Flame size={18} className="text-primary" />
+                  <h4 className="font-heading font-semibold text-foreground text-base md:text-lg">
+                    {product.group}
+                  </h4>
+                  <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, #C0C0C0, #E8E8E8, transparent)' }}></div>
+                </div>
+              </div>
+            );
+          }
+          items.push(<ProductCard key={product.name} product={product} index={index} />);
+        });
+        return (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {items}
+          </div>
+        );
+      })()}
     </section>
   );
 }

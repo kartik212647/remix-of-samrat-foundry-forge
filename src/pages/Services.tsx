@@ -114,7 +114,17 @@ export default function Services() {
           <div className="space-y-10">
             {services.map((service, index) => (
               <ScrollReveal key={service.title} delay={100}>
-                <div className="card-industrial p-6 md:p-10 hover-glow transition-all duration-300">
+                <div
+                  className="relative p-6 md:p-10 rounded-xl bg-card transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(192,192,192,0.45)] group"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(hsl(var(--card)), hsl(var(--card))), linear-gradient(135deg, #C0C0C0, #E8E8E8, #C0C0C0)',
+                    backgroundOrigin: 'border-box',
+                    backgroundClip: 'padding-box, border-box',
+                    border: '2px solid transparent',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6)',
+                  }}
+                >
                   <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
                     <div className="lg:col-span-2">
                       <div className="flex items-start gap-4 mb-4">
