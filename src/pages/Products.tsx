@@ -38,6 +38,7 @@ interface Product {
   specs?: Record<string, string>;
   variants?: string[];
   whyChoose?: string[];
+  group?: string;
 }
 
 interface ProductCategory {
