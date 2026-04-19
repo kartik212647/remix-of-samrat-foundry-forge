@@ -710,11 +710,32 @@ function CategorySection({ category, categoryIndex }: { category: ProductCategor
         </div>
       </ScrollReveal>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {category.products.map((product, index) => (
-          <ProductCard key={product.name} product={product} index={index} />
-        ))}
-      </div>
+      {(() => {
+        const items: JSX.Element[] = [];
+        let currentGroup: string | undefined = undefined;
+        category.products.forEach((product, index) => {
+          if (product.group && product.group !== currentGroup) {
+            currentGroup = product.group;
+            items.push(
+              <div key={`group-${product.group}`} className="sm:col-span-2 lg:col-span-3 mt-4 first:mt-0">
+                <div className="flex items-center gap-3">
+                  <Flame size={18} className="text-primary" />
+                  <h4 className="font-heading font-semibold text-foreground text-base md:text-lg">
+                    {product.group}
+                  </h4>
+                  <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, #C0C0C0, #E8E8E8, transparent)' }}></div>
+                </div>
+              </div>
+            );
+          }
+          items.push(<ProductCard key={product.name} product={product} index={index} />);
+        });
+        return (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {items}
+          </div>
+        );
+      })()}
     </section>
   );
 }
