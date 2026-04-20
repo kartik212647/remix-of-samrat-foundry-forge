@@ -25,6 +25,8 @@ import refractoryMortarImg from '@/assets/products/refractory-mortar.jpg';
 import aluminiumSheetImg from '@/assets/products/aluminium-sheet.jpg';
 import looseGlassWoolImg from '@/assets/products/loose-glass-wool.jpg';
 
+type ApplicationTag = 'furnace-lining' | 'insulation' | 'jointing' | 'repairs';
+
 interface Product {
   name: string;
   badge: string;
@@ -39,6 +41,7 @@ interface Product {
   variants?: string[];
   whyChoose?: string[];
   group?: string;
+  appTags?: ApplicationTag[];
 }
 
 interface ProductCategory {
