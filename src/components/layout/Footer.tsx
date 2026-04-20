@@ -39,7 +39,7 @@ export default function Footer() {
     <>
       <footer className="bg-secondary border-t border-border">
         <div className="container-industrial section-padding">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
             {/* Company Info */}
             <div className="lg:col-span-1">
               <img src={logo} alt="Samrat Refractories Works" className="h-12 w-auto mb-6" />
