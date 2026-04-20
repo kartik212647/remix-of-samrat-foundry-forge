@@ -431,6 +431,7 @@ const productCategories: ProductCategory[] = [
         applications: ['Chemical plant floors', 'Acid storage areas', 'Laboratory floors', 'Effluent channels'],
         image: acidProofImg,
         specs: { 'Type': 'Acid Proof Tile', 'Chemical Resistance': 'High', 'Porosity': 'Very Low', 'Application': 'Chemical environments' },
+        appTags: ['furnace-lining'],
       },
       {
         name: 'Cast Iron Boiler Fire Door',
@@ -441,6 +442,7 @@ const productCategories: ProductCategory[] = [
         applications: ['Boiler access', 'Furnace doors', 'Inspection openings', 'Maintenance access'],
         image: boilerCompImg,
         specs: { 'Material': 'Cast Iron', 'Type': 'Boiler Fire Door', 'Key Property': 'Heat resistant, secure', 'Application': 'Boiler access' },
+        appTags: ['repairs'],
       },
       {
         name: 'Nozzles',
@@ -452,6 +454,7 @@ const productCategories: ProductCategory[] = [
         applications: ['Steel ladle nozzles', 'Tundish nozzles', 'Continuous casting', 'Foundry pouring systems'],
         image: boilerCompImg,
         specs: { 'Max Temperature': '1700°C', 'Type': 'Refractory Nozzle', 'Application': 'Molten metal flow control', 'Material': 'High Alumina / Zirconia' },
+        appTags: ['furnace-lining'],
       },
       {
         name: 'Sodium Silicate Binder',
@@ -462,6 +465,7 @@ const productCategories: ProductCategory[] = [
         applications: ['Refractory bonding', 'Foundry core binding', 'Surface coating', 'Sealing applications'],
         image: specialtyMatImg,
         specs: { 'Type': 'Sodium Silicate Binder', 'Key Property': 'Strong binding', 'Application': 'Binder / Sealer', 'Form': 'Liquid' },
+        appTags: ['jointing'],
       },
       {
         name: 'Bed Material',
@@ -471,7 +475,8 @@ const productCategories: ProductCategory[] = [
         features: ['Optimized particle size distribution', 'Ensures proper fluidization', 'Minimal clinker formation', 'Low attrition rate'],
         applications: ['FBC boilers', 'Fluidized bed systems', 'Combustion beds', 'Power plants'],
         image: specialtyMatImg,
-        specs: { 'Type': 'FBC Bed Material', 'Key Property': 'Optimized fluidization', 'Application': 'Fluidized bed combustion', 'Quality': 'Consistent grading' },
+        specs: { 'Type': 'Fluidized Bed Combustion (FBC) Bed Material', 'Key Property': 'Optimized fluidization', 'Application': 'FBC boilers', 'Quality': 'Consistent grading' },
+        appTags: ['repairs'],
       },
     ],
   },
