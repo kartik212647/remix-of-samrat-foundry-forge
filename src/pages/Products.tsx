@@ -522,6 +522,13 @@ const industries = [
   { label: 'Glass Industries', value: 'glass' },
 ];
 
+const applicationOptions: { label: string; value: ApplicationTag }[] = [
+  { label: 'Furnace Lining', value: 'furnace-lining' },
+  { label: 'Insulation', value: 'insulation' },
+  { label: 'Jointing', value: 'jointing' },
+  { label: 'Repairs', value: 'repairs' },
+];
+
 function getMaxTemp(product: Product): number {
   if (!product.temperature) return 0;
   const match = product.temperature.match(/(\d{3,4})/g);
