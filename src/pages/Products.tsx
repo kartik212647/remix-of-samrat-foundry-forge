@@ -378,6 +378,7 @@ const productCategories: ProductCategory[] = [
         image: aluminiumSheetImg,
         specs: { 'Type': 'Aluminium Cladding', 'Variants': 'Sheet, Anodised Roll', 'Key Property': 'Reflective & corrosion resistant', 'Application': 'External cladding' },
         variants: ['Aluminium Sheet', 'Anodised Aluminium Roll'],
+        appTags: ['insulation'],
       },
       {
         name: 'Loose Glass Wool',
@@ -389,6 +390,7 @@ const productCategories: ProductCategory[] = [
         image: looseGlassWoolImg,
         specs: { 'Type': 'Loose Glass Wool', 'Key Property': 'Thermal & acoustic insulation', 'Fire Rating': 'Fire Resistant', 'Installation': 'Fill & blow-in' },
         whyChoose: ['Fills irregular spaces conventional materials cannot', 'Excellent thermal and acoustic performance', 'Cost-effective insulation solution', 'Easy and quick installation'],
+        appTags: ['insulation'],
       },
     ],
   },
