@@ -885,12 +885,45 @@ export default function Products() {
                   variant="ghost"
                   size="sm"
                   className="text-xs text-muted-foreground h-7 px-2"
-                  onClick={() => { setTempFilter('all'); setIndustryFilter('all'); }}
+                  onClick={() => { setTempFilter('all'); setIndustryFilter('all'); setAppFilter('all'); }}
                 >
                   <X size={12} />
                   Clear
                 </Button>
               )}
+            </div>
+          </div>
+
+          {/* Application tag chips (always visible) */}
+          <div className="mt-3 pt-3 border-t border-border flex items-center gap-2 overflow-x-auto">
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5 flex-shrink-0">
+              <Briefcase size={12} className="text-primary" />
+              By Application
+            </span>
+            <div className="flex gap-1.5 flex-shrink-0">
+              <button
+                onClick={() => setAppFilter('all')}
+                className={`text-[11px] font-mono px-2.5 py-1 rounded-full border transition-all ${
+                  appFilter === 'all'
+                    ? 'bg-primary text-primary-foreground border-primary'
+                    : 'bg-background text-muted-foreground border-border hover:border-primary/40'
+                }`}
+              >
+                All
+              </button>
+              {applicationOptions.map(opt => (
+                <button
+                  key={opt.value}
+                  onClick={() => setAppFilter(opt.value)}
+                  className={`text-[11px] font-mono px-2.5 py-1 rounded-full border transition-all whitespace-nowrap ${
+                    appFilter === opt.value
+                      ? 'bg-primary text-primary-foreground border-primary'
+                      : 'bg-background text-muted-foreground border-border hover:border-primary/40'
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
             </div>
             {/* Quick category nav */}
             <div className="hidden md:flex items-center gap-2">
