@@ -707,25 +707,43 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           )}
           
           {/* Action buttons */}
-          <div className="flex gap-2 pt-1">
+          <div className="flex flex-col gap-2 pt-1">
             <Button 
               variant="outline" 
               size="sm" 
-              className="flex-1 text-xs font-medium"
+              className="w-full text-xs font-medium"
               onClick={() => setExpanded(!expanded)}
             >
               {expanded ? 'Show Less' : 'View Details'}
               <ChevronRight size={14} className={`ml-auto transition-transform ${expanded ? 'rotate-90' : ''}`} />
             </Button>
-            <Button 
-              size="sm" 
-              className="text-xs font-medium"
-              asChild
-            >
-              <Link to="/contact">
-                Get Quote
-              </Link>
-            </Button>
+            <div className="flex gap-2">
+              <Button 
+                size="sm" 
+                className="flex-1 text-xs font-medium gap-1.5"
+                asChild
+              >
+                <Link to={`/contact?product=${encodeURIComponent(product.name)}`}>
+                  Enquire Now
+                  <ArrowRight size={12} />
+                </Link>
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                className="text-xs font-medium px-3 border-[#25D366]/40 text-[#1ebe5d] hover:bg-[#25D366] hover:text-white hover:border-[#25D366]"
+                asChild
+                aria-label={`WhatsApp enquiry for ${product.name}`}
+              >
+                <a
+                  href={`https://wa.me/919897329686?text=${encodeURIComponent(`Hi, I would like a quote for ${product.name}. Please share details.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle size={14} />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
