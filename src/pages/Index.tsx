@@ -52,10 +52,12 @@ const showcaseProducts = [
 ];
 
 const industries = [
-  'Power Plants',
   'Steel & Foundry',
+  'Cement Plants',
+  'Power Plants',
+  'Glass Industries',
+  'Chemical Plants',
   'Rolling Mills & Furnaces',
-  'Air Heaters & Thermal Equipment',
 ];
 
 const stats = [
@@ -157,27 +159,32 @@ export default function Home() {
 
             <ScrollReveal delay={100}>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-5 leading-tight">
-                Engineering Reliable Refractory Solutions for{' '}
-                <span className="text-gradient-orange">High-Temperature Industries</span>
+                Reliable Refractory & Insulation Solutions for{' '}
+                <span className="text-gradient-orange">Industrial Applications</span>
               </h1>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
               <p className="text-base md:text-lg text-white/80 leading-relaxed mb-6 max-w-xl">
-                Manufacturing, lining, relining, and maintenance of refractory systems for boilers, 
-                furnaces, and molten metal applications — trusted for over 25 years.
+                Serving steel, cement, power, glass & chemical industries with manufactured refractories,
+                insulation systems, and on-site installation — trusted for over 25 years.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/contact" className="btn-primary gap-2 group text-sm">
-                  Contact Us
+                  Get Quote
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/contact" className="btn-outline border-white text-white hover:bg-white hover:text-foreground text-sm">
-                  Request Site Visit
-                </Link>
+                <a
+                  href="https://wa.me/919897329686?text=Hello%2C%20I%20am%20interested%20in%20your%20refractory%20products.%20Please%20share%20details."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline border-white text-white hover:bg-white hover:text-foreground text-sm"
+                >
+                  WhatsApp Now
+                </a>
               </div>
             </ScrollReveal>
 

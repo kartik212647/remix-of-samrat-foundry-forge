@@ -26,6 +26,14 @@ const services = [
   'Hot & Cold Insulation',
 ];
 
+const industriesServed = [
+  'Steel & Foundry',
+  'Cement Plants',
+  'Power Plants',
+  'Glass Industries',
+  'Chemical Plants',
+];
+
 export default function Footer() {
   return (
     <>
