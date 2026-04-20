@@ -26,12 +26,20 @@ const services = [
   'Hot & Cold Insulation',
 ];
 
+const industriesServed = [
+  'Steel & Foundry',
+  'Cement Plants',
+  'Power Plants',
+  'Glass Industries',
+  'Chemical Plants',
+];
+
 export default function Footer() {
   return (
     <>
       <footer className="bg-secondary border-t border-border">
         <div className="container-industrial section-padding">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
             {/* Company Info */}
             <div className="lg:col-span-1">
               <img src={logo} alt="Samrat Refractories Works" className="h-12 w-auto mb-6" />
@@ -93,6 +101,24 @@ export default function Footer() {
                     >
                       <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                       <span className="break-words">{service}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Industries Served */}
+            <div>
+              <h4 className="font-heading font-semibold text-foreground mb-6">Industries</h4>
+              <ul className="space-y-3">
+                {industriesServed.map((industry) => (
+                  <li key={industry}>
+                    <Link
+                      to="/about"
+                      className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
+                    >
+                      <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                      <span className="break-words">{industry}</span>
                     </Link>
                   </li>
                 ))}

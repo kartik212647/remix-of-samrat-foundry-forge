@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, Send, ArrowRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
@@ -30,6 +31,7 @@ const contactInfo = [
 
 export default function Contact() {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -39,6 +41,19 @@ export default function Contact() {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const product = searchParams.get('product');
+    if (product) {
+      setFormData(prev => ({
+        ...prev,
+        service: 'products',
+        message: prev.message
+          ? prev.message
+          : `I would like a quote for: ${product}\n\nPlease share technical specifications, pricing, and lead time.`,
+      }));
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

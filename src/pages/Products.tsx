@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Layers, Droplets, Flame, Package, Thermometer, Scale, Zap, Shield, ChevronRight, Filter, X, MessageSquare, Factory, FlaskConical, Anchor, Wrench, Globe } from 'lucide-react';
+import { ArrowRight, Layers, Droplets, Flame, Package, Thermometer, Scale, Zap, Shield, ChevronRight, Filter, X, MessageSquare, MessageCircle, Factory, FlaskConical, Anchor, Wrench, Globe, Briefcase } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { Badge } from '@/components/ui/badge';
@@ -25,6 +25,8 @@ import refractoryMortarImg from '@/assets/products/refractory-mortar.jpg';
 import aluminiumSheetImg from '@/assets/products/aluminium-sheet.jpg';
 import looseGlassWoolImg from '@/assets/products/loose-glass-wool.jpg';
 
+type ApplicationTag = 'furnace-lining' | 'insulation' | 'jointing' | 'repairs';
+
 interface Product {
   name: string;
   badge: string;
@@ -39,6 +41,7 @@ interface Product {
   variants?: string[];
   whyChoose?: string[];
   group?: string;
+  appTags?: ApplicationTag[];
 }
 
 interface ProductCategory {
@@ -57,41 +60,44 @@ const productCategories: ProductCategory[] = [
       {
         name: 'High Alumina Fire Brick',
         badge: 'Premium',
-        temperature: 'Up to 1800°C',
+        temperature: 'Up to 1700°C (depending on grade and application)',
         density: '2.4–2.8 g/cm³',
         benefit: 'Superior load bearing & thermal resistance for extreme industrial environments',
-        description: 'High-performance refractory bricks engineered for steel, cement, and glass industry furnaces. Manufactured with high alumina content for outstanding mechanical strength, thermal stability, and long service life under extreme operating conditions.',
-        features: ['Withstands temperatures up to 1800°C', 'High cold crushing strength (40–80 MPa)', 'Excellent thermal shock resistance', 'Long service life in heavy industry'],
-        applications: ['Steel furnaces', 'Cement rotary kilns', 'Glass tank furnaces', 'Petrochemical reactors'],
+        description: 'High Alumina Fire Bricks manufactured with controlled alumina content (50%–90%) for use in high-temperature zones of furnaces, kilns, and reactors. Designed for applications requiring high refractoriness, mechanical strength, and resistance to slag attack.',
+        features: ['Controlled Al₂O₃ content (50%–90%)', 'High cold crushing strength (40–80 MPa)', 'Excellent slag and thermal shock resistance', 'Long service life in heavy industry'],
+        applications: ['Steel ladles', 'Cement kilns', 'Glass furnaces', 'Petrochemical reactors'],
         image: highAluminaImg,
-        specs: { 'Max Temperature': '1800°C', 'Bulk Density': '2.4–2.8 g/cm³', 'Al₂O₃ Content': '50%–90%', 'Cold Crushing Strength': '40–80 MPa' },
+        specs: { 'Max Temperature': 'Up to 1700°C', 'Bulk Density': '2.4–2.8 g/cm³', 'Al₂O₃ Content': '50%–90%', 'Cold Crushing Strength': '40–80 MPa' },
         whyChoose: ['Longer lining life reduces shutdowns', 'Lower maintenance cost', 'Improves thermal efficiency'],
+        appTags: ['furnace-lining', 'repairs'],
       },
       {
         name: 'Insulating Fire Bricks',
         badge: 'Lightweight',
         temperature: '600°C – 1000°C',
         density: '0.8–1.2 g/cm³',
-        benefit: 'Lightweight insulation for energy-efficient kiln & furnace linings',
-        description: 'Porous, lightweight bricks providing excellent thermal insulation while reducing structural load on kilns and heat treatment furnaces. Designed for backup linings and energy conservation in steel, cement, and ceramic industries.',
+        benefit: 'Backup insulation for energy-efficient kiln & furnace linings',
+        description: 'Used as backup insulation behind dense refractory linings to reduce heat loss and improve energy efficiency. Porous, lightweight bricks providing excellent thermal insulation while reducing structural load on kilns and heat treatment furnaces.',
         features: ['Very low thermal conductivity', 'Lightweight construction (0.8–1.2 g/cm³)', 'Significant energy savings', 'Easy to cut and shape on site'],
         applications: ['Backup insulation in furnaces', 'Heat treatment kilns', 'Annealing ovens', 'Tunnel kiln linings'],
         image: insulatingFBImg,
         specs: { 'Temperature Range': '600°C–1000°C', 'Bulk Density': '0.8–1.2 g/cm³', 'Type': 'Porous Insulating', 'Key Property': 'Low thermal conductivity' },
         whyChoose: ['Reduces energy consumption significantly', 'Lowers structural dead load', 'Easy on-site fabrication'],
+        appTags: ['insulation', 'furnace-lining'],
       },
       {
         name: 'Hanger Brick',
         badge: 'Shaped',
         temperature: '1200°C – 1500°C',
         density: '2.2–2.6 g/cm³',
-        benefit: 'Precision-formed bricks for suspended arches & dome roofs',
-        description: 'Pre-formed shaped bricks engineered for furnace arches, suspended roof systems, and dome constructions in steel and cement industries. Offers precise curvature and high load capacity under thermal stress.',
+        benefit: 'Precision-formed bricks for suspended roofs & arch constructions',
+        description: 'Specifically designed for suspended roof systems and arch constructions requiring dimensional precision and load-bearing strength. Pre-formed shaped bricks engineered for furnace arches and dome constructions in steel and cement industries.',
         features: ['Precise curvature for arch construction', 'Self-supporting suspended design', 'High mechanical strength under load', 'Excellent thermal shock resistance'],
         applications: ['Suspended furnace arches', 'Boiler crown roofs', 'Tunnel kiln crowns', 'Reheating furnace roofs'],
         image: archBricksImg,
         specs: { 'Temperature Range': '1200°C–1500°C', 'Bulk Density': '2.2–2.6 g/cm³', 'Type': 'Hanger / Suspended Brick', 'Structure': 'Curved / Shaped' },
         whyChoose: ['Eliminates need for custom formwork', 'Precise geometry ensures structural integrity', 'Reduces installation time'],
+        appTags: ['furnace-lining'],
       },
       {
         name: 'Special Shaped Bricks',
@@ -104,28 +110,31 @@ const productCategories: ProductCategory[] = [
         applications: ['Rotary kilns', 'Steel ladles', 'Incinerators', 'Custom furnace linings'],
         image: specialShapedImg,
         specs: { 'Temperature Range': '1200°C–1700°C', 'Bulk Density': '2.2–2.6 g/cm³', 'Type': 'Custom Manufactured', 'Tolerance': 'Precision machined' },
+        appTags: ['furnace-lining'],
       },
       {
         name: 'Arch Block & Slab',
         badge: 'Slabs',
         temperature: 'Up to 1400°C',
-        benefit: 'Flat & curved blocks for uniform lining and arch construction',
-        description: 'Precision-cut refractory blocks and slabs available in straight and arch profiles for furnace floors, hearths, and arched roofs. Used in steel, cement, and glass industries for smooth, uniform lining surfaces.',
+        benefit: 'Flat & curved blocks for furnace floors, roofs & lining areas',
+        description: 'Used in furnace floors, roofs, and structural lining areas requiring flat or curved refractory support. Precision-cut blocks and slabs available in straight and arch profiles for steel, cement, and glass industries.',
         features: ['Uniform thickness and smooth finish', 'Straight & arch profiles available', 'High structural integrity to 1400°C', 'Alumina fire brick grade'],
         applications: ['Furnace floors and hearths', 'Partition walls in kilns', 'Furnace arches & domes', 'Glass tank roofs'],
         image: refractorySlabsImg,
         specs: { 'Max Temperature': '1400°C', 'Types': 'Arch Block, Straight Slab', 'Material': 'Alumina Fire Brick', 'Finish': 'Smooth, precision-cut' },
+        appTags: ['furnace-lining'],
       },
       {
         name: 'Acid Proof Bricks',
         badge: 'Chemical',
         benefit: 'Superior chemical & acid resistance for harsh environments',
-        description: 'Specialized bricks with exceptional resistance to acids, alkalis, and chemical attack. Designed for chemical plants, fertilizer units, acid storage facilities, and corrosive industrial environments.',
+        description: 'Specialized bricks with exceptional resistance to acids, alkalis, and chemical attack. Low porosity structure ensures resistance to acid penetration and long service life in corrosive environments such as chemical plants, fertilizer units, and acid storage facilities.',
         features: ['Excellent acid & alkali resistance', 'Very low porosity', 'High mechanical durability', 'Long-term chemical stability'],
         applications: ['Chemical plant flooring', 'Acid storage tanks', 'Effluent channels', 'Pickling line linings'],
         image: acidProofImg,
         specs: { 'Chemical Resistance': 'High', 'Porosity': 'Very Low', 'Type': 'Acid Proof', 'Application': 'Chemical environments' },
         whyChoose: ['Protects against corrosive chemical attack', 'Extremely durable in harsh environments', 'Low maintenance cost'],
+        appTags: ['furnace-lining'],
       },
     ],
   },
@@ -138,37 +147,40 @@ const productCategories: ProductCategory[] = [
         name: 'Dense Castable AH-60',
         badge: 'Dense',
         temperature: 'Up to 1600°C',
-        density: '2.4–2.6 g/cm³',
+        density: '2.3–2.6 g/cm³',
         benefit: 'High-strength dense castable for general furnace linings',
-        description: 'High alumina dense castable (60% Al₂O₃) for monolithic linings in steel, cement, and power plant equipment. Provides excellent abrasion and thermal shock resistance.',
+        description: 'High alumina dense castable (60% Al₂O₃) suitable for general furnace linings, burner blocks, and abrasion-resistant areas in steel, cement, and power plant equipment. Provides excellent abrasion and thermal shock resistance.',
         features: ['60% Al₂O₃ content', 'Excellent abrasion resistance', 'Good thermal shock resistance', 'Strong mechanical bond'],
-        applications: ['Reheating furnaces', 'Boiler linings', 'Ladle covers', 'Kiln hoods'],
+        applications: ['General furnace linings', 'Burner blocks', 'Reheating furnaces', 'Boiler linings'],
         image: castableImg,
-        specs: { 'Max Temperature': '1600°C', 'Al₂O₃': '60%', 'Bulk Density': '2.4–2.6 g/cm³', 'Type': 'Dense Castable' },
+        specs: { 'Max Temperature': '1600°C', 'Al₂O₃': '60%', 'Bulk Density': '2.3–2.6 g/cm³', 'Type': 'Dense Castable' },
+        appTags: ['furnace-lining', 'repairs'],
       },
       {
         name: 'Dense Castable AH-90',
         badge: 'Dense',
         temperature: 'Up to 1750°C',
-        density: '2.7–3.0 g/cm³',
+        density: '2.6–2.9 g/cm³',
         benefit: 'Premium high alumina dense castable for severe service',
-        description: 'Premium 90% alumina dense castable engineered for the most demanding furnace zones in steel and petrochemical industries. Outstanding hot strength and slag resistance.',
-        features: ['90% Al₂O₃ content', 'Superior hot strength', 'Excellent slag resistance', 'High-temperature stability'],
-        applications: ['EAF roofs & deltas', 'Ladle linings', 'Petrochemical reactors', 'Tundish working lining'],
+        description: 'High alumina dense castable (~90% Al₂O₃) designed for high-temperature zones with severe abrasion and slag exposure. Used in steel ladles, reheating furnaces, and petrochemical units.',
+        features: ['~90% Al₂O₃ content', 'Superior hot strength', 'Excellent slag resistance', 'High-temperature stability'],
+        applications: ['Steel ladles', 'Reheating furnaces', 'Petrochemical units', 'EAF roofs & deltas'],
         image: castableImg,
-        specs: { 'Max Temperature': '1750°C', 'Al₂O₃': '90%', 'Bulk Density': '2.7–3.0 g/cm³', 'Type': 'Dense Castable' },
+        specs: { 'Max Temperature': '1750°C', 'Al₂O₃': '~90%', 'Bulk Density': '2.6–2.9 g/cm³', 'Type': 'Dense Castable' },
+        appTags: ['furnace-lining', 'repairs'],
       },
       {
         name: 'Low Cement Castable LC-70',
         badge: 'Low Cement',
         temperature: 'Up to 1650°C',
         density: '2.6–2.8 g/cm³',
-        benefit: 'Low cement, high-strength lining with superior abrasion resistance',
-        description: 'Low cement castable with 70% Al₂O₃ engineered for high-density, low-porosity linings. Ideal for steel ladles, blast furnace runners, and abrasion-prone furnace zones.',
+        benefit: 'Low cement, dense lining with superior hot strength',
+        description: 'Low cement castable with 70% Al₂O₃. Low cement formulation reduces porosity and enhances hot strength, making it ideal for dense and durable refractory linings in ladles, burner zones, and cyclones.',
         features: ['Low porosity after firing', 'Superior hot strength at 1650°C', 'Excellent slag & corrosion resistance', 'Reduced drying time'],
-        applications: ['Steel ladles', 'Blast furnace runners', 'EAF roofs', 'Heavy-duty furnace zones'],
+        applications: ['Ladles', 'Burner zones', 'Cyclones', 'Heavy-duty furnace zones'],
         image: castableImg,
         specs: { 'Max Temperature': '1650°C', 'Al₂O₃': '70%', 'Bulk Density': '2.6–2.8 g/cm³', 'Type': 'Low Cement Castable' },
+        appTags: ['furnace-lining'],
       },
       {
         name: 'Low Cement Castable LC-60',
@@ -176,34 +188,37 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1600°C',
         density: '2.5–2.7 g/cm³',
         benefit: 'Cost-effective low cement castable for general heavy-duty use',
-        description: 'Low cement 60% alumina castable balancing performance and cost for steel, cement, and power industry furnace linings. Excellent abrasion resistance and hot strength.',
+        description: 'Low cement 60% alumina castable. Low cement formulation reduces porosity and enhances hot strength, making it ideal for dense and durable refractory linings in ladles, burner zones, and cyclones.',
         features: ['60% Al₂O₃ content', 'Low cement formulation', 'High mechanical strength', 'Good thermal shock resistance'],
-        applications: ['Cement preheater cyclones', 'Reheating furnace hearths', 'Boiler refractory linings', 'Ducts and flues'],
+        applications: ['Ladles', 'Burner zones', 'Cyclones', 'Boiler refractory linings'],
         image: castableImg,
         specs: { 'Max Temperature': '1600°C', 'Al₂O₃': '60%', 'Bulk Density': '2.5–2.7 g/cm³', 'Type': 'Low Cement Castable' },
+        appTags: ['furnace-lining'],
       },
       {
         name: 'High Alumina Castables',
         badge: 'High Alumina',
         temperature: 'Up to 1750°C',
-        benefit: 'Ultra-pure high alumina monolithic for corrosive environments',
-        description: 'Ultra-pure high alumina castables engineered for applications demanding exceptional chemical stability and high-temperature performance in corrosive industrial atmospheres.',
-        features: ['High purity raw materials', 'Exceptional chemical stability', 'Superior corrosion resistance', 'Outstanding high-temp performance'],
+        benefit: 'Structural high alumina castable for load-bearing applications',
+        description: 'High Alumina Castables designed for structural applications where high-temperature stability and load-bearing strength are critical. Available in multiple alumina grades depending on service conditions.',
+        features: ['Multiple alumina grades available', 'Excellent high-temperature stability', 'High load-bearing strength', 'Good corrosion resistance'],
         applications: ['Petrochemical reactors', 'Glass tanks', 'Aluminium melting furnaces', 'Special alloy furnaces'],
         image: castableImg,
-        specs: { 'Max Temperature': '1750°C', 'Type': 'High Alumina Castable', 'Key Property': 'Chemical stability', 'Application': 'Corrosive environments' },
+        specs: { 'Max Temperature': '1750°C', 'Type': 'High Alumina Castable', 'Key Property': 'Load-bearing strength', 'Application': 'Structural high-temp linings' },
+        appTags: ['furnace-lining'],
       },
       {
         name: 'Normal Castable FH-45',
         badge: 'Standard',
         temperature: 'Up to 1400°C',
         density: '2.0–2.2 g/cm³',
-        benefit: 'Economical conventional castable for general lining work',
-        description: 'Conventional 45% alumina castable for general-purpose monolithic linings in boilers, kilns, and back-up applications. Easy to install with reliable performance.',
+        benefit: 'Conventional castable for general-purpose furnace linings',
+        description: 'Conventional castable used for general-purpose furnace linings, offering a balance of performance, cost, and ease of installation. 45% Al₂O₃ formulation suited for back-up and lower-duty zones.',
         features: ['45% Al₂O₃ content', 'Easy installation', 'Reliable thermal performance', 'Cost-effective solution'],
         applications: ['Boiler back-up linings', 'Chimney linings', 'Duct linings', 'General refractory work'],
         image: castableImg,
         specs: { 'Max Temperature': '1400°C', 'Al₂O₃': '45%', 'Bulk Density': '2.0–2.2 g/cm³', 'Type': 'Normal Castable' },
+        appTags: ['furnace-lining', 'repairs'],
       },
       {
         name: 'Normal Castable FH-70',
@@ -211,71 +226,77 @@ const productCategories: ProductCategory[] = [
         temperature: 'Up to 1600°C',
         density: '2.3–2.5 g/cm³',
         benefit: 'Higher alumina conventional castable for moderate-duty service',
-        description: 'Conventional 70% alumina castable suited for moderate-duty furnace linings in steel and cement industries. Good balance of strength, cost, and ease of installation.',
+        description: 'Conventional castable used for general-purpose furnace linings, offering a balance of performance, cost, and ease of installation. 70% Al₂O₃ grade suited for moderate-duty zones in steel and cement industries.',
         features: ['70% Al₂O₃ content', 'Good hot strength', 'Standard conventional formulation', 'Reliable for moderate duty'],
         applications: ['Reheating furnace zones', 'Cement kiln coolers', 'Boiler linings', 'Soaking pit covers'],
         image: castableImg,
         specs: { 'Max Temperature': '1600°C', 'Al₂O₃': '70%', 'Bulk Density': '2.3–2.5 g/cm³', 'Type': 'Normal Castable' },
+        appTags: ['furnace-lining'],
       },
       {
         name: 'Insulite Castable IN CAST-07',
         badge: 'Insulating',
         temperature: 'Up to 1000°C',
         density: '0.7–0.9 g/cm³',
-        benefit: 'Lightweight insulating castable for energy-efficient back-up linings',
-        description: 'Lightweight insulating castable with bulk density ~0.7 g/cm³ designed for back-up insulation in furnaces and kilns. Reduces heat loss and structural load.',
+        benefit: 'Lightweight insulating castable for back-up insulation',
+        description: 'Used as backup insulation behind dense refractory linings to reduce heat loss and improve thermal efficiency. Lightweight castable with bulk density ~0.7 g/cm³. Not recommended for direct flame exposure unless specified.',
         features: ['Very low thermal conductivity', 'Lightweight (0.7 g/cm³)', 'Easy pump or pour application', 'Good insulating properties'],
         applications: ['Back-up insulation linings', 'Heat conservation layers', 'Kiln shells', 'Duct insulation'],
         image: castableImg,
         specs: { 'Max Temperature': '1000°C', 'Bulk Density': '0.7–0.9 g/cm³', 'Type': 'Insulite Castable', 'Key Property': 'Low thermal conductivity' },
+        appTags: ['insulation'],
       },
       {
         name: 'Insulite Castable IN CAST-11',
         badge: 'Insulating',
         temperature: 'Up to 1200°C',
         density: '1.0–1.2 g/cm³',
-        benefit: 'Higher temperature insulating castable for primary insulation',
-        description: 'Insulating castable with 1.1 g/cm³ density rated up to 1200°C, suitable for primary insulation in heat treatment furnaces and kilns. Combines insulation with mechanical strength.',
+        benefit: 'Higher temperature insulating castable for back-up insulation',
+        description: 'Used as backup insulation behind dense refractory linings to reduce heat loss and improve thermal efficiency. Insulating castable with 1.1 g/cm³ density rated up to 1200°C. Not recommended for direct flame exposure unless specified.',
         features: ['Rated up to 1200°C', 'Balanced insulation & strength', 'Pumpable / pourable', 'Reduces shell temperature'],
         applications: ['Heat treatment furnaces', 'Annealing kilns', 'Soaking pit covers', 'Insulation layers'],
         image: castableImg,
         specs: { 'Max Temperature': '1200°C', 'Bulk Density': '1.0–1.2 g/cm³', 'Type': 'Insulite Castable', 'Key Property': 'Insulation + strength' },
+        appTags: ['insulation'],
       },
       {
         name: 'TRL SET-N',
         badge: 'Fire Cement',
         group: 'Fire Cement & Accosset',
         temperature: 'Up to 1400°C',
-        benefit: 'Standard air-setting refractory cement for brick jointing',
-        description: 'Air-setting refractory cement formulated for jointing fire bricks and high alumina bricks in furnaces, boilers, and kilns. Delivers high bonding strength and excellent adhesion in high-temperature environments — ideal for furnace lining, joints, and repairs.',
+        benefit: 'Air-setting refractory cement for general brick jointing',
+        description: 'Air-setting refractory cement used for general brick jointing in furnaces and kilns. Delivers high bonding strength and excellent adhesion in high-temperature environments — ideal for furnace lining, joints, and repairs.',
         features: ['High bonding strength for refractory applications', 'Excellent adhesion at high temperatures', 'Air-setting formulation', 'Easy mixing & application'],
         applications: ['Furnace lining joints', 'Boiler refractory work', 'Kiln construction', 'Repair & patching'],
         image: refractoryCementImg,
         specs: { 'Max Temperature': '1400°C', 'Type': 'Air-setting Cement', 'Grade': 'TRL SET-N', 'Application': 'Brick jointing' },
+        appTags: ['jointing', 'repairs'],
       },
       {
         name: 'TRL SET-F',
         badge: 'Fire Cement',
         group: 'Fire Cement & Accosset',
         temperature: 'Up to 1600°C',
-        benefit: 'Heat-setting cement for high alumina brick jointing',
-        description: 'Heat-setting refractory cement designed for jointing high alumina bricks in severe service zones. Develops strong ceramic bonds with excellent adhesion in high-temperature environments — used in furnace lining, joints, and critical repairs.',
+        benefit: 'Heat-setting cement for high-temperature ceramic bonding',
+        description: 'Heat-setting refractory cement designed for high-temperature zones requiring strong ceramic bonding. Used in furnace lining, joints, and critical repairs across steel and glass industries.',
         features: ['High bonding strength for refractory applications', 'Excellent adhesion in high-temperature environments', 'Heat-setting ceramic bond', 'Withstands up to 1600°C'],
         applications: ['High alumina brick jointing', 'EAF & ladle work', 'Reheating furnace lining', 'Glass tank construction'],
         image: refractoryCementImg,
         specs: { 'Max Temperature': '1600°C', 'Type': 'Heat-setting Cement', 'Grade': 'TRL SET-F', 'Application': 'HA brick jointing' },
+        appTags: ['jointing', 'repairs'],
       },
       {
         name: 'ACCOSSET 50',
         badge: 'Fire Cement',
         group: 'Fire Cement & Accosset',
         temperature: 'Up to 1500°C',
-        benefit: 'High-performance phosphate-bonded setting compound',
-        description: 'Premium phosphate-bonded setting compound delivering high bonding strength for refractory applications. Provides excellent adhesion in high-temperature environments and is widely used in furnace lining, joints, and repairs across steel and ferro-alloy industries.',
-        features: ['High green & fired bond strength', 'Excellent adhesion at high temperatures', 'Controlled setting time', 'Premium phosphate-bonded grade'],
+        benefit: 'Phosphate-bonded setting compound for critical refractory bonding',
+        description: 'Phosphate-bonded setting compound for high-strength bonding in critical refractory applications. Provides excellent adhesion in high-temperature environments and is widely used in furnace lining, joints, and repairs across steel and ferro-alloy industries.',
+        features: ['High green & fired bond strength', 'Excellent adhesion at high temperatures', 'Controlled setting time', 'Phosphate-bonded grade'],
         applications: ['Furnace lining & joints', 'Critical refractory bonding', 'High-temp patching & repairs', 'Precision lining work'],
         image: specialtyMatImg,
         specs: { 'Max Temperature': '1500°C', 'Type': 'Phosphate-bonded Compound', 'Grade': 'ACCOSSET 50', 'Application': 'Critical bonding' },
+        appTags: ['jointing', 'repairs'],
       },
     ],
   },
@@ -287,39 +308,42 @@ const productCategories: ProductCategory[] = [
       {
         name: 'Ceramic Fiber Blanket',
         badge: 'Lightweight',
-        temperature: 'Up to 1400°C',
+        temperature: 'Classification up to 1260°C / 1400°C',
         density: '64–128 kg/m³',
-        benefit: 'Excellent thermal insulation with minimal weight',
-        description: 'High-performance ceramic fiber blankets providing superior insulation at temperatures up to 1400°C. Lightweight, flexible, and chemically resistant for diverse industrial applications.',
-        features: ['Low thermal conductivity', 'Excellent flexibility & drapeability', 'Chemical resistance', 'Easy to cut and install'],
+        benefit: 'Excellent thermal insulation with low conductivity & shock resistance',
+        description: 'High-performance ceramic fiber blankets and modules with classification temperature up to 1260°C / 1400°C depending on grade. Lightweight, flexible, and chemically resistant for diverse industrial applications.',
+        features: ['Low thermal conductivity', 'Thermal shock resistance', 'Excellent flexibility & drapeability', 'Easy to cut and install'],
         applications: ['Furnace linings', 'Expansion joints', 'Pipe wrapping', 'High-temp gaskets'],
         image: ceramicFiberImg,
-        specs: { 'Max Temperature': '1260–1400°C', 'Bulk Density': '64–128 kg/m³', 'Type': 'Ceramic Fiber', 'Key Property': 'Lightweight insulation' },
+        specs: { 'Classification Temp': '1260°C / 1400°C', 'Bulk Density': '64–128 kg/m³', 'Type': 'Ceramic Fiber', 'Key Property': 'Low conductivity, shock resistant' },
         whyChoose: ['Dramatically reduces heat loss', 'Quick installation reduces downtime', 'Flexible – conforms to any shape'],
+        appTags: ['insulation'],
       },
       {
         name: 'Ceramic Fiber Modules',
         badge: 'Pre-engineered',
-        temperature: 'Up to 1400°C',
+        temperature: 'Classification up to 1260°C / 1400°C',
         benefit: 'Quick installation with pre-engineered modular units',
-        description: 'Pre-compressed ceramic fiber modules for rapid furnace lining with consistent quality. Reduces installation time and labor costs significantly.',
-        features: ['Rapid modular installation', 'Pre-compressed for consistent density', 'Reduced labor cost', 'Excellent thermal performance'],
+        description: 'Pre-compressed ceramic fiber modules for rapid furnace lining with consistent quality and classification temperature up to 1260°C / 1400°C depending on grade. Reduces installation time and labor costs significantly.',
+        features: ['Rapid modular installation', 'Pre-compressed for consistent density', 'Low thermal conductivity', 'Thermal shock resistance'],
         applications: ['Furnace walls', 'Kiln linings', 'Annealing furnaces', 'Forge furnaces'],
         image: ceramicFiberImg,
-        specs: { 'Max Temperature': '1400°C', 'Type': 'Pre-compressed Module', 'Installation': 'Modular / Quick-fit', 'Key Property': 'Consistent density' },
+        specs: { 'Classification Temp': '1260°C / 1400°C', 'Type': 'Pre-compressed Module', 'Installation': 'Modular / Quick-fit', 'Key Property': 'Consistent density' },
+        appTags: ['insulation'],
       },
       {
         name: 'Rockwool Mattress',
         badge: 'Industrial',
         temperature: 'Up to 750°C',
         density: '80–150 kg/m³',
-        benefit: 'Cost-effective thermal & acoustic insulation',
-        description: 'Industrial-grade rockwool providing dual thermal and acoustic insulation properties. Available in LRB Rockwool Mattress variant for specialized applications.',
-        features: ['Thermal insulation up to 750°C', 'Sound absorption capability', 'Fire resistant', 'Cost effective solution'],
+        benefit: 'Available in multiple densities & thicknesses for industrial use',
+        description: 'Industrial-grade rockwool providing dual thermal and acoustic insulation properties. Available in multiple densities and thicknesses for industrial applications including LRB Rockwool Mattress.',
+        features: ['Thermal insulation up to 750°C', 'Sound absorption capability', 'Fire resistant', 'Multiple densities & thicknesses'],
         applications: ['Pipe insulation', 'HVAC systems', 'Industrial ovens', 'Building insulation'],
         image: rockwoolImg,
         specs: { 'Max Temperature': '750°C', 'Bulk Density': '80–150 kg/m³', 'Type': 'Rockwool', 'Features': 'Thermal + Acoustic insulation' },
-        variants: ['LRB Rockwool Mattress'],
+        variants: ['LRB Rockwool Mattress', 'Multiple densities', 'Multiple thicknesses'],
+        appTags: ['insulation'],
       },
       {
         name: 'Calcium Silicate Boards',
@@ -331,16 +355,18 @@ const productCategories: ProductCategory[] = [
         applications: ['Fire protection', 'Backup insulation', 'Industrial partitions', 'Kiln furniture'],
         image: calciumSilicateImg,
         specs: { 'Max Temperature': '1000°C', 'Type': 'Calcium Silicate', 'Key Property': 'Non-combustible', 'Machinability': 'Excellent' },
+        appTags: ['insulation'],
       },
       {
         name: 'Asbestos-Free Mill Board',
         badge: 'Mill Board',
-        benefit: 'Safe, asbestos-free mill board for gaskets & linings',
-        description: 'High-quality asbestos-free mill board for industrial insulation, gaskets, and thermal barriers. Compliant with modern safety standards in steel, power, and chemical industries.',
-        features: ['100% asbestos-free', 'Good thermal insulation', 'Easy to cut and shape', 'Compliant with safety standards'],
+        benefit: 'Asbestos-free mill board for gaskets, barriers & insulation',
+        description: 'Used for gaskets, thermal barriers, and insulation in industrial applications with safe asbestos-free composition. Compliant with modern safety standards across steel, power, and chemical industries.',
+        features: ['100% asbestos-free composition', 'Good thermal insulation', 'Easy to cut and shape', 'Compliant with safety standards'],
         applications: ['Gaskets & seals', 'Thermal barriers', 'Furnace door linings', 'Insulation packing'],
         image: millBoardImg,
         specs: { 'Type': 'Asbestos-Free Mill Board', 'Safety': '100% Asbestos Free', 'Machinability': 'Easy to cut', 'Application': 'Gaskets, barriers, linings' },
+        appTags: ['insulation', 'jointing'],
       },
       {
         name: 'Aluminium Sheet / Anodised Roll',
@@ -352,6 +378,7 @@ const productCategories: ProductCategory[] = [
         image: aluminiumSheetImg,
         specs: { 'Type': 'Aluminium Cladding', 'Variants': 'Sheet, Anodised Roll', 'Key Property': 'Reflective & corrosion resistant', 'Application': 'External cladding' },
         variants: ['Aluminium Sheet', 'Anodised Aluminium Roll'],
+        appTags: ['insulation'],
       },
       {
         name: 'Loose Glass Wool',
@@ -363,6 +390,7 @@ const productCategories: ProductCategory[] = [
         image: looseGlassWoolImg,
         specs: { 'Type': 'Loose Glass Wool', 'Key Property': 'Thermal & acoustic insulation', 'Fire Rating': 'Fire Resistant', 'Installation': 'Fill & blow-in' },
         whyChoose: ['Fills irregular spaces conventional materials cannot', 'Excellent thermal and acoustic performance', 'Cost-effective insulation solution', 'Easy and quick installation'],
+        appTags: ['insulation'],
       },
     ],
   },
@@ -375,24 +403,26 @@ const productCategories: ProductCategory[] = [
         name: 'Refractory Mortars',
         badge: 'Jointing',
         temperature: 'Up to 1700°C',
-        benefit: 'High-bond strength jointing mortars including TRL 60M & TRL 70M',
-        description: 'Specialized refractory mortars formulated for bonding fire and high alumina bricks with high-temperature stability. TRL 60M and TRL 70M grades deliver strong, durable joints in furnace and kiln constructions.',
+        benefit: 'Refractory mortars for bonding fire & high alumina bricks',
+        description: 'Refractory mortars used for bonding fire bricks and high alumina bricks, ensuring strong joints and thermal stability. TRL 60M and TRL 70M grades available for varying service conditions.',
         features: ['High bond strength', 'TRL 60M (60% Al₂O₃) & TRL 70M (70% Al₂O₃) grades', 'Good workability & trowellability', 'Chemical & thermal resistant'],
         applications: ['High alumina brick laying', 'Joint filling in furnaces', 'Repair work', 'Kiln & boiler construction'],
         image: refractoryMortarImg,
         specs: { 'Max Temperature': '1700°C', 'Grades': 'TRL 60M, TRL 70M', 'Type': 'Refractory Mortar', 'Workability': 'Excellent' },
         variants: ['TRL 60M', 'TRL 70M'],
+        appTags: ['jointing', 'repairs'],
       },
       {
         name: 'Fire Clay',
         badge: 'Versatile',
         temperature: 'Up to 1000°C',
-        benefit: 'Multi-purpose bonding & patching material',
-        description: 'Versatile fire clay for bonding, patching, and general refractory applications. Temperature stable up to 1000°C with good plasticity for easy working.',
-        features: ['Multi-purpose refractory use', 'Good plasticity & workability', 'Temperature stable to 1000°C', 'Cost effective material'],
-        applications: ['General refractory work', 'Patching & repairs', 'Bonding applications', 'Mold making'],
+        benefit: 'Plastic clay for patching, jointing & low-temperature repairs',
+        description: 'Plastic refractory clay used for patching, jointing, and temporary repairs in low-temperature applications. Good plasticity for easy on-site working.',
+        features: ['Plastic refractory clay', 'Good plasticity & workability', 'Suitable for low-temperature repairs', 'Easy on-site application'],
+        applications: ['Patching & temporary repairs', 'Joint filling', 'General refractory work', 'Mold making'],
         image: fireClayImg,
-        specs: { 'Max Temperature': '1000°C', 'Type': 'Fire Clay', 'Key Property': 'Good plasticity', 'Application': 'Multi-purpose' },
+        specs: { 'Max Temperature': '1000°C', 'Type': 'Plastic Fire Clay', 'Key Property': 'Good plasticity', 'Application': 'Patching & jointing' },
+        appTags: ['repairs', 'jointing'],
       },
       {
         name: 'Acid Proof Tiles',
@@ -403,6 +433,7 @@ const productCategories: ProductCategory[] = [
         applications: ['Chemical plant floors', 'Acid storage areas', 'Laboratory floors', 'Effluent channels'],
         image: acidProofImg,
         specs: { 'Type': 'Acid Proof Tile', 'Chemical Resistance': 'High', 'Porosity': 'Very Low', 'Application': 'Chemical environments' },
+        appTags: ['furnace-lining'],
       },
       {
         name: 'Cast Iron Boiler Fire Door',
@@ -413,6 +444,7 @@ const productCategories: ProductCategory[] = [
         applications: ['Boiler access', 'Furnace doors', 'Inspection openings', 'Maintenance access'],
         image: boilerCompImg,
         specs: { 'Material': 'Cast Iron', 'Type': 'Boiler Fire Door', 'Key Property': 'Heat resistant, secure', 'Application': 'Boiler access' },
+        appTags: ['repairs'],
       },
       {
         name: 'Nozzles',
@@ -424,26 +456,29 @@ const productCategories: ProductCategory[] = [
         applications: ['Steel ladle nozzles', 'Tundish nozzles', 'Continuous casting', 'Foundry pouring systems'],
         image: boilerCompImg,
         specs: { 'Max Temperature': '1700°C', 'Type': 'Refractory Nozzle', 'Application': 'Molten metal flow control', 'Material': 'High Alumina / Zirconia' },
+        appTags: ['furnace-lining'],
       },
       {
         name: 'Sodium Silicate Binder',
         badge: 'Binder',
-        benefit: 'Versatile sodium silicate binder for refractory systems',
-        description: 'Industrial-grade sodium silicate binder used in refractory formulations, foundry core making, coatings, and sealing applications across steel, foundry, and chemical industries.',
-        features: ['Strong binding power', 'Chemical stability', 'Versatile formulation', 'Cost effective'],
+        benefit: 'Sodium silicate binder for refractory & foundry applications',
+        description: 'Industrial-grade sodium silicate binder widely used in refractory formulations and foundry applications for binding and sealing. Used across steel, foundry, and chemical industries for core making, coatings, and sealing.',
+        features: ['Strong binding power', 'Chemical stability', 'Versatile for refractory & foundry use', 'Effective sealing & coating'],
         applications: ['Refractory bonding', 'Foundry core binding', 'Surface coating', 'Sealing applications'],
         image: specialtyMatImg,
         specs: { 'Type': 'Sodium Silicate Binder', 'Key Property': 'Strong binding', 'Application': 'Binder / Sealer', 'Form': 'Liquid' },
+        appTags: ['jointing'],
       },
       {
         name: 'Bed Material',
         badge: 'FBC',
-        benefit: 'Optimized for fluidized bed combustion operations',
-        description: 'Specially graded bed material for optimal performance in FBC boiler systems. Consistent particle size and low attrition rate for reliable combustion in power plants.',
-        features: ['Optimized particle size distribution', 'Consistent quality', 'Low attrition rate', 'Thermal stability'],
+        benefit: 'Graded bed material for FBC boilers',
+        description: 'Graded bed material for Fluidized Bed Combustion (FBC) boilers ensuring proper fluidization, efficient combustion, and minimal clinker formation in power plants and industrial boilers.',
+        features: ['Optimized particle size distribution', 'Ensures proper fluidization', 'Minimal clinker formation', 'Low attrition rate'],
         applications: ['FBC boilers', 'Fluidized bed systems', 'Combustion beds', 'Power plants'],
         image: specialtyMatImg,
-        specs: { 'Type': 'FBC Bed Material', 'Key Property': 'Optimized particle size', 'Application': 'Fluidized bed combustion', 'Quality': 'Consistent grading' },
+        specs: { 'Type': 'Fluidized Bed Combustion (FBC) Bed Material', 'Key Property': 'Optimized fluidization', 'Application': 'FBC boilers', 'Quality': 'Consistent grading' },
+        appTags: ['repairs'],
       },
     ],
   },
@@ -453,15 +488,16 @@ const productCategories: ProductCategory[] = [
     title: 'Grounding',
     products: [
       {
-        name: 'GP2 Non-Shrink Grout (Conbextra)',
+        name: 'GP2 Non-Shrink Grout',
         badge: 'Grout',
-        benefit: 'High-bond, non-shrink grout for industrial foundations',
-        description: 'Fosroc Conbextra GP2 is a high-strength, non-shrink cementitious grout engineered for precision base plate grouting, machinery foundations, and structural anchoring in industrial plants. Delivers superior bonding and crack-free performance under heavy loads.',
-        features: ['High bonding strength', 'Non-shrink performance', 'Crack-resistant cured matrix', 'Excellent flow & placement'],
-        applications: ['Machinery foundations', 'Base plate grouting', 'Anchor bolt grouting', 'Industrial structural grouting'],
+        benefit: 'High-strength, non-shrink grout for industrial foundations',
+        description: 'High-strength cementitious non-shrink grout used for machinery foundations, base plates, and structural anchoring. Provides high load-bearing capacity and crack-free performance under heavy industrial loads.',
+        features: ['High bonding strength', 'Non-shrink performance', 'High load-bearing capacity', 'Crack-free cured matrix'],
+        applications: ['Machinery foundations', 'Base plate grouting', 'Anchor bolt grouting', 'Industrial structural anchoring'],
         image: specialtyMatImg,
-        specs: { 'Type': 'Non-Shrink Cementitious Grout', 'Brand': 'Fosroc Conbextra GP2', 'Key Property': 'Non-shrink, high bond', 'Application': 'Industrial foundations' },
-        whyChoose: ['Ensures long-term machinery stability', 'No shrinkage means perfect load transfer', 'Trusted Fosroc quality'],
+        specs: { 'Type': 'Non-Shrink Cementitious Grout', 'Key Property': 'Non-shrink, high bond', 'Load Capacity': 'High', 'Application': 'Industrial foundations' },
+        whyChoose: ['Ensures long-term machinery stability', 'No shrinkage means perfect load transfer', 'High load-bearing & crack-free'],
+        appTags: ['jointing'],
       },
     ],
   },
@@ -484,6 +520,13 @@ const industries = [
   { label: 'Chemical Plants', value: 'chemical' },
   { label: 'Power Plants', value: 'power' },
   { label: 'Glass Industries', value: 'glass' },
+];
+
+const applicationOptions: { label: string; value: ApplicationTag }[] = [
+  { label: 'Furnace Lining', value: 'furnace-lining' },
+  { label: 'Insulation', value: 'insulation' },
+  { label: 'Jointing', value: 'jointing' },
+  { label: 'Repairs', value: 'repairs' },
 ];
 
 function getMaxTemp(product: Product): number {
@@ -664,25 +707,43 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           )}
           
           {/* Action buttons */}
-          <div className="flex gap-2 pt-1">
+          <div className="flex flex-col gap-2 pt-1">
             <Button 
               variant="outline" 
               size="sm" 
-              className="flex-1 text-xs font-medium"
+              className="w-full text-xs font-medium"
               onClick={() => setExpanded(!expanded)}
             >
               {expanded ? 'Show Less' : 'View Details'}
               <ChevronRight size={14} className={`ml-auto transition-transform ${expanded ? 'rotate-90' : ''}`} />
             </Button>
-            <Button 
-              size="sm" 
-              className="text-xs font-medium"
-              asChild
-            >
-              <Link to="/contact">
-                Get Quote
-              </Link>
-            </Button>
+            <div className="flex gap-2">
+              <Button 
+                size="sm" 
+                className="flex-1 text-xs font-medium gap-1.5"
+                asChild
+              >
+                <Link to={`/contact?product=${encodeURIComponent(product.name)}`}>
+                  Enquire Now
+                  <ArrowRight size={12} />
+                </Link>
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                className="text-xs font-medium px-3 border-[#25D366]/40 text-[#1ebe5d] hover:bg-[#25D366] hover:text-white hover:border-[#25D366]"
+                asChild
+                aria-label={`WhatsApp enquiry for ${product.name}`}
+              >
+                <a
+                  href={`https://wa.me/919897329686?text=${encodeURIComponent(`Hi, I would like a quote for ${product.name}. Please share details.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle size={14} />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -743,9 +804,10 @@ function CategorySection({ category, categoryIndex }: { category: ProductCategor
 export default function Products() {
   const [tempFilter, setTempFilter] = useState('all');
   const [industryFilter, setIndustryFilter] = useState('all');
+  const [appFilter, setAppFilter] = useState<ApplicationTag | 'all'>('all');
   const [showFilters, setShowFilters] = useState(false);
 
-  const hasActiveFilter = tempFilter !== 'all' || industryFilter !== 'all';
+  const hasActiveFilter = tempFilter !== 'all' || industryFilter !== 'all' || appFilter !== 'all';
 
   const filteredCategories = useMemo(() => {
     return productCategories.map(cat => ({
@@ -762,10 +824,12 @@ export default function Products() {
         }
         // Industry filter
         if (!matchesIndustry(p, industryFilter)) return false;
+        // Application filter
+        if (appFilter !== 'all' && !(p.appTags || []).includes(appFilter)) return false;
         return true;
       }),
     })).filter(cat => cat.products.length > 0);
-  }, [tempFilter, industryFilter]);
+  }, [tempFilter, industryFilter, appFilter]);
 
   const totalProducts = filteredCategories.reduce((sum, c) => sum + c.products.length, 0);
 
@@ -821,15 +885,48 @@ export default function Products() {
                   variant="ghost"
                   size="sm"
                   className="text-xs text-muted-foreground h-7 px-2"
-                  onClick={() => { setTempFilter('all'); setIndustryFilter('all'); }}
+                  onClick={() => { setTempFilter('all'); setIndustryFilter('all'); setAppFilter('all'); }}
                 >
                   <X size={12} />
                   Clear
                 </Button>
               )}
             </div>
+          </div>
+
+          {/* Application tag chips (always visible) */}
+          <div className="mt-3 pt-3 border-t border-border flex items-center gap-2 overflow-x-auto">
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5 flex-shrink-0">
+              <Briefcase size={12} className="text-primary" />
+              By Application
+            </span>
+            <div className="flex gap-1.5 flex-shrink-0">
+              <button
+                onClick={() => setAppFilter('all')}
+                className={`text-[11px] font-mono px-2.5 py-1 rounded-full border transition-all ${
+                  appFilter === 'all'
+                    ? 'bg-primary text-primary-foreground border-primary'
+                    : 'bg-background text-muted-foreground border-border hover:border-primary/40'
+                }`}
+              >
+                All
+              </button>
+              {applicationOptions.map(opt => (
+                <button
+                  key={opt.value}
+                  onClick={() => setAppFilter(opt.value)}
+                  className={`text-[11px] font-mono px-2.5 py-1 rounded-full border transition-all whitespace-nowrap ${
+                    appFilter === opt.value
+                      ? 'bg-primary text-primary-foreground border-primary'
+                      : 'bg-background text-muted-foreground border-border hover:border-primary/40'
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
             {/* Quick category nav */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-2 ml-auto flex-shrink-0">
               {productCategories.map(c => (
                 <a
                   key={c.id}
@@ -909,7 +1006,7 @@ export default function Products() {
                 variant="outline"
                 size="sm"
                 className="mt-4 text-xs"
-                onClick={() => { setTempFilter('all'); setIndustryFilter('all'); }}
+                onClick={() => { setTempFilter('all'); setIndustryFilter('all'); setAppFilter('all'); }}
               >
                 Clear Filters
               </Button>
