@@ -926,7 +926,7 @@ export default function Products() {
               ))}
             </div>
             {/* Quick category nav */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-2 ml-auto flex-shrink-0">
               {productCategories.map(c => (
                 <a
                   key={c.id}
