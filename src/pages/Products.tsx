@@ -804,9 +804,10 @@ function CategorySection({ category, categoryIndex }: { category: ProductCategor
 export default function Products() {
   const [tempFilter, setTempFilter] = useState('all');
   const [industryFilter, setIndustryFilter] = useState('all');
+  const [appFilter, setAppFilter] = useState<ApplicationTag | 'all'>('all');
   const [showFilters, setShowFilters] = useState(false);
 
-  const hasActiveFilter = tempFilter !== 'all' || industryFilter !== 'all';
+  const hasActiveFilter = tempFilter !== 'all' || industryFilter !== 'all' || appFilter !== 'all';
 
   const filteredCategories = useMemo(() => {
     return productCategories.map(cat => ({
@@ -823,10 +824,12 @@ export default function Products() {
         }
         // Industry filter
         if (!matchesIndustry(p, industryFilter)) return false;
+        // Application filter
+        if (appFilter !== 'all' && !(p.appTags || []).includes(appFilter)) return false;
         return true;
       }),
     })).filter(cat => cat.products.length > 0);
-  }, [tempFilter, industryFilter]);
+  }, [tempFilter, industryFilter, appFilter]);
 
   const totalProducts = filteredCategories.reduce((sum, c) => sum + c.products.length, 0);
 
