@@ -107,6 +107,24 @@ export default function Footer() {
               </ul>
             </div>
 
+            {/* Industries Served */}
+            <div>
+              <h4 className="font-heading font-semibold text-foreground mb-6">Industries</h4>
+              <ul className="space-y-3">
+                {industriesServed.map((industry) => (
+                  <li key={industry}>
+                    <Link
+                      to="/about"
+                      className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
+                    >
+                      <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                      <span className="break-words">{industry}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Contact */}
             <div>
               <h4 className="font-heading font-semibold text-foreground mb-6">Contact</h4>
