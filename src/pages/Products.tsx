@@ -1006,7 +1006,7 @@ export default function Products() {
                 variant="outline"
                 size="sm"
                 className="mt-4 text-xs"
-                onClick={() => { setTempFilter('all'); setIndustryFilter('all'); }}
+                onClick={() => { setTempFilter('all'); setIndustryFilter('all'); setAppFilter('all'); }}
               >
                 Clear Filters
               </Button>
