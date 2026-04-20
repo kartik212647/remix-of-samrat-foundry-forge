@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Layers, Droplets, Flame, Package, Thermometer, Scale, Zap, Shield, ChevronRight, Filter, X, MessageSquare, Factory, FlaskConical, Anchor, Wrench, Globe } from 'lucide-react';
+import { ArrowRight, Layers, Droplets, Flame, Package, Thermometer, Scale, Zap, Shield, ChevronRight, Filter, X, MessageSquare, MessageCircle, Factory, FlaskConical, Anchor, Wrench, Globe, Briefcase } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { Badge } from '@/components/ui/badge';
