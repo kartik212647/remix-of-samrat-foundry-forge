@@ -121,14 +121,16 @@
 @layer components {
   /* Industrial Card Styles */
   .card-industrial {
-    @apply bg-card border border-border rounded-sm;
+    @apply bg-card border border-border/70 rounded-xl;
     background: var(--gradient-card);
     box-shadow: var(--shadow-card);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
 
   .card-industrial:hover {
-    @apply border-primary/30;
-    box-shadow: var(--shadow-glow);
+    @apply border-primary/40;
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px -18px hsl(0 0% 0% / 0.18), 0 0 0 1px hsl(0 72% 45% / 0.08);
   }
 
   /* Section Styles */
@@ -176,20 +178,24 @@
 
   /* Button Variants */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-sm transition-all duration-300;
+    @apply inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground font-semibold rounded-md transition-all duration-300;
+    box-shadow: 0 6px 16px -6px hsl(0 72% 45% / 0.4);
   }
 
   .btn-primary:hover {
-    @apply bg-primary/90 shadow-lg;
-    box-shadow: var(--shadow-glow);
+    @apply bg-primary/90;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -8px hsl(0 72% 45% / 0.55);
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-primary text-primary font-medium rounded-sm transition-all duration-300;
+    @apply inline-flex items-center justify-center px-7 py-3.5 border-2 border-primary text-primary font-semibold rounded-md transition-all duration-300;
   }
 
   .btn-outline:hover {
     @apply bg-primary text-primary-foreground;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -8px hsl(0 72% 45% / 0.4);
   }
 
   /* Link Styles */
