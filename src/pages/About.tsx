@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Target, Eye, Users, Cog, Flame, Factory, ThermometerSun, Award, Shield, CheckCircle, Package, Truck, Clock, HeartHandshake, BadgeCheck, FileImage } from 'lucide-react';
+import { ArrowRight, Target, Eye, Users, Cog, Flame, Factory, ThermometerSun, Award, Shield, CheckCircle, Package, Truck, Clock, HeartHandshake, BadgeCheck } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
 import GallerySlider from '@/components/GallerySlider';
 import ownerImage from '@/assets/owner-portrait.jpg';
+import dealerCertificate from '@/assets/tata-dealer-certificate.png';
 
 const industries = [
   {
@@ -240,13 +241,36 @@ export default function About() {
                   ))}
                 </div>
 
-                {/* Dealer Certificate Placeholder */}
-                <div className="border border-dashed border-border/60 rounded-sm p-6 text-center"
-                  style={{ background: 'linear-gradient(145deg, hsl(0 0% 99%), hsl(0 0% 96%))' }}
+                {/* Dealer Certificate */}
+                <div className="rounded-lg p-4 md:p-5 border border-border/60"
+                  style={{
+                    background: 'linear-gradient(145deg, hsl(0 0% 100%), hsl(0 0% 97%))',
+                    boxShadow: '0 8px 24px -12px hsl(0 0% 0% / 0.15), inset 0 1px 0 hsl(0 0% 100% / 0.8)',
+                  }}
                 >
-                  <FileImage size={32} className="text-muted-foreground/40 mx-auto mb-2" />
-                  <p className="text-sm font-medium text-muted-foreground">Dealer Certificate</p>
-                  <p className="text-xs text-muted-foreground/60 mt-1">Official TATA authorization certificate</p>
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-2">
+                      <BadgeCheck size={16} className="text-primary" />
+                      <p className="text-sm font-semibold text-foreground">Official Letter of Authorization</p>
+                    </div>
+                    <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">2025–26</span>
+                  </div>
+                  <a
+                    href={dealerCertificate}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block overflow-hidden rounded-md border border-border/60 group"
+                  >
+                    <img
+                      src={dealerCertificate}
+                      alt="TRL Krosaki Letter of Authorization 2025-26 — Samrat Refractories Works authorized channel partner certificate"
+                      className="w-full h-auto object-contain bg-white transition-transform duration-500 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                  </a>
+                  <p className="text-xs text-muted-foreground/80 mt-3 text-center">
+                    Authorized channel partner of TRL Krosaki Refractories Limited · Valid till 31st March, 2026
+                  </p>
                 </div>
 
                 {/* Bottom metallic line */}
