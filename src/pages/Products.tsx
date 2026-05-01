@@ -144,7 +144,7 @@ const productCategories: ProductCategory[] = [
     title: 'Monolithics',
     products: [
       {
-        name: 'Dense Castable AH-60',
+        name: 'High Alumina Castable AH-60',
         badge: 'Dense',
         temperature: 'Up to 1600°C',
         density: '2.3–2.6 g/cm³',
@@ -157,7 +157,7 @@ const productCategories: ProductCategory[] = [
         appTags: ['furnace-lining', 'repairs'],
       },
       {
-        name: 'Dense Castable AH-90',
+        name: 'High Alumina Castable AH-90',
         badge: 'Dense',
         temperature: 'Up to 1750°C',
         density: '2.6–2.9 g/cm³',
@@ -193,18 +193,6 @@ const productCategories: ProductCategory[] = [
         applications: ['Ladles', 'Burner zones', 'Cyclones', 'Boiler refractory linings'],
         image: castableImg,
         specs: { 'Max Temperature': '1600°C', 'Al₂O₃': '60%', 'Bulk Density': '2.5–2.7 g/cm³', 'Type': 'Low Cement Castable' },
-        appTags: ['furnace-lining'],
-      },
-      {
-        name: 'High Alumina Castables',
-        badge: 'High Alumina',
-        temperature: 'Up to 1750°C',
-        benefit: 'Structural high alumina castable for load-bearing applications',
-        description: 'High Alumina Castables designed for structural applications where high-temperature stability and load-bearing strength are critical. Available in multiple alumina grades depending on service conditions.',
-        features: ['Multiple alumina grades available', 'Excellent high-temperature stability', 'High load-bearing strength', 'Good corrosion resistance'],
-        applications: ['Petrochemical reactors', 'Glass tanks', 'Aluminium melting furnaces', 'Special alloy furnaces'],
-        image: castableImg,
-        specs: { 'Max Temperature': '1750°C', 'Type': 'High Alumina Castable', 'Key Property': 'Load-bearing strength', 'Application': 'Structural high-temp linings' },
         appTags: ['furnace-lining'],
       },
       {
