@@ -37,17 +37,17 @@ const industriesServed = [
 export default function Footer() {
   return (
     <>
-      <footer className="bg-secondary border-t border-border">
+      <footer className="bg-[hsl(var(--footer-bg))] text-[hsl(var(--footer-fg))] border-t-4 border-primary">
         <div className="container-industrial section-padding">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
             {/* Company Info */}
             <div className="lg:col-span-1">
-              <img src={logo} alt="Samrat Refractories Works" className="h-12 w-auto mb-6" />
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+              <img src={logo} alt="Samrat Refractories Works" className="h-12 w-auto mb-6 brightness-0 invert" />
+              <p className="text-[hsl(var(--footer-muted))] text-sm leading-relaxed mb-6">
                 Engineering reliable refractory solutions for high-temperature industries. 
                 25+ years of proven execution excellence.
               </p>
-              <div className="flex items-center gap-2 text-primary font-mono text-sm">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-primary/15 text-primary font-mono text-xs border border-primary/30">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
                 GST Registered
               </div>
@@ -55,13 +55,13 @@ export default function Footer() {
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-heading font-semibold text-foreground mb-6">Quick Links</h4>
+              <h4 className="font-heading font-bold text-white mb-6 uppercase text-sm tracking-wider">Quick Links</h4>
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       to={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
+                      className="text-[hsl(var(--footer-muted))] hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
                     >
                       <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                       {link.name}
@@ -73,13 +73,13 @@ export default function Footer() {
 
             {/* Products */}
             <div>
-              <h4 className="font-heading font-semibold text-foreground mb-6">Products</h4>
+              <h4 className="font-heading font-bold text-white mb-6 uppercase text-sm tracking-wider">Products</h4>
               <ul className="space-y-3">
                 {products.map((product) => (
                   <li key={product.name}>
                     <Link
                       to={product.href}
-                      className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
+                      className="text-[hsl(var(--footer-muted))] hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
                     >
                       <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                       <span className="break-words">{product.name}</span>
@@ -91,13 +91,13 @@ export default function Footer() {
 
             {/* Services */}
             <div>
-              <h4 className="font-heading font-semibold text-foreground mb-6">Services</h4>
+              <h4 className="font-heading font-bold text-white mb-6 uppercase text-sm tracking-wider">Services</h4>
               <ul className="space-y-3">
                 {services.map((service) => (
                   <li key={service}>
                     <Link
                       to="/services"
-                      className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
+                      className="text-[hsl(var(--footer-muted))] hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
                     >
                       <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                       <span className="break-words">{service}</span>
@@ -109,13 +109,13 @@ export default function Footer() {
 
             {/* Industries Served */}
             <div>
-              <h4 className="font-heading font-semibold text-foreground mb-6">Industries</h4>
+              <h4 className="font-heading font-bold text-white mb-6 uppercase text-sm tracking-wider">Industries</h4>
               <ul className="space-y-3">
                 {industriesServed.map((industry) => (
                   <li key={industry}>
                     <Link
                       to="/about"
-                      className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
+                      className="text-[hsl(var(--footer-muted))] hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
                     >
                       <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                       <span className="break-words">{industry}</span>
@@ -127,23 +127,23 @@ export default function Footer() {
 
             {/* Contact */}
             <div>
-              <h4 className="font-heading font-semibold text-foreground mb-6">Contact</h4>
+              <h4 className="font-heading font-bold text-white mb-6 uppercase text-sm tracking-wider">Contact</h4>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <MapPin size={18} className="text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-muted-foreground text-sm">
+                  <span className="text-[hsl(var(--footer-muted))] text-sm">
                     Samrat Refractories Works, Roorkee, Uttarakhand, India
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone size={18} className="text-primary flex-shrink-0" />
-                  <a href="tel:+919897329686" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  <a href="tel:+919897329686" className="text-[hsl(var(--footer-muted))] hover:text-primary transition-colors text-sm">
                     +91 98973 29686
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail size={18} className="text-primary flex-shrink-0" />
-                  <a href="mailto:sanjaysingh@samratrefractories.com" className="text-muted-foreground hover:text-primary transition-colors text-sm break-all">
+                  <a href="mailto:sanjaysingh@samratrefractories.com" className="text-[hsl(var(--footer-muted))] hover:text-primary transition-colors text-sm break-all">
                     sanjaysingh@samratrefractories.com
                   </a>
                 </li>
@@ -152,12 +152,12 @@ export default function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-muted-foreground text-sm">
+          <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-[hsl(var(--footer-muted))] text-sm">
               © {new Date().getFullYear()} Samrat Refractories Works. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <span className="font-mono text-xs text-muted-foreground">
+              <span className="font-mono text-xs text-[hsl(var(--footer-muted))]">
                 HSN Compliant
               </span>
             </div>

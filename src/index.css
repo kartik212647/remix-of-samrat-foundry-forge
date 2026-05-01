@@ -25,7 +25,7 @@
     --secondary-foreground: 0 0% 9%;
 
     --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 40%;
+    --muted-foreground: 0 0% 32%;
 
     --accent: 0 72% 45%;
     --accent-foreground: 0 0% 100%;
@@ -45,6 +45,11 @@
     --samrat-red: 0 72% 45%;
     --steel-grey: 0 0% 55%;
     --warm-white: 30 20% 98%;
+
+    /* Footer dark */
+    --footer-bg: 0 0% 12%;
+    --footer-fg: 0 0% 92%;
+    --footer-muted: 0 0% 65%;
 
     /* Gradients */
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 100% / 0.1) 0%, hsl(0 0% 100% / 0.95) 100%);
@@ -121,16 +126,16 @@
 @layer components {
   /* Industrial Card Styles */
   .card-industrial {
-    @apply bg-card border border-border/70 rounded-xl;
+    @apply bg-card border border-border rounded-lg;
     background: var(--gradient-card);
     box-shadow: var(--shadow-card);
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
 
   .card-industrial:hover {
-    @apply border-primary/40;
-    transform: translateY(-3px);
-    box-shadow: 0 18px 40px -18px hsl(0 0% 0% / 0.18), 0 0 0 1px hsl(0 72% 45% / 0.08);
+    @apply border-primary;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -18px hsl(0 0% 0% / 0.22), 0 0 0 1px hsl(0 72% 45% / 0.15);
   }
 
   /* Section Styles */
@@ -183,7 +188,7 @@
   }
 
   .btn-primary:hover {
-    @apply bg-primary/90;
+    background-color: hsl(0 75% 38%);
     transform: translateY(-2px);
     box-shadow: 0 12px 28px -8px hsl(0 72% 45% / 0.55);
   }

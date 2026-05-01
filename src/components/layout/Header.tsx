@@ -13,14 +13,26 @@ const navigation = [
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="relative z-50 bg-background border-b border-border">
+    <header
+      className={`sticky top-0 z-50 bg-background/95 backdrop-blur transition-all duration-300 ${
+        scrolled ? 'shadow-[0_4px_20px_-8px_rgba(0,0,0,0.15)] border-b border-border' : 'border-b border-border/60'
+      }`}
+    >
       <div className="container-industrial">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -34,10 +46,10 @@ export default function Header() {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
+                className={`relative px-4 py-2.5 text-sm font-semibold transition-colors duration-200 ${
                   location.pathname === item.href
-                    ? 'text-primary'
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? 'text-primary after:content-[""] after:absolute after:left-4 after:right-4 after:-bottom-0.5 after:h-0.5 after:bg-primary'
+                    : 'text-foreground/80 hover:text-primary'
                 }`}
               >
                 {item.name}
