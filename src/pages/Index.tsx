@@ -254,7 +254,7 @@ export default function Home() {
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-16 md:py-20 bg-secondary">
+      <section className="section-metallic py-16 md:py-20">
         <div className="container-industrial">
           <SectionHeader
             label="Core Capabilities"
@@ -394,7 +394,7 @@ export default function Home() {
       </section>
 
       {/* Technical Expertise & Quality */}
-      <section className="py-16 md:py-20 bg-secondary">
+      <section className="section-metallic py-16 md:py-20">
         <div className="container-industrial">
           <div className="grid md:grid-cols-2 gap-8">
             <ScrollReveal>

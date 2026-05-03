@@ -199,6 +199,61 @@
       inset 0 1px 0 hsl(0 0% 100% / 0.12);
   }
 
+  /* Dark metallic section background — for accent slides across pages */
+  .section-metallic {
+    position: relative;
+    background: var(--gradient-dark-grey);
+    color: hsl(0 0% 100%);
+    overflow: hidden;
+  }
+
+  .section-metallic::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 15% 20%, hsl(0 0% 100% / 0.06) 0px, transparent 40%),
+      radial-gradient(circle at 85% 80%, hsl(0 72% 45% / 0.10) 0px, transparent 45%),
+      linear-gradient(135deg, transparent 0%, hsl(0 0% 100% / 0.04) 50%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .section-metallic::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-metallic);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .section-metallic > * { position: relative; z-index: 1; }
+
+  /* Bold white headings/text helpers for dark sections */
+  .section-metallic h1,
+  .section-metallic h2,
+  .section-metallic h3,
+  .section-metallic h4 {
+    color: hsl(0 0% 100%);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /* Default text on dark sections is white/light */
+  .section-metallic .text-foreground { color: hsl(0 0% 100%); }
+  .section-metallic .text-muted-foreground { color: hsl(0 0% 82%); }
+
+  /* Reset inside light cards to keep them readable */
+  .section-metallic .card-industrial .text-foreground { color: hsl(var(--foreground)); }
+  .section-metallic .card-industrial .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+  .section-metallic .card-industrial h1,
+  .section-metallic .card-industrial h2,
+  .section-metallic .card-industrial h3,
+  .section-metallic .card-industrial h4 { color: hsl(var(--foreground)); }
+
   /* Section Styles */
   .section-padding {
     @apply py-16 md:py-24 lg:py-32;

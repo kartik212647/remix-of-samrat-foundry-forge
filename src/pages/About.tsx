@@ -324,7 +324,7 @@ export default function About() {
       />
 
       {/* Industries We Serve */}
-      <section className="py-16 md:py-20 bg-secondary">
+      <section className="section-metallic py-16 md:py-20">
         <div className="container-industrial">
           <SectionHeader
             label="Industries We Serve"
@@ -391,7 +391,7 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-secondary">
+      <section className="section-metallic py-16 md:py-20">
         <div className="container-industrial text-center">
           <ScrollReveal>
             <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-foreground mb-4">

@@ -110,7 +110,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Section */}
-      <section className="section-padding bg-secondary">
+      <section className="section-metallic section-padding">
         <div className="container-industrial">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Information */}
