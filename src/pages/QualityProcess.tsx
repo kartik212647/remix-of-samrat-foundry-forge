@@ -156,7 +156,7 @@ export default function QualityProcess() {
       </section>
 
       {/* Quality Pillars */}
-      <section className="py-16 md:py-20 bg-secondary">
+      <section className="section-metallic py-16 md:py-20">
         <div className="container-industrial">
           <SectionHeader label="Quality Framework" title="Our Approach to Quality" centered />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -279,7 +279,7 @@ export default function QualityProcess() {
       </section>
 
       {/* Track Record */}
-      <section className="py-16 md:py-20 bg-secondary">
+      <section className="section-metallic py-16 md:py-20">
         <div className="container-industrial">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
