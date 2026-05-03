@@ -242,8 +242,21 @@
     letter-spacing: -0.01em;
   }
 
-  .section-metallic .text-muted-foreground { color: hsl(0 0% 80%) !important; }
-  .section-metallic .text-foreground { color: hsl(0 0% 100%) !important; }
+  /* Only lighten text that sits directly on the dark surface — keep light cards intact */
+  .section-metallic > .container-industrial .text-muted-foreground:not(.card-industrial .text-muted-foreground):not(.card-industrial *) {
+    color: hsl(0 0% 82%);
+  }
+  .section-metallic > .container-industrial .text-foreground:not(.card-industrial .text-foreground):not(.card-industrial *) {
+    color: hsl(0 0% 100%);
+  }
+
+  /* Headings outside cards — bold white */
+  .section-metallic > .container-industrial h1,
+  .section-metallic > .container-industrial h2,
+  .section-metallic > .container-industrial > * > h2,
+  .section-metallic > .container-industrial > * > h3 {
+    color: hsl(0 0% 100%);
+  }
 
   /* Section Styles */
   .section-padding {
