@@ -114,41 +114,31 @@ export default function Services() {
           <div className="space-y-10">
             {services.map((service, index) => (
               <ScrollReveal key={service.title} delay={100}>
-                <div
-                  className="relative p-6 md:p-10 rounded-xl bg-card transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(192,192,192,0.45)] group"
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(hsl(var(--card)), hsl(var(--card))), linear-gradient(135deg, #C0C0C0, #E8E8E8, #C0C0C0)',
-                    backgroundOrigin: 'border-box',
-                    backgroundClip: 'padding-box, border-box',
-                    border: '2px solid transparent',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6)',
-                  }}
-                >
+                <div className="card-metallic p-6 md:p-10 group">
                   <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
                     <div className="lg:col-span-2">
                       <div className="flex items-start gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <service.icon size={24} className="text-primary" />
+                        <div className="w-12 h-12 rounded-sm bg-primary/20 border border-primary/40 flex items-center justify-center flex-shrink-0 shadow-[0_0_16px_hsl(0_72%_45%/0.35)]">
+                          <service.icon size={24} className="text-primary-foreground" />
                         </div>
                         <div>
-                          <span className="font-mono text-primary text-xs">
+                          <span className="font-mono text-primary text-xs tracking-widest">
                             {String(index + 1).padStart(2, '0')}
                           </span>
-                          <h3 className="text-xl md:text-2xl font-semibold text-foreground">{service.title}</h3>
+                          <h3 className="text-xl md:text-2xl font-semibold text-white">{service.title}</h3>
                         </div>
                       </div>
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">{service.description}</p>
+                      <p className="text-sm md:text-base text-white/75 leading-relaxed mb-4">{service.description}</p>
                       
                       {/* Subcategories */}
                       {service.subcategories && service.subcategories.length > 0 && (
-                        <div className="mb-4 p-4 bg-secondary/80 rounded-sm border border-border">
+                        <div className="mb-4 p-4 bg-white/5 rounded-sm border border-white/10 backdrop-blur-sm">
                           <h4 className="font-mono text-xs text-primary uppercase tracking-wider mb-3">
                             Category of Lining & Relining
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {service.subcategories.map((sub) => (
-                              <span key={sub} className="px-3 py-1.5 bg-background border border-border rounded-sm text-sm text-foreground font-medium">
+                              <span key={sub} className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-sm text-sm text-white font-medium">
                                 {sub}
                               </span>
                             ))}
@@ -157,13 +147,13 @@ export default function Services() {
                       )}
 
                       {service.brands.length > 0 && (
-                        <div className="pt-4 border-t border-border">
-                          <h4 className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-3">
+                        <div className="pt-4 border-t border-white/15">
+                          <h4 className="font-mono text-xs text-white/60 uppercase tracking-wider mb-3">
                             Experience with Major Brands
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {service.brands.map((brand) => (
-                              <span key={brand} className="px-3 py-1 bg-secondary border border-border rounded-sm text-sm text-muted-foreground">
+                              <span key={brand} className="px-3 py-1 bg-white/5 border border-white/15 rounded-sm text-sm text-white/80">
                                 {brand}
                               </span>
                             ))}
@@ -177,7 +167,7 @@ export default function Services() {
                       </h4>
                       <ul className="space-y-2.5">
                         {service.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2.5 text-muted-foreground text-sm">
+                          <li key={feature} className="flex items-start gap-2.5 text-white/80 text-sm">
                             <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
                             {feature}
                           </li>
@@ -193,15 +183,16 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 md:py-16 bg-background">
-        <div className="container-industrial text-center">
+      <section className="py-12 md:py-16 relative overflow-hidden" style={{ background: 'var(--gradient-dark-red)' }}>
+        <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 20% 30%, hsl(0 0% 100%) 1px, transparent 1px), radial-gradient(circle at 80% 70%, hsl(0 0% 100%) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <div className="container-industrial text-center relative">
           <ScrollReveal>
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-foreground mb-4">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-white mb-4">
               Ready to Start Your Project?
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto mb-6">
+            <p className="text-sm md:text-base text-white/75 max-w-2xl mx-auto mb-6">
               Our technical team is ready to discuss your refractory service requirements. 
               From initial assessment to project completion, we're your execution partner.
             </p>
@@ -212,7 +203,7 @@ export default function Services() {
                 Request Service Quote
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/products" className="btn-outline text-sm">
+              <Link to="/products" className="btn-outline text-sm bg-white/5 border-white text-white hover:!bg-white hover:!text-foreground">
                 View Our Products
               </Link>
             </div>
