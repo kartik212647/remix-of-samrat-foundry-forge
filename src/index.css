@@ -242,21 +242,17 @@
     letter-spacing: -0.01em;
   }
 
-  /* Only lighten text that sits directly on the dark surface — keep light cards intact */
-  .section-metallic > .container-industrial .text-muted-foreground:not(.card-industrial .text-muted-foreground):not(.card-industrial *) {
-    color: hsl(0 0% 82%);
-  }
-  .section-metallic > .container-industrial .text-foreground:not(.card-industrial .text-foreground):not(.card-industrial *) {
-    color: hsl(0 0% 100%);
-  }
+  /* Default text on dark sections is white/light */
+  .section-metallic .text-foreground { color: hsl(0 0% 100%); }
+  .section-metallic .text-muted-foreground { color: hsl(0 0% 82%); }
 
-  /* Headings outside cards — bold white */
-  .section-metallic > .container-industrial h1,
-  .section-metallic > .container-industrial h2,
-  .section-metallic > .container-industrial > * > h2,
-  .section-metallic > .container-industrial > * > h3 {
-    color: hsl(0 0% 100%);
-  }
+  /* Reset inside light cards to keep them readable */
+  .section-metallic .card-industrial .text-foreground { color: hsl(var(--foreground)); }
+  .section-metallic .card-industrial .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+  .section-metallic .card-industrial h1,
+  .section-metallic .card-industrial h2,
+  .section-metallic .card-industrial h3,
+  .section-metallic .card-industrial h4 { color: hsl(var(--foreground)); }
 
   /* Section Styles */
   .section-padding {
