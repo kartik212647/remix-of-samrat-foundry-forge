@@ -183,15 +183,16 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 md:py-16 bg-background">
-        <div className="container-industrial text-center">
+      <section className="py-12 md:py-16 relative overflow-hidden" style={{ background: 'var(--gradient-dark-red)' }}>
+        <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 20% 30%, hsl(0 0% 100%) 1px, transparent 1px), radial-gradient(circle at 80% 70%, hsl(0 0% 100%) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <div className="container-industrial text-center relative">
           <ScrollReveal>
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-foreground mb-4">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-white mb-4">
               Ready to Start Your Project?
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto mb-6">
+            <p className="text-sm md:text-base text-white/75 max-w-2xl mx-auto mb-6">
               Our technical team is ready to discuss your refractory service requirements. 
               From initial assessment to project completion, we're your execution partner.
             </p>
@@ -202,7 +203,7 @@ export default function Services() {
                 Request Service Quote
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/products" className="btn-outline text-sm">
+              <Link to="/products" className="btn-outline text-sm bg-white/5 border-white text-white hover:!bg-white hover:!text-foreground">
                 View Our Products
               </Link>
             </div>
