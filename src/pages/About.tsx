@@ -115,10 +115,10 @@ export default function About() {
                 { icon: Eye, title: 'Approach', desc: 'Long-term performance over short-term gains' },
               ].map((item, index) => (
                 <ScrollReveal key={item.title} delay={index * 100}>
-                  <div className="card-pro h-full">
-                    <span className="pro-icon"><item.icon size={20} /></span>
-                    <h4 className="pro-title text-sm">{item.title}</h4>
-                    <p className="pro-desc text-xs">{item.desc}</p>
+                  <div className="card-industrial p-4 md:p-5 h-full hover-lift hover-glow transition-all duration-300">
+                    <item.icon size={20} className="text-primary mb-3" />
+                    <h4 className="font-heading font-semibold text-foreground text-sm mb-1">{item.title}</h4>
+                    <p className="text-muted-foreground text-xs">{item.desc}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -336,18 +336,18 @@ export default function About() {
           <div className="grid sm:grid-cols-2 gap-4">
             {industries.map((industry, index) => (
               <ScrollReveal key={industry.title} delay={index * 100}>
-                <div className="card-pro h-full">
-                  <span className="pro-tag">Industry / 0{index + 1}</span>
+                <div className="card-industrial p-5 md:p-6 h-full hover-lift hover-glow transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <span className="pro-icon flex-shrink-0"><industry.icon size={22} /></span>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="pro-title">{industry.title}</h3>
-                      <p className="pro-desc mb-2">{industry.description}</p>
-                      <p className="text-[11px] text-muted-foreground/80 italic leading-relaxed">{industry.details}</p>
-                      <div className="pro-divider" />
-                      <ul className="grid grid-cols-2 gap-1.5">
+                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <industry.icon size={24} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-heading font-semibold text-foreground text-base mb-2">{industry.title}</h3>
+                      <p className="text-xs text-muted-foreground mb-2">{industry.description}</p>
+                      <p className="text-xs text-muted-foreground/80 italic mb-4">{industry.details}</p>
+                      <ul className="grid grid-cols-2 gap-1">
                         {industry.applications.map((app) => (
-                          <li key={app} className="flex items-center gap-2 text-foreground/80 text-[11px] font-medium">
+                          <li key={app} className="flex items-center gap-2 text-muted-foreground text-xs">
                             <span className="w-1 h-1 bg-primary rounded-full"></span>
                             {app}
                           </li>
