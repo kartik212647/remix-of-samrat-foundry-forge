@@ -70,6 +70,8 @@
                       radial-gradient(at 50% 50%, hsl(0 0% 100%) 0px, hsl(0 0% 97%) 100%);
     --gradient-accent-red: linear-gradient(135deg, hsl(0 72% 50%) 0%, hsl(0 78% 38%) 100%);
     --gradient-steel: linear-gradient(160deg, hsl(0 0% 96%) 0%, hsl(0 0% 88%) 50%, hsl(0 0% 94%) 100%);
+    --gradient-orange: linear-gradient(135deg, hsl(0 80% 55%) 0%, hsl(0 72% 42%) 100%);
+    --gradient-text-red: linear-gradient(135deg, hsl(0 78% 52%) 0%, hsl(0 72% 38%) 100%);
 
     /* Shadows */
     --shadow-card: 0 4px 24px -4px hsl(0 0% 0% / 0.08);
@@ -128,7 +130,17 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'IBM Plex Sans', 'Space Grotesk', sans-serif;
-    @apply font-semibold tracking-tight;
+    @apply font-bold tracking-tight;
+    letter-spacing: -0.015em;
+  }
+
+  h1 { @apply text-foreground; }
+  h2 { @apply text-foreground; }
+
+  /* Premium selection */
+  ::selection {
+    background: hsl(0 72% 45% / 0.95);
+    color: hsl(0 0% 100%);
   }
 
   .font-display {
