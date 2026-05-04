@@ -155,13 +155,13 @@ export default function Services() {
 
                     {/* Subcategories */}
                     {service.subcategories && service.subcategories.length > 0 && (
-                        <div className="mb-4 p-4 bg-white/5 rounded-sm border border-white/10 backdrop-blur-sm">
+                        <div className="mb-4 p-4 bg-secondary/40 rounded-lg border border-border">
                           <h4 className="font-mono text-xs text-primary uppercase tracking-wider mb-3">
                             Category of Lining & Relining
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {service.subcategories.map((sub) => (
-                              <span key={sub} className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-sm text-sm text-white font-medium">
+                                <span key={sub} className="px-3 py-1.5 bg-background border border-border rounded-sm text-sm text-foreground font-medium">
                                 {sub}
                               </span>
                             ))}
@@ -170,13 +170,13 @@ export default function Services() {
                       )}
 
                       {service.brands.length > 0 && (
-                        <div className="pt-4 border-t border-white/15">
-                          <h4 className="font-mono text-xs text-white/60 uppercase tracking-wider mb-3">
+                        <div className="pt-4 border-t border-border">
+                          <h4 className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-3">
                             Experience with Major Brands
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {service.brands.map((brand) => (
-                              <span key={brand} className="px-3 py-1 bg-white/5 border border-white/15 rounded-sm text-sm text-white/80">
+                                <span key={brand} className="px-3 py-1 bg-secondary/60 border border-border rounded-sm text-sm text-foreground/80">
                                 {brand}
                               </span>
                             ))}
