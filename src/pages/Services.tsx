@@ -114,31 +114,54 @@ export default function Services() {
           <div className="space-y-10">
             {services.map((service, index) => (
               <ScrollReveal key={service.title} delay={100}>
-                <div className="card-metallic p-6 md:p-10 group">
-                  <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
-                    <div className="lg:col-span-2">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-sm bg-primary/20 border border-primary/40 flex items-center justify-center flex-shrink-0 shadow-[0_0_16px_hsl(0_72%_45%/0.35)]">
-                          <service.icon size={24} className="text-primary-foreground" />
-                        </div>
-                        <div>
-                          <span className="font-mono text-primary text-xs tracking-widest">
-                            {String(index + 1).padStart(2, '0')}
-                          </span>
-                          <h3 className="text-xl md:text-2xl font-semibold text-white">{service.title}</h3>
-                        </div>
+                <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-elegant hover:shadow-elevated transition-all duration-300 group">
+                  {/* Top metallic accent bar */}
+                  <div className="h-1.5 w-full" style={{ background: 'var(--gradient-metallic)' }}></div>
+                  <div className="absolute top-1.5 left-0 h-[3px] w-24 bg-primary transition-all duration-300 group-hover:w-40"></div>
+
+                  <div className="p-6 md:p-10">
+                    {/* Header */}
+                    <div className="flex items-start gap-4 mb-5">
+                      <div className="w-14 h-14 rounded-md bg-gradient-to-br from-primary to-[hsl(0_72%_35%)] flex items-center justify-center flex-shrink-0 shadow-[0_8px_24px_-8px_hsl(0_72%_45%/0.55)]">
+                        <service.icon size={26} className="text-primary-foreground" />
                       </div>
-                      <p className="text-sm md:text-base text-white/75 leading-relaxed mb-4">{service.description}</p>
-                      
-                      {/* Subcategories */}
-                      {service.subcategories && service.subcategories.length > 0 && (
-                        <div className="mb-4 p-4 bg-white/5 rounded-sm border border-white/10 backdrop-blur-sm">
+                      <div className="flex-1 min-w-0">
+                        <span className="font-mono text-primary text-xs tracking-widest">
+                          {String(index + 1).padStart(2, '0')} / SERVICE
+                        </span>
+                        <h3 className="text-xl md:text-2xl font-semibold text-foreground mt-1">{service.title}</h3>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+
+                    {/* Service Scope — moved below description */}
+                    <div className="mb-6 p-5 rounded-lg bg-secondary/60 border border-border">
+                      <h4 className="font-mono text-xs text-primary uppercase tracking-wider mb-3">
+                        Service Scope
+                      </h4>
+                      <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                        {service.features.map((feature) => (
+                          <li key={feature} className="flex items-start gap-2.5 text-foreground/85 text-sm">
+                            <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Subcategories */}
+                    {service.subcategories && service.subcategories.length > 0 && (
+                        <div className="mb-4 p-4 bg-secondary/40 rounded-lg border border-border">
                           <h4 className="font-mono text-xs text-primary uppercase tracking-wider mb-3">
                             Category of Lining & Relining
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {service.subcategories.map((sub) => (
-                              <span key={sub} className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-sm text-sm text-white font-medium">
+                                <span key={sub} className="px-3 py-1.5 bg-background border border-border rounded-sm text-sm text-foreground font-medium">
                                 {sub}
                               </span>
                             ))}
@@ -147,33 +170,19 @@ export default function Services() {
                       )}
 
                       {service.brands.length > 0 && (
-                        <div className="pt-4 border-t border-white/15">
-                          <h4 className="font-mono text-xs text-white/60 uppercase tracking-wider mb-3">
+                        <div className="pt-4 border-t border-border">
+                          <h4 className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-3">
                             Experience with Major Brands
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {service.brands.map((brand) => (
-                              <span key={brand} className="px-3 py-1 bg-white/5 border border-white/15 rounded-sm text-sm text-white/80">
+                                <span key={brand} className="px-3 py-1 bg-secondary/60 border border-border rounded-sm text-sm text-foreground/80">
                                 {brand}
                               </span>
                             ))}
                           </div>
                         </div>
                       )}
-                    </div>
-                    <div>
-                      <h4 className="font-mono text-xs text-primary uppercase tracking-wider mb-4">
-                        Service Scope
-                      </h4>
-                      <ul className="space-y-2.5">
-                        {service.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2.5 text-white/80 text-sm">
-                            <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
                   </div>
                 </div>
               </ScrollReveal>
