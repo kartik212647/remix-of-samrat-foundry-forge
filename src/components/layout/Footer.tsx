@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowUpRight, MessageCircle } from 'lucide-react';
-import logo from '@/assets/logo.png';
+import footerLogo from '@/assets/footer-logo.png';
 
 const quickLinks = [
   { name: 'About Us', href: '/about' },
@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
             {/* Company Info */}
             <div className="lg:col-span-1">
-              <img src={logo} alt="Samrat Refractories Works" className="h-12 w-auto mb-6 brightness-0 invert" />
+              <img src={footerLogo} alt="Samrat Refractories Works" className="h-16 w-auto mb-6" />
               <p className="text-[hsl(var(--footer-muted))] text-sm leading-relaxed mb-6">
                 Engineering reliable refractory solutions for high-temperature industries. 
                 25+ years of proven execution excellence.
