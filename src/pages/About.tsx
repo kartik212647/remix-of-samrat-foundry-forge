@@ -253,7 +253,7 @@ export default function About() {
                       <BadgeCheck size={16} className="text-primary" />
                       <p className="text-sm font-semibold text-foreground">Official Letter of Authorization</p>
                     </div>
-                    <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">2025–26</span>
+                    <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">2026–27</span>
                   </div>
                   <a
                     href={dealerCertificate}
@@ -263,13 +263,13 @@ export default function About() {
                   >
                     <img
                       src={dealerCertificate}
-                      alt="TRL Krosaki Letter of Authorization 2025-26 — Samrat Refractories Works authorized channel partner certificate"
+                      alt="TRL Krosaki Letter of Authorization 2026-27 — Samrat Refractories Works authorized channel partner certificate"
                       className="w-full h-auto object-contain bg-white transition-transform duration-500 group-hover:scale-[1.02]"
                       loading="lazy"
                     />
                   </a>
                   <p className="text-xs text-muted-foreground/80 mt-3 text-center">
-                    Authorized channel partner of TRL Krosaki Refractories Limited · Valid till 31st March, 2026
+                    Authorized channel partner of TRL Krosaki Refractories Limited · Valid till 31st March, 2027
                   </p>
                 </div>
 
