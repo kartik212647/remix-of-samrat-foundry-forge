@@ -253,7 +253,7 @@ export default function About() {
                       <BadgeCheck size={16} className="text-primary" />
                       <p className="text-sm font-semibold text-foreground">Official Letter of Authorization</p>
                     </div>
-                    <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">2025–26</span>
+                    <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">2026–27</span>
                   </div>
                   <a
                     href={dealerCertificate}

@@ -533,14 +533,16 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
   return (
     <ScrollReveal delay={Math.min(index * 60, 300)}>
       <div
-        className="group h-full relative rounded-xl overflow-hidden border border-[hsl(0_0%_82%)] transition-all duration-500 hover:scale-[1.02] hover:border-[hsl(0_0%_70%)] hover:shadow-[0_18px_45px_-12px_hsl(0_0%_50%/0.35),0_0_0_1px_hsl(0_0%_88%)_inset]"
+        className="group h-full relative rounded-3xl overflow-hidden border border-border/70 transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_30px_60px_-20px_hsl(0_72%_45%/0.35),0_0_0_1px_hsl(0_72%_45%/0.15)]"
         style={{
-          background: 'linear-gradient(145deg, hsl(0 0% 99%) 0%, hsl(0 0% 94%) 50%, hsl(0 0% 97%) 100%)',
-          boxShadow: '0 4px 18px -6px hsl(0 0% 0% / 0.10), inset 0 1px 0 hsl(0 0% 100% / 0.9)',
+          background: 'linear-gradient(160deg, hsl(0 0% 100%) 0%, hsl(0 0% 97%) 55%, hsl(0 0% 93%) 100%)',
+          boxShadow: '0 6px 22px -8px hsl(0 0% 0% / 0.12), inset 0 1px 0 hsl(0 0% 100% / 0.9)',
         }}
       >
         {/* Silver shine top edge */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[hsl(0_0%_100%)] to-transparent z-10" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Corner glow accent */}
+        <div className="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full bg-gradient-to-br from-primary/25 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
         {/* Diagonal light reflection */}
         <div
           className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-[5]"

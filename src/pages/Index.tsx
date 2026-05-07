@@ -266,12 +266,12 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
             {capabilities.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300 group">
-                  <div className="w-10 h-10 rounded-sm bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <item.icon size={20} className="text-primary" />
+                <div className="card-premium-dark h-full group">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/30 to-primary/5 border border-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                    <item.icon size={22} className="text-primary" />
                   </div>
-                  <h3 className="text-base font-heading font-semibold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
+                  <h3 className="text-base font-heading font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-white/70 text-xs leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -378,13 +378,15 @@ export default function Home() {
               { title: 'Long-term Focus', desc: 'We prioritize durable partnerships, consistent quality, and sustainable industrial performance' },
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="flex items-start gap-3 p-4 border border-border rounded-sm hover:border-primary/30 transition-colors">
-                  <span className="w-7 h-7 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <span className="font-mono text-primary text-xs">{String(index + 1).padStart(2, '0')}</span>
-                  </span>
-                  <div>
-                    <h4 className="font-heading font-semibold text-foreground text-sm mb-0.5">{item.title}</h4>
-                    <p className="text-muted-foreground text-xs">{item.desc}</p>
+                <div className="card-premium h-full group">
+                  <div className="flex items-start gap-3">
+                    <span className="w-10 h-10 rounded-2xl bg-gradient-to-br from-primary to-primary/70 text-primary-foreground flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/30 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
+                      <span className="font-mono text-xs font-bold">{String(index + 1).padStart(2, '0')}</span>
+                    </span>
+                    <div>
+                      <h4 className="font-heading font-bold text-foreground text-sm mb-1 group-hover:text-primary transition-colors">{item.title}</h4>
+                      <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
