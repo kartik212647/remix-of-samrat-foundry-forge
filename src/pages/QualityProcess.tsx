@@ -162,15 +162,12 @@ export default function QualityProcess() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {qualityPillars.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-6 h-full text-center hover-lift hover-glow transition-all duration-300 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-                  <div className="w-11 h-11 rounded-sm flex items-center justify-center mx-auto mb-4"
-                    style={{ background: 'linear-gradient(145deg, hsl(0 0% 96%), hsl(0 0% 91%))' }}
-                  >
-                    <item.icon size={20} className="text-primary" />
+                <div className="card-premium-dark h-full text-center group">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/40 to-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                    <item.icon size={24} className="text-primary" />
                   </div>
-                  <h3 className="text-sm font-semibold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
+                  <h3 className="text-sm font-bold text-white mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                  <p className="text-white/70 text-xs leading-relaxed">{item.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -265,12 +262,16 @@ export default function QualityProcess() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {reasons.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300">
-                  <div className="w-11 h-11 rounded-sm bg-primary/10 flex items-center justify-center mb-4">
-                    <item.icon size={20} className="text-primary" />
+                <div className="card-premium h-full group">
+                  <div className="flex items-start gap-4">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/70 text-primary-foreground flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/30 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
+                      <item.icon size={22} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-sm font-bold text-foreground mb-1.5 group-hover:text-primary transition-colors">{item.title}</h3>
+                      <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
+                    </div>
                   </div>
-                  <h3 className="text-sm font-semibold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -312,11 +313,11 @@ export default function QualityProcess() {
                   { value: '25+', label: 'Years Experience' },
                   { value: '90%+', label: 'Repeat Business' },
                 ].map((stat) => (
-                  <div key={stat.label} className="card-industrial p-5 text-center">
-                    <div className="font-display text-3xl font-bold text-primary mb-1">
+                  <div key={stat.label} className="card-premium-dark text-center group">
+                    <div className="stat-number text-4xl mb-1 group-hover:scale-110 transition-transform duration-500">
                       {stat.value}
                     </div>
-                    <div className="text-muted-foreground text-xs">{stat.label}</div>
+                    <div className="text-white/70 text-xs font-mono uppercase tracking-wider">{stat.label}</div>
                   </div>
                 ))}
               </div>
