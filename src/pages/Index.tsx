@@ -7,7 +7,7 @@ import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import SectionHeader from '@/components/ui/SectionHeader';
 import GallerySlider from '@/components/GallerySlider';
-import heroImage from '@/assets/hero-industrial-light.jpg';
+import heroImage from '@/assets/hero-kiln.jpg';
 import industriesImage from '@/assets/industries-refractory.jpg';
 import fireBricksImg from '@/assets/products/fire-bricks.jpg';
 import castablesImg from '@/assets/products/castables.jpg';
