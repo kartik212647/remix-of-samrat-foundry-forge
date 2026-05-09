@@ -111,57 +111,76 @@ export default function Services() {
       {/* Services Detail */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container-industrial">
-          <div className="space-y-10">
+          <div className="space-y-8">
             {services.map((service, index) => (
-              <ScrollReveal key={service.title} delay={100}>
-                <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-elegant hover:shadow-elevated transition-all duration-300 group">
-                  {/* Top metallic accent bar */}
-                  <div className="h-1.5 w-full" style={{ background: 'var(--gradient-metallic)' }}></div>
-                  <div className="absolute top-1.5 left-0 h-[3px] w-24 bg-primary transition-all duration-300 group-hover:w-40"></div>
+              <ScrollReveal key={service.title} delay={80}>
+                <div
+                  className="group relative overflow-hidden rounded-[2rem] border border-border/60 transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[0_40px_80px_-25px_hsl(0_72%_45%/0.35),0_0_0_1px_hsl(0_72%_45%/0.15)]"
+                  style={{
+                    background:
+                      'linear-gradient(165deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 55%, hsl(0 0% 94%) 100%)',
+                    boxShadow:
+                      '0 10px 30px -12px hsl(0 0% 0% / 0.12), inset 0 1px 0 hsl(0 0% 100% / 0.9)',
+                  }}
+                >
+                  {/* Red gradient top accent bar */}
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-primary/50 to-transparent z-20" />
+                  {/* Corner glow */}
+                  <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-br from-primary/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  {/* Number watermark */}
+                  <div className="pointer-events-none absolute top-6 right-8 font-mono text-[6rem] md:text-[8rem] leading-none font-bold text-primary/[0.04] select-none">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
 
-                  <div className="p-6 md:p-10">
-                    {/* Header */}
-                    <div className="flex items-start gap-4 mb-5">
-                      <div className="w-14 h-14 rounded-md bg-gradient-to-br from-primary to-[hsl(0_72%_35%)] flex items-center justify-center flex-shrink-0 shadow-[0_8px_24px_-8px_hsl(0_72%_45%/0.55)]">
-                        <service.icon size={26} className="text-primary-foreground" />
+                  <div className="relative p-6 md:p-10 grid md:grid-cols-[auto_1fr] gap-6 md:gap-8">
+                    {/* Icon column */}
+                    <div className="flex md:flex-col items-center md:items-start gap-4">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-primary to-primary/60 text-primary-foreground flex items-center justify-center flex-shrink-0 shadow-[0_14px_36px_-10px_hsl(0_72%_45%/0.55)] group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500">
+                        <service.icon size={32} />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <span className="font-mono text-primary text-xs tracking-widest">
-                          {String(index + 1).padStart(2, '0')} / SERVICE
-                        </span>
-                        <h3 className="text-xl md:text-2xl font-semibold text-foreground mt-1">{service.title}</h3>
-                      </div>
+                      <div className="hidden md:block w-px h-full bg-gradient-to-b from-primary/40 via-border to-transparent flex-1" />
                     </div>
 
-                    {/* Description */}
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
-                      {service.description}
-                    </p>
+                    {/* Content column */}
+                    <div className="min-w-0">
+                      <span className="font-mono text-primary text-[11px] tracking-[0.25em] uppercase">
+                        {String(index + 1).padStart(2, '0')} · Service
+                      </span>
+                      <h3 className="text-xl md:text-2xl lg:text-[1.65rem] font-bold text-foreground mt-1.5 mb-3 group-hover:text-primary transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
+                        {service.description}
+                      </p>
 
-                    {/* Service Scope — moved below description */}
-                    <div className="mb-6 p-5 rounded-lg bg-secondary/60 border border-border">
-                      <h4 className="font-mono text-xs text-primary uppercase tracking-wider mb-3">
-                        Service Scope
-                      </h4>
-                      <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                        {service.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2.5 text-foreground/85 text-sm">
-                            <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                      {/* Service Scope */}
+                      <div className="relative rounded-2xl p-5 md:p-6 mb-5 border border-border/60 bg-gradient-to-br from-secondary/80 to-secondary/30">
+                        <div className="absolute top-0 left-6 w-12 h-[2px] bg-primary rounded-full" />
+                        <h4 className="font-mono text-[11px] text-primary uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                          Service Scope
+                        </h4>
+                        <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                          {service.features.map((feature) => (
+                            <li key={feature} className="flex items-start gap-2.5 text-foreground/85 text-sm">
+                              <span className="w-1.5 h-1.5 bg-gradient-to-br from-primary to-primary/60 rounded-full mt-2 flex-shrink-0 shadow-sm shadow-primary/40"></span>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
 
-                    {/* Subcategories */}
-                    {service.subcategories && service.subcategories.length > 0 && (
-                        <div className="mb-4 p-4 bg-secondary/40 rounded-lg border border-border">
-                          <h4 className="font-mono text-xs text-primary uppercase tracking-wider mb-3">
+                      {service.subcategories && service.subcategories.length > 0 && (
+                        <div className="mb-5 p-5 rounded-2xl border border-border/60 bg-card/60">
+                          <h4 className="font-mono text-[11px] text-primary uppercase tracking-[0.2em] mb-3">
                             Category of Lining & Relining
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {service.subcategories.map((sub) => (
-                                <span key={sub} className="px-3 py-1.5 bg-background border border-border rounded-sm text-sm text-foreground font-medium">
+                              <span
+                                key={sub}
+                                className="px-3.5 py-1.5 bg-gradient-to-br from-background to-secondary/60 border border-primary/20 rounded-full text-sm text-foreground font-medium shadow-sm"
+                              >
                                 {sub}
                               </span>
                             ))}
@@ -170,19 +189,23 @@ export default function Services() {
                       )}
 
                       {service.brands.length > 0 && (
-                        <div className="pt-4 border-t border-border">
-                          <h4 className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-3">
+                        <div className="pt-5 border-t border-dashed border-border">
+                          <h4 className="font-mono text-[11px] text-muted-foreground uppercase tracking-[0.2em] mb-3">
                             Experience with Major Brands
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {service.brands.map((brand) => (
-                                <span key={brand} className="px-3 py-1 bg-secondary/60 border border-border rounded-sm text-sm text-foreground/80">
+                              <span
+                                key={brand}
+                                className="px-3 py-1 bg-secondary/70 border border-border rounded-full text-xs text-foreground/80 font-medium"
+                              >
                                 {brand}
                               </span>
                             ))}
                           </div>
                         </div>
                       )}
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
