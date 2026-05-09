@@ -315,12 +315,17 @@ export default function Home() {
               />
               <div className="grid sm:grid-cols-2 gap-3">
                 {industries.map((industry, index) => (
-                  <ScrollReveal key={industry} delay={index * 100}>
-                    <div className="flex items-center gap-2.5 p-3 border border-border rounded-sm hover:border-primary/30 transition-colors group">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                      <span className="text-foreground text-sm font-medium group-hover:text-primary transition-colors">
-                        {industry}
-                      </span>
+                  <ScrollReveal key={industry} delay={index * 80}>
+                    <div className="group relative overflow-hidden rounded-2xl p-[1px] bg-gradient-to-br from-primary/40 via-border to-border hover:from-primary hover:via-primary/40 hover:to-primary/20 transition-all duration-500">
+                      <div className="relative flex items-center gap-3 rounded-2xl bg-card/95 backdrop-blur-sm px-4 py-3.5 transition-all duration-500 group-hover:bg-card">
+                        <span className="relative w-8 h-8 rounded-xl bg-gradient-to-br from-primary to-primary/60 text-primary-foreground flex items-center justify-center shadow-md shadow-primary/30 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                          <span className="font-mono text-[10px] font-bold">{String(index + 1).padStart(2, '0')}</span>
+                        </span>
+                        <span className="text-foreground text-sm font-semibold group-hover:text-primary transition-colors">
+                          {industry}
+                        </span>
+                        <ArrowRight size={14} className="ml-auto text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                      </div>
                     </div>
                   </ScrollReveal>
                 ))}
@@ -398,52 +403,56 @@ export default function Home() {
       {/* Technical Expertise & Quality */}
       <section className="section-metallic py-16 md:py-20">
         <div className="container-industrial">
-          <div className="grid md:grid-cols-2 gap-8">
-            <ScrollReveal>
-              <div className="card-industrial p-6 md:p-8 h-full">
-                <SectionHeader
-                  label="Technical Expertise"
-                  title="Engineering Excellence"
-                />
-                <ul className="space-y-3 mt-4">
-                  {[
-                    'Advanced thermal analysis and material selection',
-                    'Custom refractory design for unique applications',
-                    'Installation supervision by experienced engineers',
-                    'Post-installation support and maintenance planning',
-                    'Compliance with Industry Norms & Integrity-driven Engineering Practices',
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-sm text-muted-foreground">
-                      <CheckCircle size={16} className="text-primary mt-0.5 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={100}>
-              <div className="card-industrial p-6 md:p-8 h-full">
-                <SectionHeader
-                  label="Quality Assurance"
-                  title="Uncompromising Standards"
-                />
-                <ul className="space-y-3 mt-4">
-                  {[
-                    'Certified raw materials from trusted suppliers',
-                    'In-process quality checks at every stage',
-                    'Final inspection before dispatch',
-                    'Documentation and traceability for all products',
-                    'Supply on Fuel Basis – Quality consistency maintained across fuel-specific industrial applications',
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-sm text-muted-foreground">
-                      <CheckCircle size={16} className="text-primary mt-0.5 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            {[
+              {
+                icon: Cog,
+                label: 'Technical Expertise',
+                title: 'Engineering Excellence',
+                items: [
+                  'Advanced thermal analysis and material selection',
+                  'Custom refractory design for unique applications',
+                  'Installation supervision by experienced engineers',
+                  'Post-installation support and maintenance planning',
+                  'Compliance with Industry Norms & Integrity-driven Engineering Practices',
+                ],
+              },
+              {
+                icon: Shield,
+                label: 'Quality Assurance',
+                title: 'Uncompromising Standards',
+                items: [
+                  'Certified raw materials from trusted suppliers',
+                  'In-process quality checks at every stage',
+                  'Final inspection before dispatch',
+                  'Documentation and traceability for all products',
+                  'Supply on Fuel Basis – Quality consistency maintained across fuel-specific industrial applications',
+                ],
+              },
+            ].map((block, idx) => (
+              <ScrollReveal key={block.label} delay={idx * 100}>
+                <div className="card-premium-dark h-full p-7 md:p-9 group">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center shadow-lg shadow-primary/40 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500">
+                      <block.icon size={26} className="text-primary-foreground" />
+                    </div>
+                    <div>
+                      <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/90">{block.label}</span>
+                      <h3 className="text-xl md:text-2xl font-bold text-white leading-tight">{block.title}</h3>
+                    </div>
+                  </div>
+                  <div className="h-px w-full bg-gradient-to-r from-primary/50 via-white/10 to-transparent mb-5" />
+                  <ul className="space-y-3">
+                    {block.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-white/80 leading-relaxed">
+                        <span className="mt-1.5 w-2 h-2 rounded-full bg-gradient-to-br from-primary to-primary/50 flex-shrink-0 shadow-sm shadow-primary/50" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
