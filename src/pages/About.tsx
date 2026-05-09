@@ -107,7 +107,7 @@ export default function About() {
               </ScrollReveal>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-4">
               {[
                 { icon: Users, title: 'Leadership', desc: 'Proprietor-led with hands-on technical oversight' },
                 { icon: Cog, title: 'Methodology', desc: 'Proven installation and quality control practices' },
@@ -115,10 +115,15 @@ export default function About() {
                 { icon: Eye, title: 'Approach', desc: 'Long-term performance over short-term gains' },
               ].map((item, index) => (
                 <ScrollReveal key={item.title} delay={index * 100}>
-                  <div className="card-industrial p-4 md:p-5 h-full hover-lift hover-glow transition-all duration-300">
-                    <item.icon size={20} className="text-primary mb-3" />
-                    <h4 className="font-heading font-semibold text-foreground text-sm mb-1">{item.title}</h4>
-                    <p className="text-muted-foreground text-xs">{item.desc}</p>
+                  <div className="card-premium h-full p-5 md:p-6 group">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primary/60 text-primary-foreground flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500">
+                        <item.icon size={20} />
+                      </div>
+                      <span className="font-mono text-[10px] text-primary/70 tracking-widest">0{index + 1}</span>
+                    </div>
+                    <h4 className="font-heading font-bold text-foreground text-base mb-1.5 group-hover:text-primary transition-colors">{item.title}</h4>
+                    <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -228,15 +233,18 @@ export default function About() {
                 </div>
 
                 {/* Icon-based bullet points */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
                   {tataBullets.map((bullet, index) => (
-                    <div key={index} className="flex items-start gap-3 p-3 rounded-sm border border-border/30"
-                      style={{ background: 'linear-gradient(145deg, hsl(0 0% 100% / 0.6), hsl(0 0% 96% / 0.4))', backdropFilter: 'blur(4px)' }}
+                    <div
+                      key={index}
+                      className="group relative overflow-hidden rounded-2xl p-[1px] bg-gradient-to-br from-primary/30 via-border to-border hover:from-primary hover:via-primary/40 hover:to-primary/10 transition-all duration-500"
                     >
-                      <div className="w-8 h-8 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <bullet.icon size={16} className="text-primary" />
+                      <div className="relative flex items-start gap-3 rounded-2xl bg-card/95 backdrop-blur-sm p-4 h-full transition-all duration-500">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/60 text-primary-foreground flex items-center justify-center flex-shrink-0 shadow-md shadow-primary/30 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500">
+                          <bullet.icon size={16} />
+                        </div>
+                        <span className="text-sm text-foreground/85 leading-snug font-medium">{bullet.text}</span>
                       </div>
-                      <span className="text-sm text-muted-foreground leading-snug">{bullet.text}</span>
                     </div>
                   ))}
                 </div>
@@ -333,22 +341,24 @@ export default function About() {
             centered
           />
 
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-5">
             {industries.map((industry, index) => (
               <ScrollReveal key={industry.title} delay={index * 100}>
-                <div className="card-industrial p-5 md:p-6 h-full hover-lift hover-glow transition-all duration-300">
+                <div className="card-premium-dark h-full p-6 md:p-7 group">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <industry.icon size={24} className="text-primary" />
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/60 text-primary-foreground flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/40 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500">
+                      <industry.icon size={24} />
                     </div>
-                    <div className="flex-1">
-                      <h3 className="font-heading font-semibold text-foreground text-base mb-2">{industry.title}</h3>
-                      <p className="text-xs text-muted-foreground mb-2">{industry.description}</p>
-                      <p className="text-xs text-muted-foreground/80 italic mb-4">{industry.details}</p>
-                      <ul className="grid grid-cols-2 gap-1">
+                    <div className="flex-1 min-w-0">
+                      <span className="font-mono text-[10px] text-primary/90 tracking-widest uppercase">0{index + 1} / Industry</span>
+                      <h3 className="font-heading font-bold text-white text-lg mt-1 mb-2 group-hover:text-primary transition-colors">{industry.title}</h3>
+                      <p className="text-xs text-white/75 mb-2 leading-relaxed">{industry.description}</p>
+                      <p className="text-xs text-white/55 italic mb-4 leading-relaxed">{industry.details}</p>
+                      <div className="h-px w-full bg-gradient-to-r from-primary/50 via-white/15 to-transparent mb-3" />
+                      <ul className="grid grid-cols-2 gap-x-3 gap-y-1.5">
                         {industry.applications.map((app) => (
-                          <li key={app} className="flex items-center gap-2 text-muted-foreground text-xs">
-                            <span className="w-1 h-1 bg-primary rounded-full"></span>
+                          <li key={app} className="flex items-center gap-2 text-white/80 text-xs">
+                            <span className="w-1.5 h-1.5 bg-primary rounded-full shadow-sm shadow-primary/60"></span>
                             {app}
                           </li>
                         ))}

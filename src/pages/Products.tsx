@@ -533,16 +533,18 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
   return (
     <ScrollReveal delay={Math.min(index * 60, 300)}>
       <div
-        className="group h-full relative rounded-3xl overflow-hidden border border-border/70 transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_30px_60px_-20px_hsl(0_72%_45%/0.35),0_0_0_1px_hsl(0_72%_45%/0.15)]"
+        className="group h-full relative rounded-[1.75rem] overflow-hidden border border-border/60 transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_40px_80px_-25px_hsl(0_72%_45%/0.45),0_0_0_1px_hsl(0_72%_45%/0.2)]"
         style={{
-          background: 'linear-gradient(160deg, hsl(0 0% 100%) 0%, hsl(0 0% 97%) 55%, hsl(0 0% 93%) 100%)',
-          boxShadow: '0 6px 22px -8px hsl(0 0% 0% / 0.12), inset 0 1px 0 hsl(0 0% 100% / 0.9)',
+          background: 'linear-gradient(165deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 50%, hsl(0 0% 94%) 100%)',
+          boxShadow: '0 10px 30px -12px hsl(0 0% 0% / 0.15), inset 0 1px 0 hsl(0 0% 100% / 0.9)',
         }}
       >
-        {/* Silver shine top edge */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Red gradient top accent bar */}
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-primary/60 to-transparent z-20" />
         {/* Corner glow accent */}
-        <div className="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full bg-gradient-to-br from-primary/25 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
+        <div className="pointer-events-none absolute -top-20 -right-20 w-56 h-56 rounded-full bg-gradient-to-br from-primary/30 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
+        {/* Bottom-left subtle metallic glow */}
+        <div className="pointer-events-none absolute -bottom-24 -left-20 w-56 h-56 rounded-full bg-gradient-to-tr from-foreground/10 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
         {/* Diagonal light reflection */}
         <div
           className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-[5]"
@@ -551,28 +553,22 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           }}
         />
         {/* Image */}
-        <div className="relative aspect-square bg-secondary overflow-hidden">
-          <img 
-            src={product.image} 
+        <div className="relative aspect-square bg-secondary overflow-hidden mx-3 mt-3 rounded-2xl border border-border/50">
+          <img
+            src={product.image}
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
             loading="lazy"
             width={640}
             height={640}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <Badge 
-            variant="secondary" 
-            className="absolute top-3 right-3 text-[10px] font-mono bg-background/95 backdrop-blur-sm border-0 shadow-sm"
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
+          <Badge
+            variant="secondary"
+            className="absolute top-3 right-3 text-[10px] font-mono bg-background/95 backdrop-blur-sm border border-primary/20 text-primary shadow-md uppercase tracking-wider"
           >
             {product.badge}
           </Badge>
-          {product.temperature && (
-            <div className="absolute bottom-3 left-3 flex items-center gap-1.5 text-[11px] text-primary-foreground bg-primary/90 backdrop-blur-sm px-2.5 py-1 rounded-sm font-mono">
-              <Flame size={12} />
-              {product.temperature}
-            </div>
-          )}
         </div>
         
         {/* Content */}

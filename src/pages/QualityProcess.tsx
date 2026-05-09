@@ -107,14 +107,14 @@ export default function QualityProcess() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {capabilities.map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 100}>
-                <div className="card-industrial p-6 h-full hover-lift hover-glow transition-all duration-300 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-                  <div className="w-11 h-11 rounded-sm flex items-center justify-center mb-4"
-                    style={{ background: 'linear-gradient(145deg, hsl(0 0% 96%), hsl(0 0% 91%))' }}
-                  >
-                    <item.icon size={20} className="text-primary" />
+                <div className="card-premium h-full p-6 group">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/60 text-primary-foreground flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500">
+                      <item.icon size={22} />
+                    </div>
+                    <span className="font-mono text-[10px] text-primary/70 tracking-widest">0{index + 1}</span>
                   </div>
-                  <h3 className="font-heading font-semibold text-foreground text-sm mb-2">{item.title}</h3>
+                  <h3 className="font-heading font-bold text-foreground text-base mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
                 </div>
               </ScrollReveal>
