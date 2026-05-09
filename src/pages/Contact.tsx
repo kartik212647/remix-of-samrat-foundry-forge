@@ -208,10 +208,10 @@ export default function Contact() {
                   <div className="relative">
                   <span className="font-mono text-[11px] text-primary tracking-[0.25em] uppercase">Enquiry Form</span>
                   <h3 className="text-2xl md:text-3xl font-bold text-foreground mt-1.5 mb-6">Send Us an Enquiry</h3>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid md:grid-cols-2 gap-5">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                        <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
                           Your Name *
                         </label>
                         <input
@@ -221,12 +221,12 @@ export default function Contact() {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 bg-background border border-border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                          className="w-full px-4 py-3 bg-background/80 border border-border rounded-xl text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                           placeholder="Enter your name"
                         />
                       </div>
                       <div>
-                        <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+                        <label htmlFor="company" className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
                           Company Name
                         </label>
                         <input
@@ -235,15 +235,15 @@ export default function Contact() {
                           name="company"
                           value={formData.company}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 bg-background border border-border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                          className="w-full px-4 py-3 bg-background/80 border border-border rounded-xl text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                           placeholder="Enter company name"
                         />
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 gap-5">
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                        <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
                           Email Address *
                         </label>
                         <input
@@ -253,12 +253,12 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 bg-background border border-border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                          className="w-full px-4 py-3 bg-background/80 border border-border rounded-xl text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                           placeholder="Enter email address"
                         />
                       </div>
                       <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                        <label htmlFor="phone" className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
                           Phone Number *
                         </label>
                         <input
@@ -268,14 +268,14 @@ export default function Contact() {
                           value={formData.phone}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 bg-background border border-border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                          className="w-full px-4 py-3 bg-background/80 border border-border rounded-xl text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                           placeholder="Enter phone number"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
+                      <label htmlFor="service" className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
                         Service Required
                       </label>
                       <select
@@ -283,7 +283,7 @@ export default function Contact() {
                         name="service"
                         value={formData.service}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-background border border-border rounded-sm text-foreground focus:outline-none focus:border-primary transition-colors"
+                        className="w-full px-4 py-3 bg-background/80 border border-border rounded-xl text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                       >
                         <option value="">Select a service</option>
                         <option value="boiler-lining">Boiler Refractory Lining</option>
@@ -297,7 +297,7 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                      <label htmlFor="message" className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
                         Project Details *
                       </label>
                       <textarea
@@ -307,7 +307,7 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         rows={5}
-                        className="w-full px-4 py-3 bg-background border border-border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
+                        className="w-full px-4 py-3 bg-background/80 border border-border rounded-xl text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                         placeholder="Describe your project requirements..."
                       />
                     </div>
@@ -327,32 +327,10 @@ export default function Contact() {
                       )}
                     </button>
                   </form>
+                  </div>
                 </div>
               </ScrollReveal>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Alternative CTA */}
-      <section className="py-16 bg-background border-t border-border">
-        <div className="container-industrial">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="heading-sm text-foreground mb-2">
-                Prefer to Talk Directly?
-              </h3>
-              <p className="text-muted-foreground">
-                Our team is available for technical discussions and site visits.
-              </p>
-            </div>
-            <a 
-              href="tel:+919897329686" 
-              className="btn-outline gap-2 group"
-            >
-              <Phone size={18} />
-              Call +91 98973 29686
-            </a>
           </div>
         </div>
       </section>
